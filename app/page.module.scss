@@ -1,6 +1,9 @@
 .main {
   min-height: 100vh;
-  .landing {
+  .first_section {
+    h2 {
+      margin: 2rem 0 3rem 0;
+    }
     .logo {
       display: flex;
       margin: 0 0 2rem 0;
@@ -21,16 +24,59 @@
       font-size: 1.25rem;
       font-weight: 600;
       display: inline-block;
-      margin: 0;
       outline: none;
       padding: 1rem 2rem;
       text-align: center;
       text-decoration: none;
     }
     .scroll_text {
-      padding: 4rem 0;
+      margin: 5rem 0 6rem 0;
+      color: var(--color-placeholder);
+
+      img {
+        padding: 0.5rem;
+      }
     }
     margin: 2rem;
     text-align: center;
+  }
+  .second_section {
+    h2 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .marketplace {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+      padding: 2rem 0 3rem 2rem;
+      margin: 0 3rem 3rem 0;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      p {
+        margin-bottom: 2rem;
+        margin-right: 2rem;
+      }
+      div {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+    .characteristics {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 0 0 3rem 3rem;
+      div {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        div {
+          margin: 2rem;
+        }
+      }
+    }
+  }
+  .third_section {
   }
 }
