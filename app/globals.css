@@ -1,5 +1,6 @@
 :root {
   --color-primary: #0066ff;
+  --color-secondary: #A1C7FF;
   --color-text: #171717;
   --color-background: #f9f9f9;
   --color-placeholder: #707070;
@@ -10,14 +11,16 @@ body {
   background-color: var(--color-background);
 }
 
-h1 {
+h2 {
   font-size: 2rem;
-  margin:  2rem 0 4rem 0;
+}
+
+h3{
+  font-size: 1.75rem;
 }
 
 p {
   font-size: 1rem;
-  /* margin:  1.5rem 0 3rem 0; */
 }
 
 @media (min-width: 768px) {
