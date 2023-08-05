@@ -1,0 +1,36 @@
+.main {
+  min-height: 100vh;
+  .landing {
+    .logo {
+      display: flex;
+      margin: 0 0 2rem 0;
+    }
+    .intro_texts {
+      padding: 4rem 0 6rem 0;
+    }
+    .button {
+      margin: 1rem 0;
+      background-color: var(--color-primary);
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: var(--color-background);
+      cursor: pointer;
+      width: 100%;
+      max-width: 420px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: inline-block;
+      margin: 0;
+      outline: none;
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+    }
+    .scroll_text {
+      padding: 4rem 0;
+    }
+    margin: 2rem;
+    text-align: center;
+  }
+}
