@@ -1,0 +1,64 @@
+@import "..//styles/variables.scss";
+
+.button{
+    &_link{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        padding: 0.5rem 1rem;
+        border-radius: $radius;
+        color: $text;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &_alt{
+        cursor: pointer;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $spacing0_5;
+        padding: 0.625rem $spacing;
+        
+        border: 3px solid rgba($accent, 0.2);
+        border-radius: $radiusOuter;
+        background-color: rgba($accent, 0.3);
+        
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 700;
+        color: $accent;
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            border: 3px solid rgba($accent, 0.4);
+            background-color: rgba($accent, 0.4);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &_main{
+        @extend .button_alt;
+        color: $background;
+        background-color: $accent;
+
+        &:hover{
+            color: $background;
+            background-color: darken($accent, 10%);
+
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}

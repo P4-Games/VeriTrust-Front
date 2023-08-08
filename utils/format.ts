@@ -1,0 +1,1 @@
+export const formatTX = (value: string): string => value.slice(0, 6) + "****" + value.slice(value.length - 6, value.length);

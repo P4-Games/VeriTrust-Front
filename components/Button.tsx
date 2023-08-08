@@ -1,0 +1,46 @@
+import React from "react";
+
+import styles from "./Button.module.scss";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+interface ButtonProps{
+    type?: "main" | "alt" | "link";
+    className?: string;
+    children: React.ReactNode;
+    redirectTo?: string; //Next router path
+    onClick?: ()=>void; //other click event
+    disabled?: boolean;
+}
+
+export const Button = ({ type = "main", className = "", children, disabled = false, redirectTo = "" }: ButtonProps): JSX.Element => {
+
+    const TYPES: Record<string, string> = {
+        main: styles.button_main,
+        alt: styles.button_alt,
+        link: styles.button_link
+    }
+
+    const handleClick = () => {
+        if(disabled) return;
+    }
+
+    return (
+        <>
+            {
+                redirectTo ? (
+                    <Link 
+                        href={redirectTo}
+                        className={`${styles.button} ${TYPES[type]} ${className}`}
+                    >
+                        {children}
+                    </Link>
+                ) : (
+                    <button disabled={disabled} className={`${styles.button} ${TYPES[type]} ${className}`}>
+                        {children}
+                    </button>
+                )
+            }
+        </>
+    )
+}
