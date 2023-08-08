@@ -1,15 +1,32 @@
 .main {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  @media only screen and (max-width: 768px) {
+    margin: 2rem 0;
+  }
+  section {
+    max-width: 1024px;
+  }
+  .logo {
+    width: 100%;
+    display: flex;
+    max-width: 1024px;
+    img {
+      margin-left: 2rem;
+    }
+  }
   .first_section {
+    text-align: center;
+    margin: 0 2rem;
     h2 {
       margin: 2rem 0 3rem 0;
     }
-    .logo {
-      display: flex;
-      margin: 0 0 2rem 0;
-    }
-    .intro_texts {
+    .intro_text {
+      margin: 0 auto;
       padding: 4rem 0 6rem 0;
+      max-width: 680px;
     }
     .button {
       margin: 1rem 0;
@@ -32,51 +49,109 @@
     .scroll_text {
       margin: 5rem 0 6rem 0;
       color: var(--color-placeholder);
-
       img {
         padding: 0.5rem;
       }
     }
-    margin: 2rem;
-    text-align: center;
+  }
+  .repeat_pattern {
+    margin: 1rem 0 3rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    p {
+      margin-left: 0.5rem;
+      opacity: 25%;
+    }
   }
   .second_section {
     h2 {
       text-align: center;
       margin-bottom: 4rem;
     }
-    .marketplace {
-      background-color: var(--color-primary);
-      color: var(--color-background);
-      padding: 2rem 0 3rem 2rem;
-      margin: 0 3rem 3rem 0;
-      border-top-right-radius: 12px;
-      border-bottom-right-radius: 12px;
-      p {
-        margin-bottom: 2rem;
-        margin-right: 2rem;
-      }
-      div {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-    }
-    .characteristics {
+    .second_section_body {
       display: flex;
-      flex-direction: column;
       gap: 2rem;
-      margin: 0 0 3rem 3rem;
-      div {
-        background-color: var(--color-secondary);
-        color: var(--color-primary);
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
+      @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        gap: 0;
+      }
+      .marketplace {
+        background-color: var(--color-primary);
+        color: var(--color-background);
+        padding: 2rem 0 3rem 2rem;
+        border-radius: 12px;
+        flex: 1;
+        @media only screen and (max-width: 768px) {
+          margin: 0 3rem 3rem 0;
+          border-radius: 0;
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+        p {
+          margin-bottom: 2rem;
+          margin-right: 2rem;
+        }
         div {
-          margin: 2rem;
+          margin-top: 4rem;
+          display: flex;
+          flex-direction: row-reverse;
+        }
+      }
+      .characteristics {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        flex: 2;
+        @media only screen and (max-width: 768px) {
+          margin: 0 0 3rem 3rem;
+        }
+        div {
+          background-color: var(--color-secondary);
+          color: var(--color-primary);
+          border-radius: 12px;
+          @media only screen and (max-width: 768px) {
+            border-radius: 0;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+          }
+          div {
+            margin: 2rem;
+          }
         }
       }
     }
   }
   .third_section {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+    .card_container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+      gap: 2rem;
+      @media only screen and (max-width: 768px) {
+        padding: 0 2rem;
+      }
+      div {
+        flex: 1;
+        max-width: 520px;
+        border: solid 2px rgba(161, 199, 255, 0.2);
+        background-color: rgba(161, 199, 255, 0.1);
+        border-radius: 12px;
+        min-width: 280px;
+        padding: 2rem;
+        h3 {
+          color: var(--color-primary);
+        }
+      }
+    }
   }
 }
