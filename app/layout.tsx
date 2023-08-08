@@ -1,7 +1,18 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ['latin'] })
+//Uso en el css: var(--font-satoshi)
+export const SATOSHI = localFont({
+  src: "Satoshi-Variable.woff2",
+  variable: "--font-satoshi", 
+  display: "swap",
+});
+
+export const TASA_EXPLORER = localFont({
+  src: "TASAExplorerVF.woff2",
+  variable: "--font-tasa",
+  display: "swap",
+});
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={
+        SATOSHI.variable + " " + TASA_EXPLORER.variable
+      }>{children}</body>
     </html>
   )
 }
