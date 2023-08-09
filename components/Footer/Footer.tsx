@@ -1,5 +1,5 @@
 import React from "react";
-import { logo } from "../../_assets";
+import { logo } from "@/assets";
 import Image from "next/image";
 import styles from "./Footer.module.scss";
 

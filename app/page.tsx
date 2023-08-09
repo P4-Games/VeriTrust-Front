@@ -1,8 +1,8 @@
 import styles from "./page.module.scss";
-import { logo, marketplace, mouse, envelope } from "./_assets/";
+import { logo, marketplace, mouse, envelope } from "@/assets";
 import Image from "next/image";
-import Footer from "./_components/Footer/Footer";
-import SubscribeForm from "./_components/SubscribeForm/SubscribeForm";
+import Footer from "@/components/Footer/Footer";
+import SubscribeForm from "@/components/SubscribeForm/SubscribeForm";
 
 export default function Home() {
   const pattern = " • VeriTrust";
