@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+  width: 100%;
+  @media only screen and (max-width: 768px) {
+    max-width: 520px;
+    flex-direction: column;
+    button {
+      width: 100%;
+    }
+  }
+  input {
+    flex: 2;
+    box-sizing: border-box;
+    border: none;
+    padding: 1rem 2rem;
+    background-color: var(--color-secondary);
+    border-radius: 12px;
+    outline: none;
+    font-size: 1rem;
+    color: var(--color-background-dark);
+    letter-spacing: 0.5px;
+    &::placeholder {
+      color: var(--color-background-dark);
+      opacity: 0.8;
+    }
+  }
+  button {
+    flex: 1;
+    letter-spacing: 0.5px;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}

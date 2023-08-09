@@ -1,95 +1,120 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import styles from "./page.module.scss";
+import { logo, marketplace, mouse, envelope } from "./_assets/";
+import Image from "next/image";
+import Footer from "./_components/Footer/Footer";
+import SubscribeForm from "./_components/SubscribeForm/SubscribeForm";
 
 export default function Home() {
+  const pattern = " • VeriTrust";
+  const repetitions = 42;
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className={styles.main}>
+        <header className={styles.logo}>
+          <Image src={logo} alt="VeriTrust logo" />
+        </header>
+        <section className={styles.first_section}>
+          <div className={styles.intro_text}>
+            <h2>Licita con confianza, VeriTrust te respalda</h2>
+            <p>
+              Reinventamos el sistema de licitaciones brindando mayor seguridad,
+              transparencia y confianza en los procesos de contratación.
+            </p>
+          </div>
+          <button className={styles.button} type="button">
+            Ingresar a la app
+          </button>
+          <div className={styles.scroll_text}>
+            <p>Haga scroll para ver mas</p>
+            <Image src={mouse} alt="mouse icon" />
+          </div>
+        </section>
+        <section className={styles.second_section}>
+          <h2>Características</h2>
+          <div className={styles.second_section_body}>
+            <div className={styles.marketplace}>
+              <h3>Marketplace</h3>
+              <p>
+                Facilita la búsqueda y promoción de oportunidades, asegurando un
+                ambiente transparente y competitivo para todas las partes.
+              </p>
+              <div className={styles.marketplace_img}>
+                <Image
+                  width={343}
+                  height={286}
+                  src={marketplace}
+                  alt="marketplace image"
+                />
+              </div>
+            </div>
+            <div className={styles.characteristics}>
+              <div>
+                <div>
+                  <h3>Privacidad de las propuestas</h3>
+                  <p>
+                    Facilita la búsqueda y promoción de oportunidades,
+                    asegurando un ambiente transparente y competitivo para todas
+                    las partes.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h3>Reveal en Blockchain</h3>
+                  <p>
+                    A traves de tecnología blockchain se hace el “reveal” de
+                    forma pública, transparente e inmutable.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h3>Arbitraje</h3>
+                  <p>
+                    En casos de disputas o reclamos. Integramos a Kleros, donde
+                    expertos toman decisiones imparciales
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className={styles.repeat_pattern}>
+          <p>{Array(repetitions).fill(pattern).join("")}</p>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+        <section className={styles.third_section}>
+          <h2>Beneficios clave</h2>
+          <div className={styles.card_container}>
+            <div>
+              <h3>Mayor Seguridad y Transparencia</h3>
+            </div>
+            <div>
+              <h3>Privacidad de las Propuestas</h3>
+            </div>
+            <div>
+              <h3>Verificabilidad y Auditoría</h3>
+            </div>
+            <div>
+              <h3>Eficiencia y Ahorro de Costos</h3>
+            </div>
+          </div>
+        </section>
+        <section className={styles.newsletter}>
+          <div className={styles.envelope_img}>
+            <Image src={envelope} alt="envelop image" />
+          </div>
+          <div>
+            <h3>Recibe las últimas novedades!</h3>
+            <p>
+              Solo enviaremos contenido cada tanto, asegurandonos que aporta
+              valor.
+            </p>
+          </div>
+          <SubscribeForm />
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
 }
