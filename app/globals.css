@@ -2,7 +2,7 @@
   --color-primary: #0066ff;
   --color-secondary: #a1c7ff;
   --color-text: #171717;
-  --color-text-dark: #0066ff;
+  --color-text-dark: #a1c7ff;
   --color-background: #f9f9f9;
   --color-background-dark: #001029;
   --color-placeholder: #707070;
@@ -14,6 +14,7 @@
 body {
   margin: 0;
   background-color: var(--color-background);
+  line-height: 1.15;
 }
 
 h2 {
