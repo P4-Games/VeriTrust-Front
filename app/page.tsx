@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <header className={styles.logo}>
-          <Image src={logo} alt="VeriTrust logo" />
+          <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         </header>
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
