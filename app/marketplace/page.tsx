@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Navbar } from "@/components/composed/Navbar";
+import { Navbar } from "@/components/composed/Navbar/Navbar";
 
 import styles from "./Marketplace.module.scss";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/Button/Button";
 import { IconPlus, IconExternalLink } from "@tabler/icons-react";
 import { DUMMY_TENDERS } from "@/constants/tender";
 import { formatTX } from "@/utils/format";
