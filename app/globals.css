@@ -28,3 +28,63 @@ html::-webkit-scrollbar-track{
 html::-webkit-scrollbar-thumb{
   background-color: #171717;
 }
+
+
+
+
+:root {
+  --color-primary: #0066ff;
+  --color-secondary: #a1c7ff;
+  --color-text: #171717;
+  --color-text-dark: #a1c7ff;
+  --color-background: #f9f9f9;
+  --color-background-dark: #001029;
+  --color-placeholder: #707070;
+}
+
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+@import url("https://fonts.cdnfonts.com/css/tasa-explorer");
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  line-height: 1.15;
+}
+
+h2 {
+  font-family: "TASA Explorer", sans-serif;
+  font-size: 3.5rem;
+  @media only screen and (max-width: 680px) {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-family: "TASA Explorer", sans-serif;
+  font-size: 2.5rem;
+  @media only screen and (max-width: 680px) {
+    font-size: 1.75rem;
+  }
+}
+
+button {
+  font-family: "TASA Explorer", sans-serif;
+}
+
+p {
+  font-family: "Satoshi", sans-serif;
+  font-size: 1.5rem;
+  @media only screen and (max-width: 680px) {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}
