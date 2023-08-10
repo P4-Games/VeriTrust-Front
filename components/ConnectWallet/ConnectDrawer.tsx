@@ -19,19 +19,20 @@ export function ConnectDrawer({
     <>
       <AnimatePresence>
         {
-          !openModal ? (
+          openModal ? (
             <motion.div
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
               className={styles.drawerOverlay}
+              onClick={toggleModal}
             />
           ): null
         } 
       </AnimatePresence>
       <AnimatePresence>
         {
-          !openModal ? (
+          openModal ? (
             <motion.div
               initial={{width: 0}}
               animate={{width: "min(500px, 80%)"}}
@@ -71,7 +72,6 @@ export function ConnectDrawer({
         }
       </AnimatePresence>
       {error && <div>{error.message}</div>}
-      
     </>
   )
 }

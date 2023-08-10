@@ -1,5 +1,5 @@
-@import "../styles/variables.scss";
-@import "./Button.module.scss";
+@import "../../styles/variables.scss";
+@import "../Button/Button.module.scss";
 
 .drawer{
     overflow: hidden;
@@ -41,7 +41,7 @@
             height: 60px;
 
             &:hover{
-                background-color: $accent;
+                background-color: $primary;
                 color: $background;
                 border: none;
             }

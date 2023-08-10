@@ -1,10 +1,10 @@
-import styles from "./Button.module.scss";
+import styles from "../Button/Button.module.scss";
 
 import { IconCurrencyEthereum, IconUnlink, IconWallet } from '@tabler/icons-react';
 import { useAccount, useDisconnect, useEnsName } from 'wagmi';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Button } from './Button';
+import { Button } from '../Button/Button';
 import { ConnectDrawer } from './ConnectDrawer';
 
 
