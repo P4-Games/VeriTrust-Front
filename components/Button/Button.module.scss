@@ -32,19 +32,19 @@
         gap: $spacing0_5;
         padding: 0.625rem $spacing;
         
-        border: 3px solid rgba($accent, 0.2);
+        border: 3px solid rgba($primary, 0.2);
         border-radius: $radiusOuter;
-        background-color: rgba($accent, 0.3);
+        background-color: rgba($primary, 0.3);
         
         font-family: $font;
         font-size: 1rem;
         font-weight: 700;
-        color: $accent;
+        color: $primary;
         transition: all 0.2s ease-in-out;
 
         &:hover{
-            border: 3px solid rgba($accent, 0.4);
-            background-color: rgba($accent, 0.4);
+            border: 3px solid rgba($primary, 0.4);
+            background-color: rgba($primary, 0.4);
             transition: all 0.2s ease-in-out;
         }
     }
@@ -52,11 +52,11 @@
     &_main{
         @extend .button_alt;
         color: $background;
-        background-color: $accent;
+        background-color: $primary;
 
         &:hover{
             color: $background;
-            background-color: darken($accent, 10%);
+            background-color: darken($primary, 10%);
 
             transition: all 0.2s ease-in-out;
         }
