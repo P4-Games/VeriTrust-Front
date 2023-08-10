@@ -4,6 +4,7 @@ import styles from "./Navbar.module.scss";
 import { Logo } from "../Logo";
 import { NAV_LINKS } from "@/constants/links";
 import { Button } from "../Button";
+import { Connect } from "../Connect";
 
 export const Navbar = (): JSX.Element => {
     return (
@@ -19,13 +20,14 @@ export const Navbar = (): JSX.Element => {
                         >{link[0]}</Button>
                     ))
                 }
-                <div className={styles.navbar_connect}>
+                {/*<div className={styles.navbar_connect}>
                     <Button 
                         type="alt"
                     >
                         Connect Wallet
                     </Button>
-                </div>
+                </div>*/}
+                <Connect />
             </section>
         </nav>
     )

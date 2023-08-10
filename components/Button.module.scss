@@ -61,4 +61,48 @@
             transition: all 0.2s ease-in-out;
         }
     }
+
+    &_connected{
+        display: inline-flex;
+        flex-direction: row;
+        gap: $spacing0_5;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        margin-left: auto;
+
+        &Address{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        & > button{
+            @extend .button_alt;
+            color: $text;
+            background-color: $background2;
+            border: none;
+            padding: none;
+            min-width: 202px;
+            justify-content: center;
+
+            &:hover{
+                color: $text;
+                background-color: $background2;
+                border: none;
+                padding: none;
+
+                transition: all 0.2s ease-in-out;
+            }
+
+            & > div{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                padding: 0;
+            }
+        }
+    }
 }
