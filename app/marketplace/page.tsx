@@ -35,13 +35,16 @@ export default function Marketplace(): JSX.Element{
                     {
                         DUMMY_TENDERS.map((tender, index) => (
                             <div className={styles.marketplace_listItem} key={index}>
-                                <p>{formatTX(tender.txid)}</p>
+                                <p className={styles.marketplace_listItemTX}>{formatTX(tender.txid)}</p>
                                 <p>{tender.name}</p>
                                 <p>{tender.type}</p>
                                 <p>{tender.opening_date}</p>
-                                <button>
+                                <Button
+                                    redirectTo={`/tender/${tender.txid}`}
+                                    className={styles.marketplace_listItemButton}
+                                >
                                     Ver Detalles <IconExternalLink />
-                                </button>
+                                </Button>
                             </div>
                         ))
                     }

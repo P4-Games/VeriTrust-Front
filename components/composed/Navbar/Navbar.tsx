@@ -20,13 +20,6 @@ export const Navbar = (): JSX.Element => {
                         >{link[0]}</Button>
                     ))
                 }
-                {/*<div className={styles.navbar_connect}>
-                    <Button 
-                        type="alt"
-                    >
-                        Connect Wallet
-                    </Button>
-                </div>*/}
                 <Connect />
             </section>
         </nav>
