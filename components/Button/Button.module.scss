@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+
+.button{
+    &_link{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+
+        padding: 0.5rem 1rem;
+        border-radius: $radius;
+        color: $text;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &_alt{
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $spacing0_5;
+        padding: 0.625rem $spacing;
+        
+        border: 3px solid rgba($primary, 0.2);
+        border-radius: $radiusOuter;
+        background-color: rgba($primary, 0.3);
+        
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 700;
+        color: $primary;
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            border: 3px solid rgba($primary, 0.4);
+            background-color: rgba($primary, 0.4);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &_main{
+        @extend .button_alt;
+        color: $background;
+        background-color: $primary;
+
+        &:hover{
+            color: $background;
+            background-color: darken($primary, 10%);
+
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &_connected{
+        display: inline-flex;
+        flex-direction: row;
+        gap: $spacing0_5;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        margin-left: auto;
+
+        &Address{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        & > button{
+            @extend .button_alt;
+            color: $text;
+            background-color: $background2;
+            border: none;
+            padding: none;
+            min-width: 202px;
+            justify-content: center;
+
+            &:hover{
+                color: $text;
+                background-color: $background2;
+                border: none;
+                padding: none;
+
+                transition: all 0.2s ease-in-out;
+            }
+
+            & > div{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                padding: 0;
+            }
+        }
+    }
+}

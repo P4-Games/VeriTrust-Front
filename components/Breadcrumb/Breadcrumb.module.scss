@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+.breadcrumb{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    &_link{
+        font-family: $font;
+        color: rgba($text, 0.5);
+        text-decoration: none;
+        padding: 5px 0px;
+        transition: all 0.15s ease-in-out;
+        &:hover{
+            clip-path: polygon(7% 0, 100% 0, 93% 100%, 0% 100%);
+            padding: 5px 15px;
+            background-color: $background2;
+            transition: all 0.15s ease-in-out;
+        }
+    }
+    &_separator{
+        font-family: $font;
+        opacity: 0.3;
+    }
+}

@@ -1,0 +1,23 @@
+@import "../../../styles/variables.scss";
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing;
+
+    margin: 0;
+    padding: $spacing0_5 $spacing2;
+
+    &_links{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: $spacing;
+    }
+
+    /*&_connect{
+
+    }*/
+}
