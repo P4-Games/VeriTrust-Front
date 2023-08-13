@@ -2,30 +2,37 @@ import React, { ChangeEvent } from "react";
 import styles from "./InputForm.module.scss";
 
 interface InputFormProps {
+  index?: number;
   value: string;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (name: string, value: any, index?: number) => void;
   type: string;
   name: string;
-  label: string;
+  label?: string;
   placeholder: string;
 }
 
 const InputForm: React.FC<InputFormProps> = ({
+  index,
   value,
   handleChange,
   type,
   name,
-  label,
+  label = null,
   placeholder,
 }) => {
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(name, e.target.value, index);
+  };
+
   return (
-    <div className={styles.form_input}>
-      <label htmlFor={name}>{label}</label>
+    <div className={styles.container}>
+      {label && <label htmlFor={name}>{label}</label>}
       <input
         type={type}
         name={name}
         value={value}
-        onChange={handleChange}
+        onChange={handleInputChange}
         placeholder={placeholder}
       />
     </div>
