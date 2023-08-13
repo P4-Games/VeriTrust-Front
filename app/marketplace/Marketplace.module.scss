@@ -1,14 +1,7 @@
 @import "../../styles/variables.scss";
 
 .marketplace{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: $spacing;
-    gap: $spacing;
-
-    padding: 0 $spacing2;
+    @include pageBasics;
 
     &_header{
         display: flex;
@@ -18,18 +11,11 @@
         width: 100%;
  
         h1{
-            font-family: $headingFont;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: $text;
+            @include title;
         }
         p{
-            font-family: $font;
-            font-size: 1rem;
-            font-weight: 400;
-            color: $text;
-            margin-top: 10px;
-            font-size: 1.2rem;
+            @include text;
+            margin-top: 40px;
         }
     }
 
@@ -42,8 +28,9 @@
         gap: $spacing0_5;
         &Header{
             display: grid;
-            grid-template-columns: 15% 30% 15% 15% 20%;
+            grid-template-columns: 15% 35% 15% 15% 15%;
             width: 100%;
+            justify-content: space-between;
             padding: 0 $spacing;
 
             h3{
@@ -55,11 +42,18 @@
         }
         &Item{
             display: grid;
-            grid-template-columns: 15% 30% 15% 15% 20%;
+            grid-template-columns: 15% 35% 15% 15% 15%;
             width: 100%;
             padding: $spacing;
             background-color: $background2;
             border-radius: $radiusOuter;
+            justify-content: space-between;
+
+            &TX{
+                text-decoration: underline;
+                color: $text;
+                opacity: 0.5;
+            }
 
             p{
                 display: flex;
@@ -71,8 +65,11 @@
                 font-size: 1rem;
             }
 
-            button{ 
+            &Button{ 
+                margin-left: auto;
                 background-color: $background3; 
+                color: $text;
+                text-decoration: none;
                 border-radius: $radius; 
                 padding: 10px $spacing0_5; 
                 font-family: $font; 
@@ -83,11 +80,12 @@
                 align-items: center; 
                 justify-content: center;
                 border: none;
-                cursor: pointer;
                 transition: all 0.2s ease-in-out;
-                margin-left: auto;
+
                 &:hover{
                     background-color: lighten($background3, 10%);
+                    color: $text;
+                    border: none;
                     transition: all 0.2s ease-in-out;
                 }
             }

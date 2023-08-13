@@ -8,9 +8,9 @@ $spacing: 1.88rem;
 $spacing2: 3.75rem;
 $spacing0_5: 1.5rem;
 
-$background2: #ddd;
-$background3: #eee;
-$linear: linear-gradient(180deg, #f9f9f9 0%, #f9f9f9 0.01%, #e5e5e5 100%);
+$background2: #EFEFEF;
+$background3: #F9F9F9;
+$linear: linear-gradient(180deg, #F9F9F9 0%, #F9F9F9 0.01%, #E5E5E5 100%);
 
 $primary: #0066ff;
 $secondary: #a1c7ff;
@@ -21,3 +21,34 @@ $background-dark: #001029;
 $background-grey: #dddddd;
 $placeholder: #707070;
 
+@mixin pageBasics(){
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: $spacing;
+    gap: $spacing;
+    padding: 0 $spacing2;
+}
+
+@mixin title(){
+    font-family: $headingFont;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $text;
+}
+
+@mixin subtitle(){
+    font-family: $headingFont;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text;
+}
+
+@mixin text(){
+    font-family: $font;
+    font-size: 1rem;
+    font-weight: 400;
+    color: $text;
+    font-size: 1.2rem;
+}
