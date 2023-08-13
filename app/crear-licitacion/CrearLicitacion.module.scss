@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+.main {
+  margin: 0 3.75rem;
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .form_input {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      label {
+        font-size: 1.25rem;
+      }
+    }
+    .form_compound {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+}
