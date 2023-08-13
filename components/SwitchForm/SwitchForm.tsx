@@ -3,7 +3,7 @@ import styles from "./SwitchForm.module.scss";
 
 interface SwitchFormProps {
   checked: boolean;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (name: string, value: any) => void;
   name: string;
   label: string;
 }
@@ -14,6 +14,11 @@ const SwitchForm: React.FC<SwitchFormProps> = ({
   name,
   label,
 }) => {
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(name, e.target.checked);
+  };
+
   return (
     <div className={styles.form_input}>
       <label htmlFor={name}>{label}</label>
@@ -22,7 +27,7 @@ const SwitchForm: React.FC<SwitchFormProps> = ({
           type="checkbox"
           name={name}
           checked={checked}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <span className={styles.slider}></span>
       </label>
