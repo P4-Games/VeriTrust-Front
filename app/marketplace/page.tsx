@@ -53,3 +53,4 @@ export default function Marketplace(): JSX.Element{
         </div>
     )
 }
+

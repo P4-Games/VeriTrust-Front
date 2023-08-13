@@ -1,14 +1,7 @@
 @import "../../styles/variables.scss";
 
 .marketplace{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: $spacing;
-    gap: $spacing;
-
-    padding: 0 $spacing2;
+    @include pageBasics;
 
     &_header{
         display: flex;
@@ -18,18 +11,11 @@
         width: 100%;
  
         h1{
-            font-family: $headingFont;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: $text;
+            @include title;
         }
         p{
-            font-family: $font;
-            font-size: 1rem;
-            font-weight: 400;
-            color: $text;
-            margin-top: 10px;
-            font-size: 1.2rem;
+            @include text;
+            margin-top: 40px;
         }
     }
 

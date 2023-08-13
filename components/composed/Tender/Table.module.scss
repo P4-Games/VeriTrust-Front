@@ -1,0 +1,72 @@
+@import "../../../styles/variables.scss";
+
+.table{
+    width: fit-content;
+    max-width: calc(100vw - $spacing2);
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &_head{
+        background-color: $background2;
+        display: grid;
+        grid-template-columns: 30px 70px 100px 650px 100px 70px;
+        gap: $spacing0_5;
+        align-items: center;
+        padding: $spacing0_5;
+        h3{
+            font-size: 1rem;
+            color: $text;
+        }
+    }
+    &_body{
+    }
+    &Row{
+        display: grid;
+        grid-template-columns: 30px 70px 100px 650px 100px 70px;
+        align-items: center;
+        padding: $spacing0_5;
+        background-color: rgba($background2, 0.4);
+        gap: $spacing0_5;
+        &:nth-child(odd){
+            background-color: rgba($background2, 0.2);
+        }
+        svg{
+            cursor: pointer;
+        }
+        p{
+            font-size: 1rem;
+        }
+        h3{
+            font-size: 1rem;
+            color: $text;
+        }
+    }
+    &_moreInfo{
+        padding: $spacing;
+        h3{
+            font-size: 1rem;
+            color: $text;
+            margin-bottom: 10px;
+        }
+        p{
+            margin-bottom: $spacing0_5;
+        }
+    }
+}
+
+.arrow{
+    width: 20px;
+    height: 20px;
+    stroke: $text;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        stroke: $primary;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &Active{
+        transform: rotate(180deg);
+        transition: all 0.2s ease-in-out;
+    }
+}

@@ -1,0 +1,86 @@
+@import "../../../styles/variables.scss";
+
+.details{
+    @include pageBasics;
+
+    h1{
+        @include title;
+    }
+    p{
+        @include text;
+    }
+
+    &_head{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+        width: 100%;
+        gap: $spacing0_5;
+
+        &Title{
+            width: min(80%, 700px);
+        }
+        &Button{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            min-width: 159px;
+            min-height: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    
+    &_body{
+        display: flex;
+        flex-direction: column;
+        gap: $spacing0_5;
+        & p, & h3{
+            font-family: $font;
+        }
+        & > p{
+            font-size: 1.1rem;
+            margin-top: $spacing;
+        }
+        &Item{
+            display: flex;
+            flex-direction: column;
+            gap: calc($spacing0_5 - 10px);
+            p{
+                font-size: 1rem;
+            }
+        }
+        &Row{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: $spacing0_5;
+            align-items: center;
+            min-width: 200px;
+        }
+
+        &Button{
+            width: fit-content;
+            margin-bottom: $spacing2;
+        }
+    }
+}
+
+.flag{
+    border-radius: 5px;
+    margin-right: 15px;
+    display: inline;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    object-fit: cover;
+    &Container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+}

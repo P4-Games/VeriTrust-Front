@@ -1,0 +1,8 @@
+@import "../../styles/variables.scss";
+
+.smallCard{
+    padding: $spacing0_5;
+    background-color: $background2;
+    border-radius: $radiusOuter;
+    font-family: $font;
+}
