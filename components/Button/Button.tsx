@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 
 import styles from "./Button.module.scss";
@@ -12,7 +13,7 @@ interface ButtonProps{
     disabled?: boolean;
 }
 
-export const Button = ({ type = "main", className = "", children, disabled = false, redirectTo = "" }: ButtonProps): JSX.Element => {
+export const Button = ({ type = "main", className = "", children, disabled = false, redirectTo = "", onClick }: ButtonProps): JSX.Element => {
 
     const TYPES: Record<string, string> = {
         main: styles.button_main,
@@ -22,6 +23,8 @@ export const Button = ({ type = "main", className = "", children, disabled = fal
 
     const handleClick = () => {
         if(disabled) return;
+        if(redirectTo) return;
+        if(onClick) onClick(); 
     }
 
     return (
@@ -35,7 +38,7 @@ export const Button = ({ type = "main", className = "", children, disabled = fal
                         {children}
                     </Link>
                 ) : (
-                    <button disabled={disabled} className={`${styles.button} ${TYPES[type]} ${className}`}>
+                    <button disabled={disabled} className={`${styles.button} ${TYPES[type]} ${className}`} onClick={handleClick}>
                         {children}
                     </button>
                 )
