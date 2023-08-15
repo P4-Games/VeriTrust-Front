@@ -18,6 +18,64 @@
       label {
         font-size: 1.25rem;
       }
+      h4 {
+        font-size: 1.25rem;
+        font-family: $font;
+        margin-bottom: 1rem;
+      }
+      .table_button {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing0_5;
+        padding: 0.75rem 2rem;
+        border-radius: $radius;
+        cursor: pointer;
+        background-color: $background-grey;
+        width: fit-content;
+        border: none;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 700;
+        &:hover {
+          background-color: rgba($text, 0.2);
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      .table_list {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: auto auto auto 1fr auto;
+        .line {
+          border-bottom: 1pt solid $placeholder;
+          grid-column: span 5;
+        }
+        &Header {
+          display: contents;
+          h5 {
+            font-weight: 500;
+            font-family: $font;
+            font-size: 1.25rem;
+          }
+        }
+        &Row {
+          display: contents;
+          .description {
+            justify-content: flex-start;
+          }
+          p {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: $text;
+            font-family: $font;
+            font-size: 1rem;
+          }
+        }
+      }
     }
     .form_compound {
       display: flex;
