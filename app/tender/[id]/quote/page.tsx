@@ -9,13 +9,17 @@ import { Button } from '@/components/Button/Button';
 import { IconArrowLeft, IconPremiumRights } from '@tabler/icons-react';
 import { NotFound } from '@/components/composed/Tender/NotFound';
 import { TenderBody } from '@/components/composed/Tender/TenderBody';
-import { Select } from '@/components/composed/Tender/Select';
+import { Select } from '@/components/composed/Tender/Select/Select';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Input } from '@/components/composed/Tender/Input/Input';
 
 export default function Page ({ params }: { params: { id: string } }) {
     const [postData, setPostData] = useState<Tender>({} as Tender)
     const [option, setOption] = useState<string>("Sociedad Anónima");
+    const [razonSocial, setRazonSocial] = useState<string>("");
+    const [cuit, setCuit] = useState<string>("");
+    const [domicilio, setDomicilio] = useState<string>("");
     const [router, setRouter] = useState<any>(null);
 
     useEffect(() => {
@@ -52,15 +56,48 @@ export default function Page ({ params }: { params: { id: string } }) {
                             </Button>
                         </section>
                         <section className={styles.details_body}>
-                            <h3>Tipo de proveedor:</h3>
+                            <h3 className={styles.details_bodyLabel}>Tipo de proveedor:</h3>
                             <Select 
                                 options={[
-                                    "Sociedad Anónima",
-                                    "Sociedad de Responsabilidad Limitada",
+                                    "Persona Humana",
+                                    "Sociedades de hecho",
+                                    "Cooperativas",
+                                    "Unión Transitoria de Empresas",
+                                    "Talleres Protegidos de Producción",
+                                    "Sociedades Anónimas",
+                                    "Sociedad Responsabilidad Limitada",
+                                    "Otras Formas Societarias (Ej: Colectiva, en Com. Simp., S.C.A., de Cap. e Ind.).",
+                                    "Organismo Público",
+                                    "Persona humana extranjera no residente en el país",
+                                    "Persona jurídica extranjera sin sucursal en el país"
                                 ]}
                                 option={option} 
                                 setOption={setOption} 
                             />
+                            <Input 
+                                value={razonSocial}
+                                setValue={setRazonSocial}
+                                label='Razón Social'
+                                placeholder='Ejemplo S.A.'
+                            />
+                            <Input 
+                                value={cuit}
+                                setValue={setCuit}
+                                label='Número de CUIT'
+                                placeholder='30-12345678-5'
+                            />
+                            <Input 
+                                value={domicilio}
+                                setValue={setDomicilio}
+                                label='Domicilio Legal (calle y nro, CP, localidad, partido, provincia, pais)'
+                                placeholder='Ejemplo 1234, B7600 - Mar del Plata, Gral. Pueyrredón, Buenos Aires, Argentina'
+                            />
+                            <Button
+                                type='main'
+                                onClick={()=>{}}
+                            >
+                                Enviar oferta
+                            </Button>
                         </section>
                     </section>
                 ) : (
