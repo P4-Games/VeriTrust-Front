@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import styles from "./DynamicInputForm.module.scss";
 import InputForm from "@/components/InputForm/InputForm";
-import { IconPlus } from "@tabler/icons-react";
+import { IconPlus, IconX } from "@tabler/icons-react";
 
 interface DynamicFormProps {
   dynamicInputs: string[];
@@ -26,6 +26,14 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
     const updatedForm = [...formState, ""];
     setFormState(updatedForm);
     onDynamicInputChange(name, updatedForm);
+  };
+
+  const removeLastInput = () => {
+    if (formState.length > 1) {
+      const updatedForm = formState.slice(0, -1);
+      setFormState(updatedForm);
+      onDynamicInputChange(name, updatedForm);
+    }
   };
 
   const handleChange = (inputName: string, inputValue: any, index?: number) => {
@@ -54,9 +62,14 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
           </div>
         ))}
       </div>
-      <button onClick={addInput} type="button">
-        <IconPlus /> Añadir campo
-      </button>
+      <div className={styles.btns_container}>
+        <button onClick={addInput} type="button">
+          <IconPlus /> Agregar
+        </button>
+        <button onClick={removeLastInput} type="button">
+          <IconX /> Eliminar ultimo
+        </button>
+      </div>
     </div>
   );
 };
