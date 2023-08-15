@@ -11,17 +11,23 @@ import { NotFound } from '@/components/composed/Tender/NotFound';
 import { TenderBody } from '@/components/composed/Tender/TenderBody';
 import { Select } from '@/components/composed/Tender/Select';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Page ({ params }: { params: { id: string } }) {
     const [postData, setPostData] = useState<Tender>({} as Tender)
     const [option, setOption] = useState<string>("Sociedad Anónima");
+    const [router, setRouter] = useState<any>(null);
 
     useEffect(() => {
         getTender(params.id).then((data) => {
             setPostData(data)
         })
     }, [params.id])
-        
+    
+    useEffect(() => {
+        setRouter(useRouter)
+    }, [])
+
     return (
         <>
             <Navbar />
@@ -39,7 +45,6 @@ export default function Page ({ params }: { params: { id: string } }) {
                             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
                             <p>Fecha límite: {postData.dates.reveal} </p>
                             <Button
-                                redirectTo={'/presentQuotation/' + params?.id}
                                 type='main'
                                 className={styles.details_headButton}
                             >
