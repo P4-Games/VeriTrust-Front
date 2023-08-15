@@ -3,9 +3,9 @@ import styles from "./InputForm.module.scss";
 
 interface InputFormProps {
   index?: number;
-  value: string;
+  value: any;
   handleChange: (name: string, value: any, index?: number) => void;
-  type: string;
+  type?: string;
   name: string;
   label?: string;
   placeholder: string;
@@ -15,7 +15,7 @@ const InputForm: React.FC<InputFormProps> = ({
   index,
   value,
   handleChange,
-  type,
+  type = "text",
   name,
   label = null,
   placeholder,
