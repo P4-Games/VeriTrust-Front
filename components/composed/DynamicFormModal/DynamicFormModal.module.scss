@@ -30,12 +30,12 @@
         height: 35px;
       }
     }
-    .dynamic_form{
+    .dynamic_form {
+      gap: 1.75rem;
+      .first_section {
+        display: flex;
         gap: 1.75rem;
-        .first_section{
-            display: flex;
-            gap: 1.75rem;
-        }
+      }
     }
     .btn_submit {
       margin-top: 1.5rem;
