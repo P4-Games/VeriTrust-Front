@@ -27,7 +27,7 @@ export default async function Page ({ params }: { params: { id: string } }) {
                             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
                             <p>Fecha límite: {postData.dates.reveal} </p>
                             <Button
-                                redirectTo={'/presentQuotation/' + params?.id}
+                                redirectTo={'/tender/' + params?.id + "/quote"}
                                 type='main'
                                 className={styles.details_headButton}
                             >
