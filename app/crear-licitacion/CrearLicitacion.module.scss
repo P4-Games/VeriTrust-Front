@@ -47,10 +47,14 @@
       .table_list {
         display: grid;
         gap: 1rem;
-        grid-template-columns: auto auto auto 1fr auto;
+        grid-template-columns: auto auto auto 1fr auto auto auto;
+        .expanded_row{
+          grid-column: span 7;
+          
+        }
         .line {
           border-bottom: 1pt solid $placeholder;
-          grid-column: span 5;
+          grid-column: span 7;
         }
         &Header {
           display: contents;
@@ -58,12 +62,28 @@
             font-weight: 500;
             font-family: $font;
             font-size: 1.25rem;
+            padding: 0.5rem 0;
           }
         }
         &Row {
           display: contents;
           .description {
             justify-content: flex-start;
+          }
+          &Btn {
+            cursor: pointer;
+            padding: 5px;
+            background-color: $background;
+            color: $text;
+            border: none;
+            border-radius: $radiusOuter;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+              background-color: $background-grey;
+              transition: all 0.2s ease-in-out;
+            }
           }
           p {
             display: flex;

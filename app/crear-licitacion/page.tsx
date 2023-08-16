@@ -9,7 +9,7 @@ import styles from "./CrearLicitacion.module.scss";
 import Footer from "@/components/Footer/Footer";
 import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Button } from "@/components/Button/Button";
-import { IconPlus, IconExternalLink } from "@tabler/icons-react";
+import { IconPlus, IconX, IconChevronDown } from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import SwitchForm from "@/components/SwitchForm/SwitchForm";
 import DynamicInputForm from "@/components/composed/DynamicInputForm/DynamicInputForm";
@@ -50,6 +50,7 @@ export default function CrearLicitacion(): JSX.Element {
   });
 
   const [showFormModal, setShowFormModal] = useState(false);
+  const [showTableRow, setShowTableRow] = useState(-1);
 
   const handleChange = (name: string, inputValue: any) => {
     setFormState({
@@ -78,6 +79,16 @@ export default function CrearLicitacion(): JSX.Element {
     });
   };
 
+  const handleDeleteRow = (index: number) => {
+    const updatedItems = formState.items;
+    updatedItems.splice(index, 1);
+    setFormState({ ...formState, items: updatedItems });
+  };
+
+  const handleShowMore = (index: number) => {
+    setShowTableRow(index);
+  };
+
   return (
     <>
       {/* <Navbar /> */}
@@ -95,16 +106,14 @@ export default function CrearLicitacion(): JSX.Element {
             placeholder="Ej. Adquisición de ..."
           />
           <div className={styles.form_input}>
-            <label htmlFor="currency">Moneda y alcance:</label>
-            {/* <select
-              name="currency"
+            <InputForm
               value={formState.currency}
-              onChange={handleChange}
-            >
-              <option value="">Select a currency</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-            </select> */}
+              handleChange={handleChange}
+              type="text"
+              name="currency"
+              label="Moneda y alcance:"
+              placeholder="Pesos, Argentina"
+            />
           </div>
           <div className={styles.form_compound}>
             <SwitchForm
@@ -132,7 +141,7 @@ export default function CrearLicitacion(): JSX.Element {
           </div>
           <div className={styles.form_input}>
             <h4>Detalle de productos o servicios</h4>
-            <section className={styles.table_list}>
+            <div className={styles.table_list}>
               <div className={styles.table_listHeader}>
                 <h5>#</h5>
                 <h5>Objeto del gasto</h5>
@@ -148,16 +157,28 @@ export default function CrearLicitacion(): JSX.Element {
                   <p>{item.code}</p>
                   <p className={styles.description}>{item.description}</p>
                   <p>{item.quantity}</p>
-                  {/* <Button
-                  // redirectTo={`/tender/${tender.txid}`}
-                  // className={styles.table_listItemButton}
+                  <button
+                    type="button"
+                    onClick={() => handleShowMore(index)}
+                    className={styles.table_listRowBtn}
                   >
-                    <IconExternalLink />
-                  </Button> */}
+                    <IconChevronDown />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteRow(index)}
+                    className={styles.table_listRowBtn}
+                  >
+                    <IconX />
+                  </button>
+                  {showTableRow === index && (
+                    <div className={styles.expanded_row}>{index}</div>
+                  )}
                   <div className={styles.line}></div>
                 </div>
               ))}
-            </section>
+            </div>
+            {/* <div className={styles.btns_container}> */}
             <button
               onClick={() => setShowFormModal(true)}
               type="button"
@@ -165,15 +186,14 @@ export default function CrearLicitacion(): JSX.Element {
             >
               <IconPlus /> Añadir producto o servicio
             </button>
+
+            {/* </div> */}
           </div>
-          {/* <DynamicFormModal onFormSubmit={handleDynamicFormSubmit} /> */}
-          {/* {showFormModal && } */}
           {/* <div>
             <label htmlFor=""></label>
             <input type="datetime-local" />
           </div> */}
           <div>
-            {/* type submit? */}
             <Button type="main">
               <IconPlus /> Crear licitacion
             </Button>
