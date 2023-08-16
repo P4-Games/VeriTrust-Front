@@ -48,8 +48,9 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
           </div>
         </header>
         <form onSubmit={handleSubmit} className={styles.dynamic_form}>
-          <div className={styles.first_section}>
+          <div className={styles.form_section}>
             <InputForm
+              required
               label="Objeto del gasto"
               name="object"
               handleChange={handleInputChange}
@@ -57,6 +58,7 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
               placeholder="Numero objeto"
             />
             <InputForm
+              required
               label="Código del ítem"
               name="code"
               handleChange={handleInputChange}
@@ -64,6 +66,7 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
               placeholder="Codigo"
             />
             <InputForm
+              required
               label="Cantidad"
               name="quantity"
               type="number"
@@ -74,12 +77,37 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
           </div>
 
           <TextArea
+            required
             label="Descripción"
             name="description"
             handleChange={handleInputChange}
             value={formState.description}
             placeholder="descripción..."
           />
+          <div className={styles.form_section}>
+            <InputForm
+              label="Luegar de entrega"
+              name="deliveryPlace"
+              handleChange={handleInputChange}
+              value={formState.deliveryPlace}
+              placeholder="Luegar de entrega"
+            />
+            <InputForm
+              type="date"
+              label="Fecha de entrega"
+              name="deliveryDeadline"
+              handleChange={handleInputChange}
+              value={formState.deliveryDeadline}
+              placeholder="Fecha de entrega"
+            />
+            <InputForm
+              label="Información adicional"
+              name="additionalInfo"
+              handleChange={handleInputChange}
+              value={formState.additionalInfo}
+              placeholder="Información adicional"
+            />
+          </div>
           <button className={styles.btn_submit} type="submit">
             Agregar
           </button>

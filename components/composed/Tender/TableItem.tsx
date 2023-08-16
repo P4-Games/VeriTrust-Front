@@ -38,7 +38,7 @@ export const TableItem = ({ item }: TableItemProps) => {
                     >
                         <h3>Información adicional</h3>
                         <p>{item.additionalInfo}</p>
-                        <h3>Luegar de entrega</h3>
+                        <h3>Lugar de entrega</h3>
                         <p>{item.deliveryPlace}</p>
                         <h3>Fecha de entrega</h3>
                         <p>{item.deliveryDeadline}</p>

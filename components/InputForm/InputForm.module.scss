@@ -1,7 +1,11 @@
 @import "../../styles/variables.scss";
 
+.fit{
+  width: fit-content;
+}
 .container {
   display: flex;
+  justify-content: end;
   flex-direction: column;
   gap: 0.75rem;
   max-width: 620px;
