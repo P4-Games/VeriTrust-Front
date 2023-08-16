@@ -10,7 +10,7 @@ export const Logo = ({ mode = "full" }): JSX.Element => {
     return (
         <div className={styles.logo}>
             <Image src="/logo.svg" alt="VeriTrust Logo" quality={100} width={60} height={60} />
-            {mode === "full" && <h3 className={styles.logo_title}>VeriTrust</h3>}
+            {mode === "full" && <h3 className={styles.logo_title}>VeriTrust Protocol</h3>}
         </div>
     )
 }

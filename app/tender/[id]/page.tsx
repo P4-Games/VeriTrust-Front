@@ -1,3 +1,4 @@
+'use client';
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
 import styles from './Tender.module.scss';
 

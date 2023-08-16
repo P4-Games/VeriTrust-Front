@@ -1,4 +1,4 @@
 export const NAV_LINKS: [string, string][] = [
-    ["Marketplace", "/app"],
+    ["Marketplace", "/marketplace"],
     ["Mi Cuenta", "/profile"]
 ]
