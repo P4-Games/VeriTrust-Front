@@ -8,7 +8,8 @@ interface InputFormProps {
   type?: string;
   name: string;
   label?: string;
-  placeholder: string;
+  placeholder?: string;
+  required?: boolean;
 }
 
 const InputForm: React.FC<InputFormProps> = ({
@@ -19,16 +20,21 @@ const InputForm: React.FC<InputFormProps> = ({
   name,
   label = null,
   placeholder,
+  required = false,
 }) => {
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(name, e.target.value, index);
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        type == "date" || (type == "datetime-local" && styles.fit)
+      }`}
+    >
       {label && <label htmlFor={name}>{label}</label>}
       <input
+        required={required}
         type={type}
         name={name}
         value={value}

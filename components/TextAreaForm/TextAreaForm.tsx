@@ -8,6 +8,7 @@ interface TextAreaProps {
   name: string;
   label?: string;
   placeholder: string;
+  required?: boolean;
 }
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -17,6 +18,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   name,
   label = null,
   placeholder,
+  required = false,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     handleChange(name, e.target.value, index);
@@ -26,6 +28,7 @@ const TextArea: React.FC<TextAreaProps> = ({
     <div className={styles.container}>
       {label && <label htmlFor={name}>{label}</label>}
       <textarea
+        required={required}
         rows={4}
         name={name}
         value={value}
