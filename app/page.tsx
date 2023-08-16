@@ -23,10 +23,7 @@ export default function Home() {
               transparencia y confianza en los procesos de contratación.
             </p>
           </div>
-          <Button
-            className={styles.button}
-            redirectTo="/marketplace"
-          >
+          <Button className={styles.button} redirectTo="/marketplace">
             Ingresar a la app
           </Button>
           <div className={styles.scroll_text}>
@@ -45,8 +42,8 @@ export default function Home() {
               </p>
               <div className={styles.marketplace_img}>
                 <Image
-                  width={343}
-                  height={286}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto", maxWidth: "450px" }}
                   src={marketplace}
                   alt="marketplace image"
                 />

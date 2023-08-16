@@ -97,14 +97,14 @@ export default function CrearLicitacion(): JSX.Element {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <section className={styles.breadcrumbs}>
-        {/* <Breadcrumb
+        <Breadcrumb
           values={[
             ["Licitaciones", "/marketplace"],
-            ["Detalles de la licitación", "/tender/"],
+            // ["Detalles de la licitación", "/tender/"],
           ]}
-        /> */}
+        />
       </section>
       <main className={styles.main}>
         <div className={styles.title}>
@@ -351,7 +351,7 @@ export default function CrearLicitacion(): JSX.Element {
             </div>
           </div>
 
-          <div>
+          <div className={styles.btn_submit}>
             <Button type="main">
               <IconPlus /> Crear licitacion
             </Button>

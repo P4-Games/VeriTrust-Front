@@ -20,6 +20,7 @@ export default function Marketplace(): JSX.Element{
                     </div>
                     <Button
                         type="main"
+                        redirectTo="/crear-licitacion"
                     >
                         <IconPlus/> Crear licitacion
                     </Button>
