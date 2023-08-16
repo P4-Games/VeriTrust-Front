@@ -18,7 +18,7 @@ export const Select = ({ options, setOption, option, className}: SelectProps) =>
     const toggleAccordion = ()=> setIsOpen(!isOpen);
 
     return (
-        <section className={`${styles.select} ${className}`}>
+        <div className={`${styles.select} ${className}`}>
             <div className={styles.select_selected}>
                 <div className={styles.select_option}>
                     {option}
@@ -53,6 +53,6 @@ export const Select = ({ options, setOption, option, className}: SelectProps) =>
                     ) : null
                 }
             </AnimatePresence>
-        </section>
+        </div>
     )
 }

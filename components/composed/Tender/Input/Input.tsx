@@ -5,9 +5,9 @@ import React from "react"
 interface InputProps{
     placeholder?: string;
     type?: string;
-    value: string;
-    label?: string
-    setValue: React.Dispatch<React.SetStateAction<string>>;
+    value: string | number;
+    label?: string | null;
+    setValue: (React.Dispatch<React.SetStateAction<string>> | ((x: number) => void));
 }
 
 export const Input = ({placeholder = "Enter text", type = "Text", value, setValue, label}: InputProps) => {
@@ -24,7 +24,7 @@ export const Input = ({placeholder = "Enter text", type = "Text", value, setValu
                             placeholder={placeholder}
                             className={styles.input}
                             value={value}
-                            onChange={(e) => setValue(e.target.value)}
+                            onChange={(e: any) => setValue(e.target.value)}
                         />
                     </div>
                 ) : (
@@ -33,7 +33,7 @@ export const Input = ({placeholder = "Enter text", type = "Text", value, setValu
                         placeholder={placeholder}
                         className={styles.input}
                         value={value}
-                        onChange={(e) => setValue(e.target.value)}
+                        onChange={(e: any) => setValue(e.target.value)}
                     />
                 )
             }
