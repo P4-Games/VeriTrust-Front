@@ -3,6 +3,7 @@ import { logo, marketplace, mouse, envelope } from "@/assets";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import SubscribeForm from "@/components/SubscribeForm/SubscribeForm";
+import { Button } from "@/components/Button/Button";
 
 export default function Home() {
   const pattern = " • VeriTrust";
@@ -22,9 +23,12 @@ export default function Home() {
               transparencia y confianza en los procesos de contratación.
             </p>
           </div>
-          <button className={styles.button} type="button">
+          <Button
+            className={styles.button}
+            redirectTo="/marketplace"
+          >
             Ingresar a la app
-          </button>
+          </Button>
           <div className={styles.scroll_text}>
             <p>Haga scroll para ver mas</p>
             <Image src={mouse} alt="mouse icon" />
