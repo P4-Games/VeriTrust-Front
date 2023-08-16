@@ -69,7 +69,7 @@ input {
   font-family: var(--font-satoshi);
 }
 
-buton {
+button {
   font-family: var(--font-tasa);
 }
 
@@ -89,4 +89,37 @@ p {
   p {
     font-size: 1.5rem;
   }
+}
+
+svg .svg-elem-1 {
+  stroke-dashoffset: 328.77154541015625px;
+  stroke-dasharray: 328.77154541015625px;
+  transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s;
+}
+
+svg.active .svg-elem-1 {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 328.77154541015625px;
+}
+
+svg .svg-elem-2 {
+  stroke-dashoffset: 222.4750213623047px;
+  stroke-dasharray: 222.4750213623047px;
+  transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s;
+}
+
+svg.active .svg-elem-2 {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 222.4750213623047px;
+}
+
+svg .svg-elem-3 {
+  stroke-dashoffset: 1426.045166015625px;
+  stroke-dasharray: 1426.045166015625px;
+  transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.24s;
+}
+
+svg.active .svg-elem-3 {
+  stroke-dashoffset: 0;
+  stroke-dasharray: 1426.045166015625px;
 }

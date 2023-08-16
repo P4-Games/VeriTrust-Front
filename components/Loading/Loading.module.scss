@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.loader {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    background-color: $background;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    animation: loadingCont 1s ease-in-out 1.5s forwards;
+
+    & > svg{
+        animation: loading 0.3s ease-in-out forwards;
+        margin: calc(50vh - 52px) auto;
+    }
+}
+
+@keyframes loading {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes loadingCont {
+    0%{
+        height: 100%;
+    }
+    50%{
+        height: 100%;
+    }
+    100%{
+        height: 0%;
+    }
+}

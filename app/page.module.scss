@@ -6,9 +6,11 @@
   align-items: center;
   margin: 2rem;
   gap: 2.5rem;
+  
   @media only screen and (max-width: 768px) {
     margin: 2rem 0;
   }
+
   section {
     max-width: 1024px;
   }
@@ -25,20 +27,32 @@
   }
   .first_section {
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 60px;
     @media only screen and (max-width: 768px) {
       margin: 0 2rem;
     }
     h2 {
-      margin: 2rem 0 4rem 0;
+      @include title;
     }
     .intro_text {
+      font-size: 1.2rem;
       margin: 0 auto;
-      padding: 4rem 0 6rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       max-width: 680px;
+      p{
+        font-size: 1.2rem;
+        margin-top: $spacing0_5;
+      }
     }
     .button {
       letter-spacing: 0.5px;
-      margin: 1rem 0;
+      margin: 2rem 0 1rem 0;
       background-color: $primary;
       border-radius: 8px;
       border-style: none;
@@ -61,8 +75,12 @@
       }
     }
     .scroll_text {
-      margin: 5rem 0 6rem 0;
+      margin-top: $spacing2;
       color: var(--color-placeholder);
+      
+      p{
+        font-size: 0.9rem;
+      }
       img {
         padding: 0.5rem;
       }

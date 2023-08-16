@@ -1,9 +1,13 @@
+'use client';
 import styles from "./page.module.scss";
 import { logo, marketplace, mouse, envelope } from "@/assets";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import SubscribeForm from "@/components/SubscribeForm/SubscribeForm";
 import { Button } from "@/components/Button/Button";
+import { motion } from "framer-motion";
+import { SeeMore } from "@/components/Scroll/SeeMore";
+import { Loading } from "@/components/Loading/Loading";
 
 export default function Home() {
   const pattern = " • VeriTrust";
@@ -12,24 +16,36 @@ export default function Home() {
   return (
     <>
       <main className={styles.main}>
+        <Loading/>
         <header className={styles.logo}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         </header>
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
-            <h2>Licita con confianza, VeriTrust te respalda</h2>
-            <p>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >Licita con confianza, VeriTrust te respalda</motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
               Reinventamos el sistema de licitaciones brindando mayor seguridad,
               transparencia y confianza en los procesos de contratación.
-            </p>
+            </motion.p>
           </div>
-          <Button className={styles.button} redirectTo="/marketplace">
-            Ingresar a la app
-          </Button>
-          <div className={styles.scroll_text}>
-            <p>Haga scroll para ver mas</p>
-            <Image src={mouse} alt="mouse icon" />
-          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+          >
+            <Button className={styles.button} redirectTo="/marketplace">
+              Ingresar a la app
+            </Button>
+          </motion.div>
+          <SeeMore/>
         </section>
         <section className={styles.second_section}>
           <h2>Características</h2>
