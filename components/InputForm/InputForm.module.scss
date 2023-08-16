@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 620px;
+  label {
+    font-size: 1.25rem;
+  }
+  input {
+    border: none;
+    box-sizing: border-box;
+    background-color: $background-grey;
+    border-radius: $radius;
+    padding: 1rem 2rem;
+    color: $background-dark;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    font-family: $font;
+    &:focus {
+      outline: 1px solid $primary;
+    }
+    &::placeholder {
+      color: $placeholder;
+      opacity: 0.8;
+      font-family: $font;
+    }
+  }
+}

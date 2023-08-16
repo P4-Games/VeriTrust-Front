@@ -1,0 +1,63 @@
+@import "../../../styles/variables.scss";
+
+.modal_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  width: calc(100% - 4rem);
+
+  .modal {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $background;
+    header {
+      display: flex;
+      justify-content: space-between;
+      h3 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+      }
+      .close {
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+        &:hover {
+          scale: 1.2;
+        }
+        width: 35px;
+        height: 35px;
+      }
+    }
+    .dynamic_form {
+      gap: 1.75rem;
+      .first_section {
+        display: flex;
+        gap: 1.75rem;
+      }
+    }
+    .btn_submit {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing0_5;
+      padding: 0.75rem 2rem;
+      border-radius: $radius;
+      cursor: pointer;
+      color: $background;
+      background-color: $primary;
+      width: fit-content;
+      border: none;
+      font-family: $font;
+      font-size: 1rem;
+      font-weight: 700;
+      &:hover {
+        background-color: rgba($text, 0.2);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}
