@@ -21,7 +21,8 @@ $background-dark: #001029;
 $background-grey: #dddddd;
 $background-grey-light: #dddddd90;
 $placeholder: #707070;
-
+$success: #52B788;
+$danger: #ff411F;
 @mixin pageBasics(){
     display: flex;
     flex-direction: column;

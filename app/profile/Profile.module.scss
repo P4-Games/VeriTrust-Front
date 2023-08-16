@@ -1,0 +1,166 @@
+@import "../../styles/variables.scss";
+
+.profile{
+    @include pageBasics;
+    padding-bottom: 20px;
+    &_header{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+
+        h1{
+            @include title;
+        }
+
+        p{
+            @include text;
+            margin-top: $spacing0_5;
+            text-align: left;
+        }
+    }
+
+    &_actions{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: $spacing;
+        gap: $spacing0_5;
+        button{
+            height: auto;
+        }
+    }
+
+    &_table{
+        width: calc(100% - #{$spacing2});
+        &Head{
+            display: grid;
+            grid-template-columns: 15% 35% 15% 15% 15%;
+            width: 100%;
+            justify-content: space-between;
+            padding: 0 $spacing;
+
+            h3{
+                font-weight: 400;
+                font-family: $font;
+                opacity: 0.5;
+                font-size: 1.2rem;
+            }
+        }
+        &Body{
+            margin-top: $spacing0_5;
+            display: flex;
+            flex-direction: column;
+            gap: $spacing0_5;
+        }
+        &Row{
+            display: grid;
+            grid-template-columns: 15% 35% 15% 15% 15%;
+            width: 100%;
+            padding: $spacing;
+            background-color: $background2;
+            border-radius: $radiusOuter;
+            justify-content: space-between;
+
+            &TX{
+                text-decoration: underline;
+                color: $text;
+                opacity: 0.5;
+            }
+
+            p{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                color: $text;
+                font-family: $font;
+                font-size: 1rem;
+            }
+
+            &Button{ 
+                margin-left: auto;
+                background-color: $background3; 
+                color: $text;
+                text-decoration: none;
+                border-radius: $radius; 
+                padding: 10px $spacing0_5; 
+                font-family: $font; 
+                font-size: 1rem;  
+                font-weight: 700; 
+                gap: 10px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                border: none;
+                transition: all 0.2s ease-in-out;
+
+                &:hover{
+                    background-color: lighten($background3, 10%);
+                    color: $text;
+                    border: none;
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+
+            &Timeline{
+                display: flex;
+                grid-column: 1 / -1;
+            }
+        }
+
+        &Status{
+            grid-column: 1 / -1;
+            grid-template-columns: 15% 35% 15% 15% 15%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: $spacing0_5;
+            margin-top: $spacing0_5;
+            p{
+                font-size: 1rem;
+                font-family: $font;
+                color: $text;
+                opacity: 0.5;
+            }
+        }
+    }
+    &_listItemButton{
+        margin-left: auto;
+        background-color: $background3; 
+        color: $text;
+        text-decoration: none;
+        border-radius: $radius; 
+        padding: 10px $spacing0_5; 
+        font-family: $font; 
+        font-size: 1rem;  
+        font-weight: 700; 
+        gap: 10px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        border: none;
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            background-color: lighten($background3, 10%);
+            color: $text;
+            border: none;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    &_title{
+        font-size: 1.3rem;
+        margin-top: $spacing;
+    }
+}
+
+.line{
+    width: 100%;
+    height: 10px;
+    background-color: rgba($primary, 0.2);
+    margin: $spacing;
+}

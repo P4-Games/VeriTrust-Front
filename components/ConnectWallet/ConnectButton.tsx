@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '../Button/Button';
 import { ConnectDrawer } from './ConnectDrawer';
+import { formatAddress } from "@/utils/format";
 
 
 export function ConnectButton() {
@@ -27,7 +28,7 @@ export function ConnectButton() {
       <section className={styles.button_connected}>
         <section className={styles.button_connectedAddress}>
           <IconCurrencyEthereum />
-          <div>{ensName ? ensName : address}</div>
+          <div>{ensName ? ensName : formatAddress(address || "")}</div>
         </section>
         <button 
           onClick={handleDisconnect}
