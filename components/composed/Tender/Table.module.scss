@@ -17,8 +17,9 @@
             font-size: 1rem;
             color: $text;
         }
-    }
-    &_body{
+        &.extended{
+            grid-template-columns: 30px 70px 100px 650px 100px 70px 70px;
+        }
     }
     &Row{
         display: grid;
@@ -29,6 +30,9 @@
         gap: $spacing0_5;
         &:nth-child(odd){
             background-color: rgba($background2, 0.2);
+        }
+        &.extended{
+            grid-template-columns: 30px 70px 100px 650px 100px 70px 70px;
         }
         svg{
             cursor: pointer;

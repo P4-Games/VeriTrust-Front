@@ -38,6 +38,7 @@
         display: flex;
         flex-direction: column;
         gap: $spacing0_5;
+        padding-bottom: $spacing2;
         & p, & h3{
             font-family: $font;
         }
@@ -45,6 +46,18 @@
             font-size: 1.1rem;
             margin-top: $spacing;
         }
+        
+        & > div{
+            width: min(80vw, 600px);
+        }
+
+        & > button{
+            width: min(80vw, 300px);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
         &Item{
             display: flex;
             flex-direction: column;
@@ -52,6 +65,15 @@
             p{
                 font-size: 1rem;
             }
+        }
+        &Text{
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        &Label{
+            font-size: 1.2rem;
+            width: min(80vw, 400px);
         }
         &Row{
             display: flex;
@@ -65,6 +87,57 @@
         &Button{
             width: fit-content;
             margin-bottom: $spacing2;
+        }
+    }
+    &_warranties{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &Title{
+            font-size: 1.4rem;
+        }   
+        p{
+            font-size: 1.2rem;
+        }
+    }
+    &_finalDetails{
+        background-color: rgba($primary, 0.2);
+        border-radius: $radiusOuter;
+        padding: $spacing;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing0_5;
+
+        h3{
+            @extend .details_warrantiesTitle;
+        }
+        p{
+            line-height: 1.5;
+        }
+    }
+    &_back{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: $spacing0_5;
+        cursor: pointer;
+
+        h4{
+            font-family: $font;
+            transition: all 0.2s ease-in-out;
+        }
+
+        svg{
+            transform: translateX(0px);
+            transition: all 0.2s ease-in-out;
+        }
+        
+        &:hover{
+            svg{
+                transform: translateX(-10px);
+                transition: all 0.2s ease-in-out;
+            }
         }
     }
 }

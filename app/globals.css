@@ -1,36 +1,33 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-*::selection{
-    background-color: #171717;
-    color: #eee;
-}
-
-*::-moz-selection{
+*::selection {
   background-color: #171717;
   color: #eee;
 }
 
-html{
+*::-moz-selection {
+  background-color: #171717;
+  color: #eee;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
-html::-webkit-scrollbar{
-  width: 0.5rem
+html::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-html::-webkit-scrollbar-track{
+html::-webkit-scrollbar-track {
   background-color: #eee;
 }
 
-html::-webkit-scrollbar-thumb{
+html::-webkit-scrollbar-thumb {
   background-color: #171717;
 }
-
-
-
 
 :root {
   --color-primary: #0066ff;
@@ -42,8 +39,8 @@ html::-webkit-scrollbar-thumb{
   --color-placeholder: #707070;
 }
 
-@import url("https://fonts.cdnfonts.com/css/satoshi");
-@import url("https://fonts.cdnfonts.com/css/tasa-explorer");
+/* @import url("https://fonts.cdnfonts.com/css/satoshi");
+@import url("https://fonts.cdnfonts.com/css/tasa-explorer"); */
 
 body {
   margin: 0;
@@ -52,7 +49,7 @@ body {
 }
 
 h2 {
-  font-family: "TASA Explorer", sans-serif;
+  font-family: var(--font-tasa);
   font-size: 3.5rem;
   @media only screen and (max-width: 680px) {
     font-size: 2rem;
@@ -60,19 +57,24 @@ h2 {
 }
 
 h3 {
-  font-family: "TASA Explorer", sans-serif;
+  font-family: var(--font-tasa);
   font-size: 2.5rem;
   @media only screen and (max-width: 680px) {
     font-size: 1.75rem;
   }
 }
 
-button {
-  font-family: "TASA Explorer", sans-serif;
+label,
+input {
+  font-family: var(--font-satoshi);
+}
+
+buton {
+  font-family: var(--font-tasa);
 }
 
 p {
-  font-family: "Satoshi", sans-serif;
+  font-family: var(--font-satoshi);
   font-size: 1.5rem;
   @media only screen and (max-width: 680px) {
     font-size: 1rem;
