@@ -10,7 +10,7 @@
     font-size: 2.75rem;
   }
   h3 {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   @media only screen and (max-width: 768px) {
@@ -101,6 +101,7 @@
     p {
       margin-left: 0.5rem;
       color: var(--color-placeholder);
+      font-size: 1rem;
     }
   }
   .second_section {
