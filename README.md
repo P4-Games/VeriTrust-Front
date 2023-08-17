@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# VeriTrust
+
+![VeriTrust Logo](./assets/logo.svg)
+
+> Licita con confianza, VeriTrust te respalda
+
+VeriTrust is a desktop platform for tenders and procurement processes that leverages web3 technology. With VeriTrust, organizations and small participants can participate in transparent and secure bidding processes, ensuring trust and accountability in the procurement process.
+
+[![Deployed Project](https://img.shields.io/badge/Visit%20the%20Project-VeriTrust-blue)](https://veritrust-front-qj44in647a-uc.a.run.app/)
+
+## Important Information
+
+This project is for Eth Argentina 2023.
+We are submitting for the Public Goods Track.
+We have integrations with Chainlink, Zetachain and Worldcoin.
+
+
+## Features
+
+- **Marketplace**:
+  Facilitate the search and promotion of tenders, ensuring a transparent and competitive environment for all parties involved.
+
+- **Privacy of Proposals**:
+  Ensure the privacy of proposals, creating a safe space for participants to engage in the bidding process.
+
+- **Reveal on Blockchain**:
+  Public, transparent, and immutable "reveal" through blockchain technology.
+
+- **Arbitration**:
+  Integrate Kleros to resolve disputes or claims, ensuring impartial decisions by experts.
+
+## Key Benefits
+
+- **Increased Security and Transparency**:
+  VeriTrust ensures a higher level of security and transparency in tender processes, fostering trust among participants.
+
+- **Privacy of Proposals**:
+  Participants can confidently submit proposals knowing that their information is kept private, creating a fair and competitive environment.
+
+- **Verifiability and Auditing**:
+  With blockchain technology, all actions taken on the platform are verifiable and auditable, providing a tamper-proof record of the process.
+
+- **Efficiency and Cost Savings**:
+  By leveraging VeriTrust, organizations can streamline their tender processes, reducing administrative costs and improving overall efficiency.
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To start using VeriTrust, visit the [deployed project](https://veritrust-front-qj44in647a-uc.a.run.app/) and follow the instructions provided on the website.
