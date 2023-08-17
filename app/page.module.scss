@@ -179,6 +179,7 @@
     .card_container {
       display: flex;
       justify-content: center;
+
       flex-wrap: wrap;
       text-align: center;
       gap: 2rem;
@@ -187,6 +188,9 @@
       }
       div {
         flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         max-width: 520px;
         border: solid 2px rgba(161, 199, 255, 0.2);
         background-color: rgba(161, 199, 255, 0.1);
