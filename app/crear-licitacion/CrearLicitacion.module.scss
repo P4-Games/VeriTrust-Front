@@ -123,6 +123,22 @@
       }
     }
   }
+  .details_finalDetails {
+    background-color: rgba($primary, 0.2);
+    border-radius: $radiusOuter;
+    padding: $spacing;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing0_5;
+    h3 {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+    p {
+      line-height: 1.5;
+      font-size: 1.2rem;
+    }
+  }
   .btn_submit {
     margin-bottom: 3rem;
   }

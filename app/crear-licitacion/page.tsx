@@ -4,6 +4,7 @@ import React, {
   ChangeEvent,
   ChangeEventHandler,
   FormEvent,
+  useEffect,
 } from "react";
 import styles from "./CrearLicitacion.module.scss";
 import Footer from "@/components/Footer/Footer";
@@ -18,6 +19,7 @@ import { TenderItem, Tender } from "@/constants/tender";
 import Overlay from "@/components/Overlay/Overlay";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { AnimatePresence, motion } from "framer-motion";
+import { getEthereumPrice } from "@/utils/price";
 
 export default function CrearLicitacion(): JSX.Element {
   const [formState, setFormState] = useState<Tender>({
@@ -53,11 +55,35 @@ export default function CrearLicitacion(): JSX.Element {
 
   const [showFormModal, setShowFormModal] = useState(false);
   const [showTableRow, setShowTableRow] = useState(-1);
+  const [ethPrice, setEthPrice] = useState<number>(0);
+
+  useEffect(() => {
+    getEthereumPrice().then((price) => {
+      setEthPrice(price);
+    });
+  }, []);
+
+  const estimateCosts = () => {
+    let totalCosts: number = 0;
+    totalCosts += 0.0001; // fees de red
+    totalCosts += 20 / ethPrice; // timbrados
+    return totalCosts;
+  };
 
   const handleChange = (name: string, inputValue: any) => {
     setFormState({
       ...formState,
       [name]: inputValue,
+    });
+  };
+
+  const handleDatesChange = (name: string, inputValue: any) => {
+    setFormState({
+      ...formState,
+      dates: {
+        ...formState.dates,
+        [name]: inputValue,
+      },
     });
   };
 
@@ -153,8 +179,8 @@ export default function CrearLicitacion(): JSX.Element {
               placeholder="Escribe un rubro, Ej. Pinturas"
             />
           </div>
-          <div className={styles.form_input}>
-          <InputForm
+          {/* <div className={styles.form_input}>
+            <InputForm
               value={formState.quoteType}
               handleChange={handleChange}
               type="text"
@@ -162,7 +188,7 @@ export default function CrearLicitacion(): JSX.Element {
               label="Tipo de cotización"
               placeholder="Solo cotizacion por todos los items"
             />
-          </div>
+          </div> */}
           <div className={styles.form_input}>
             <h4>Detalle de productos o servicios</h4>
             <div className={styles.table_list}>
@@ -312,8 +338,8 @@ export default function CrearLicitacion(): JSX.Element {
               <InputForm
                 type="datetime-local"
                 value={formState.dates.inquiriesStart}
-                handleChange={handleChange}
-                name="dates.inquiriesStart"
+                handleChange={handleDatesChange}
+                name="inquiriesStart"
                 label="Fecha y hora de consultas"
               />
               <div className={styles.form_compoundGap}>
@@ -322,35 +348,45 @@ export default function CrearLicitacion(): JSX.Element {
               <InputForm
                 type="datetime-local"
                 value={formState.dates.inquiriesEnd}
-                handleChange={handleChange}
-                name="dates.inquiriesEnd"
+                handleChange={handleDatesChange}
+                name="inquiriesEnd"
               />
             </div>
             <InputForm
               type="datetime-local"
               value={formState.dates.reveal}
-              handleChange={handleChange}
-              name="dates.reveal"
+              handleChange={handleDatesChange}
+              name="reveal"
               label="Fecha y hora de la apertura"
             />
             <div className={styles.form_compound}>
               <InputForm
                 value={formState.dates.contractStart}
-                handleChange={handleChange}
-                name="dates.contractStart"
+                handleChange={handleDatesChange}
+                name="contractStart"
                 label="Inicio del contrato"
                 placeholder="Ej. A partir del documento contractual"
               />
               <InputForm
                 value={formState.dates.contractDuration}
-                handleChange={handleChange}
-                name="dates.contractDuration"
+                handleChange={handleDatesChange}
+                name="contractDuration"
                 label="Duracion del contrato"
                 placeholder="Ej. 3 meses"
               />
             </div>
           </div>
-
+          <section className={styles.details_finalDetails}>
+            <h3>Detalles</h3>
+            <p>
+              {/* Precio total: $ {getFormattedPrice()} {postData.currency}
+              <br /> <br /> */}
+              <b>Costos:</b> <br />
+              Timbrado: $20 USD <br />
+              Fees de red: 0.0001 ETH
+            </p>
+            <h3>Total estimado: {estimateCosts().toFixed(8)} ETH</h3>
+          </section>
           <div className={styles.btn_submit}>
             <Button type="main">
               <IconPlus /> Crear licitacion
