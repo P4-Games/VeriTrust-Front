@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.profile {
+  @include pageBasics;
+  &_header {
+    max-width: 720px;
+    margin-bottom: 3rem;
+    h1 {
+      @include title;
+    }
+    p {
+      @include text;
+      margin-top: 40px;
+    }
+  }
+  &_body {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .label {
+        font-weight: 400;
+        font-size: 1.25rem;
+        font-family: $font;
+        width: min(80vw, 400px);
+        margin-bottom: 0.75rem;
+      }
+      .btn_submit {
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+      }
+    }
+    .img_container {
+      margin-top: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      width: 50%;
+    }
+  }
+}

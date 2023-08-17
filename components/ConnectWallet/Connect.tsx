@@ -33,7 +33,7 @@ const config = createConfig({
     new WalletConnectConnector({
       chains,
       options: {
-        projectId: process.env.WALLETCONNECT_ID || "",
+        projectId: "2df4c8bd4b7b61692d938d3704dde521" || "",
       },
     }),
     new InjectedConnector({
