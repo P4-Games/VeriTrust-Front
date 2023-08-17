@@ -8,14 +8,13 @@ VeriTrust is a desktop platform for tenders and procurement processes that lever
 
 [![Deployed Project](https://img.shields.io/badge/Visit%20the%20Project-VeriTrust-blue)](https://veritrust-front-qj44in647a-uc.a.run.app/)
 
-[![Project Pitch](https://img.shields.io/badge/Watch%20our%20Project%20Pitch%20on-YouTube-red)](https://veritrust-front-qj44in647a-uc.a.run.app/)
+[![Project Pitch](https://img.shields.io/badge/Watch%20our%20Project%20Pitch%20on-YouTube-red)](https://www.youtube.com/watch?v=d5zN1yNelmw)
 
 ## Important Information
 
 This project is for Eth Argentina 2023.
 We are submitting for the Public Goods Track.
 We have integrations with Chainlink, Zetachain and Worldcoin.
-
 
 ## Features
 
