@@ -39,7 +39,7 @@ export default function Page ({ params }: { params: { id: string } }) {
     const estimateCosts = () => {
         let totalCosts: number = 0;
         totalCosts += 0.0001; // fees de red
-        totalCosts += 20 / ethPrice; // timbrados
+        totalCosts += 50 / ethPrice; // timbrados
         return totalCosts;
     }
 
@@ -137,7 +137,7 @@ export default function Page ({ params }: { params: { id: string } }) {
                                     Precio total: $ {getFormattedPrice()} {postData.currency}
                                     <br /> <br />
                                     <b>Costos:</b> <br />
-                                    Timbrado: $20 USD <br />
+                                    Timbrado: $50 USD <br />
                                     Fees de red: 0.0001ETH
                                 </p>
                                 <h3>

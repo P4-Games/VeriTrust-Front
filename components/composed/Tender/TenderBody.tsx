@@ -167,7 +167,7 @@ export const TenderBody = ({tender}: TenderBodyProps) => {
                 </section>
             </section>
             <Button
-                redirectTo={'/presentQuotation/' + tender.txid}
+                redirectTo={'/tender/' + tender.txid + "/quote"}
                 type='main'
                 className={styles.details_bodyButton}
             >
