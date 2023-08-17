@@ -19,11 +19,11 @@ export const Select = ({ options, setOption, option, className}: SelectProps) =>
 
     return (
         <div className={`${styles.select} ${className}`}>
-            <div className={styles.select_selected}>
+            <div className={styles.select_selected} onClick={toggleAccordion}>
                 <div className={styles.select_option}>
                     {option}
                 </div>
-                <div className={styles.select_arrow} onClick={toggleAccordion}>
+                <div className={styles.select_arrow} >
                     <IconChevronDown />
                 </div>
             </div>

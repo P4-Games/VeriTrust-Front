@@ -1,52 +1,58 @@
 @import "../../../../styles/variables.scss";
 
-.select{
-    &Wrapper{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-    &Label{
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    svg{
-        cursor: pointer;
-    }
-    &_selected{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 20px;
-        color: $text;
-        font-size: 1rem;
-        border-radius: $radiusOuter;
-        border: none;
-        background-color: $background2;
-        font-family: $font;
-    }
+.select {
+  position: relative;
+  max-width: 620px;
+  //   &Wrapper{
+  //       display: flex;
+  //       flex-direction: column;
+  //       margin-bottom: 20px;
+  //   }
+  //   &Label{
+  //       font-size: 1.2rem;
+  //       font-weight: 600;
+  //       margin-bottom: 10px;
+  //   }
+  //   svg{
+  //       cursor: pointer;
+  //   }
+  &_selected {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    color: $text;
+    font-size: 1rem;
+    border-radius: $radiusOuter;
+    border: none;
+    background-color: $background2;
+    font-family: $font;
+  }
 
-    &_options{
-        margin-top: $spacing0_5;
-        display: flex;
-        flex-direction: column;
-        font-family: $font;
-        gap: $spacing0_5;
-
-        div{
-            background-color: rgba($background2, 0.6);
-            padding: $spacing0_5;
-            border-radius: $radiusOuter;
-
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-
-            &:hover{
-                font-weight: 700;
-                transition: all 0.2s ease-in-out;
-            }
-        }
+  &_options {
+    margin-top: 0.5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: $font;
+    gap: 0.25rem;
+    background-color: $background2;
+    z-index: 10;
+    padding: 1rem;
+    border-radius: $radiusOuter;
+    border: 1px solid $background-dark;
+    box-sizing: border-box;
+    width: 100%;
+    div {
+      padding: 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+      }
     }
+  }
 }
