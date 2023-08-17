@@ -7,9 +7,10 @@ interface TimelineProps {
     current: number;
     state: "Pendiente" | "Adjudicado" | "Perdida"; 
     stageText: [string, string][];
+    txid: string;
 }
 
-export const Timeline = ({ total, current, state, stageText }: TimelineProps)=>{
+export const Timeline = ({ total, current, state, stageText, txid }: TimelineProps)=>{
     const allTexts: string[] = [
         "Publicación",
         "Envío de oferta",
@@ -56,19 +57,19 @@ export const Timeline = ({ total, current, state, stageText }: TimelineProps)=>{
     }
 
     return (
-        <div className={getTimelineClassName()}>
+        <section className={getTimelineClassName()}>
             {
                 [...Array(total - 1)].map((_, index) => {
                     return (
-                        <>
-                            <div className={styles.timeline_itemWrapper}
+                        <React.Fragment key={index+txid}>
+                            <div key={index+txid} className={styles.timeline_itemWrapper}
                                 style={{
                                     width: index != total - 2 ? "100%" : "30%"
                                 }}
                             >
                                 <div className={getCircleClassName(index)}/>
-                                {index !== total -1 && <div key={index} className={getItemClassName(index)}/>}
-                                <p key={index} className={styles.timeline_itemText}>
+                                {index !== total -1 && <div className={getItemClassName(index)}/>}
+                                <p className={styles.timeline_itemText}>
                                     {
                                         allTexts[index] ? (
                                             <b>{allTexts[index]}</b>
@@ -87,10 +88,10 @@ export const Timeline = ({ total, current, state, stageText }: TimelineProps)=>{
                                 </p>
                             </div>
                             <div className={getCircleClassName(total - 1)}/>
-                        </>
+                        </React.Fragment>
                     )
                 })
             }
-        </div>
+        </section>
     )
 }
