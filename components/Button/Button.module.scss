@@ -14,7 +14,7 @@
         font-size: 1rem;
         font-weight: 400;
         text-decoration: none;
-
+        
         transition: all 0.2s ease-in-out;
 
         &:hover{
@@ -30,6 +30,7 @@
         flex-direction: row;
         align-items: center;
         gap: $spacing0_5;
+        
         padding: 0.625rem $spacing;
         
         border: 3px solid rgba($primary, 0.2);
@@ -53,6 +54,8 @@
         @extend .button_alt;
         color: $background;
         background-color: $primary;
+        justify-content: space-between;
+        padding: 10px $spacing0_5; 
 
         &:hover{
             color: $background;
@@ -61,7 +64,30 @@
             transition: all 0.2s ease-in-out;
         }
     }
+    &_card{
+        @extend .button_alt;
+        margin-left: auto;
+        background-color: $background3; 
+        color: $text;
+        text-decoration: none;
+        border-radius: $radius; 
+        padding: 10px $spacing0_5; 
+        font-family: $font; 
+        font-size: 1rem;  
+        font-weight: 700; 
+        gap: 10px; 
+        justify-content: space-between;
+        border: none;
+        transition: all 0.2s ease-in-out;
+        width: 100%;    
 
+        &:hover{
+            background-color: lighten($background3, 10%);
+            color: $text;
+            border: none;
+            transition: all 0.2s ease-in-out;
+        }
+    }
     &_connected{
         display: inline-flex;
         flex-direction: row;

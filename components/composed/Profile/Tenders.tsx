@@ -1,6 +1,6 @@
 import { Button } from "@/components/Button/Button";
 import { QuoteState } from "@/constants/profile";
-import { formatTX } from "@/utils/format";
+import { formatAddress, formatTX } from "@/utils/format";
 import React, { Dispatch } from "react";
 
 import styles from "../../../app/profile/Profile.module.scss";
@@ -9,13 +9,14 @@ import { IconChevronDown, IconExternalLink } from "@tabler/icons-react";
 import { Timeline } from "../Tender/Timeline/Timeline";
 import { Input } from "../Tender/Input/Input";
 import { AnimatePresence, motion } from "framer-motion";
+import { DUMMY_TENDERS_OFFERS } from "@/constants/offers";
 
 interface QuotesTableProps {
     quotes: QuoteState[];
 }
 
 export const TendersTable = ({ quotes }: QuotesTableProps)=>{
-    const [urls, setUrls] = React.useState<Map<string, string>>(new Map<string, string>());
+    const [winner, setWinner] = React.useState<string>(""); // Address del oferente
     const [openAccordion, closeAccordion] = React.useState<Map<string, boolean>>(new Map<string, boolean>());
 
     const toggleIndividualAccordion = (txid: string) => {
@@ -23,7 +24,6 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
         //Check if the given txid exists, if not set as true
         if (!newAccordion.has(txid)) {
             newAccordion.set(txid, true);
-            
         } else {
             newAccordion.set(txid, !newAccordion.get(txid));
         }
@@ -33,12 +33,6 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
 
     const getIndividualAccordion = (txid: string) => {
         return openAccordion.get(txid) || false;
-    }
-
-    const setIndividualUrl = (txid: string, url: string) => {
-        const newUrls = new Map(urls);
-        newUrls.set(txid, url);
-        setUrls(newUrls);
     }
 
     return (
@@ -62,9 +56,9 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
                                         <p>{item.status}</p>
                                         <Button
                                             onClick={() => toggleIndividualAccordion(item.txid)}
-                                            className={styles.profile_listItemButton}
+                                            type={item.status === "Pendiente de elegir ganador" ? "main" : "card"}
                                         >
-                                            Ver Detalles <IconChevronDown />
+                                            {item.status === "Pendiente de elegir ganador" ? "Elegir oferta" : "Detalles"} <IconChevronDown />
                                         </Button>
                                     </div>
                                     <AnimatePresence>
@@ -76,26 +70,35 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
                                                     animate={{ opacity: 1, height: "auto" }}
                                                     exit={{ opacity: 0, height: 0 }}
                                                 >
-                                                    <h3>Detalles: </h3>
-                                                    <section className={styles.profile_tableRowReveal}>
-                                                        <div className={styles.profile_tableRowRevealInput}>
-                                                            Enviar tu URL para revelar la oferta
-                                                            <Input 
-                                                                setValue={(url: string) => setIndividualUrl(item.txid, url)}
-                                                                value={urls.get(item.txid) || ""}
-                                                                placeholder="URL"
-                                                            />
-                                                        </div>
-                                                        <Button
-                                                            type="main"
-                                                            onClick={() => {
-                                                                console.log("reveal", item.txid, urls.get(item.txid));
-                                                            }}
-                                                        >
-                                                            Revelar
-                                                        </Button>   
-                                                        
-                                                    </section>
+                                                    <h3>{item.status === "Pendiente de elegir ganador" ? "Elegir ganador:" : "Detalles:"}</h3>
+                                                    {
+                                                        item.status === "Pendiente de elegir ganador" ? (
+                                                            <section className={styles.profile_tableWinner}>
+                                                                {
+                                                                    DUMMY_TENDERS_OFFERS.map((offer, index) => {
+                                                                        return (
+                                                                            <section className={styles.profile_offers}>
+                                                                                <div key={index} className={styles.profile_checkbox}>
+                                                                                    <div className={offer.address === winner ? styles.profile_checkboxActive : styles.profile_checkboxDisabled}/>
+                                                                                </div>
+                                                                                <p>{formatAddress(offer.address)}</p>
+                                                                                <p>{offer.businessName}</p>
+                                                                                <p>{offer.businessAddres}</p>
+                                                                                <p>{offer.cuit}</p>
+                                                                                <p>{offer.totalPrice}</p>
+                                                                            </section>
+                                                                        )
+                                                                    })
+                                                                }
+                                                                <Button
+                                                                    type="main"
+                                                                    onClick={() => {}}
+                                                                >
+                                                                    Select winner
+                                                                </Button>   
+                                                            </section>
+                                                        ) : null
+                                                    }
                                                     <section className={styles.profile_tableRowTimeline}>
                                                         <Timeline
                                                             current={item.stage}
