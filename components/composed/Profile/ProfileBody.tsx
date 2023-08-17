@@ -15,6 +15,7 @@ export const ProfileBody = ()=>{
     const { data: ensName } = useEnsName({ address });
     const [isWalletConnected, setIsConnected] = useState<boolean>(true);
     const [quotes, setQuotes] = useState<QuoteState[]>([]);
+    const [sectionType, setSectionType] = useState<"offers" | "tenders">("offers"); // My offers or My tenders
     const [description, setDescription] = useState<string>("Wallet no conectada");
 
     useEffect(() => {
@@ -87,10 +88,13 @@ export const ProfileBody = ()=>{
                     }
                 </section>
             </section>
-            <section className={styles.profile_header}>
-                <h1>Mi Perfil - Ejemplo S.A</h1>
-                <p>Conecte una wallet para ver tu perfil y hacer un seguimiento de tus ofertas o licitaciones</p>
-            </section>
+            {
+                quotes && quotes.length === 0 ? ( 
+                    <section className={styles.profile_header}>
+                        <p>Conecte una wallet para ver tu perfil y hacer un seguimiento de tus ofertas o licitaciones</p>
+                    </section>
+                ) : null
+            }
         </>
     )
 }
