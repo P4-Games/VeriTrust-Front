@@ -10,7 +10,7 @@ import styles from "./CrearLicitacion.module.scss";
 import Footer from "@/components/Footer/Footer";
 import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Button } from "@/components/Button/Button";
-import { IconPlus, IconX, IconChevronDown } from "@tabler/icons-react";
+import { IconPlus, IconX, IconChevronDown, IconWorld } from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import SwitchForm from "@/components/SwitchForm/SwitchForm";
 import DynamicInputForm from "@/components/composed/DynamicInputForm/DynamicInputForm";
@@ -390,6 +390,9 @@ export default function CrearLicitacion(): JSX.Element {
           <div className={styles.btn_submit}>
             <Button type="main">
               <IconPlus /> Crear licitacion
+            </Button>
+            <Button type="alt">
+              <IconWorld /> Crear licitacion con WorldID
             </Button>
           </div>
         </form>

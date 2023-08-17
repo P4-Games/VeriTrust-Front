@@ -35,6 +35,11 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
         return openAccordion.get(txid) || false;
     }
 
+    const getFormattedPrice = (price: number): string => {
+        let totalPrice = Math.round(price * 1e2) / 1e2;
+        return totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     return (
         <React.Fragment>
             <section className={styles.profile_table}>
@@ -74,27 +79,34 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
                                                     {
                                                         item.status === "Pendiente de elegir ganador" ? (
                                                             <section className={styles.profile_tableWinner}>
+                                                                <div>
                                                                 {
                                                                     DUMMY_TENDERS_OFFERS.map((offer, index) => {
                                                                         return (
                                                                             <section className={styles.profile_offers}>
-                                                                                <div key={index} className={styles.profile_checkbox}>
-                                                                                    <div className={offer.address === winner ? styles.profile_checkboxActive : styles.profile_checkboxDisabled}/>
+                                                                                <div className={styles.profile_offersCompany}>
+                                                                                    <div key={index} className={styles.profile_checkbox}>
+                                                                                        <div 
+                                                                                                className={offer.address === winner ? styles.profile_checkboxActive : styles.profile_checkboxDisabled}
+                                                                                                onClick={() => setWinner(offer.address)}
+                                                                                            />
+                                                                                    </div>
+                                                                                    <p>Oferente: {offer.businessName} - <span> {formatAddress(offer.address)}</span></p>
                                                                                 </div>
-                                                                                <p>{formatAddress(offer.address)}</p>
-                                                                                <p>{offer.businessName}</p>
-                                                                                <p>{offer.businessAddres}</p>
-                                                                                <p>{offer.cuit}</p>
-                                                                                <p>{offer.totalPrice}</p>
+                                                                                
+                                                                                <p>Dirección: {offer.businessAddres}</p>
+                                                                                <p>CUIT: {offer.cuit}</p>
+                                                                                <p>Presupuestado Total: ${getFormattedPrice(offer.totalPrice)}</p>
                                                                             </section>
                                                                         )
                                                                     })
                                                                 }
+                                                                </div>
                                                                 <Button
                                                                     type="main"
                                                                     onClick={() => {}}
                                                                 >
-                                                                    Select winner
+                                                                    Seleccionar ganador
                                                                 </Button>   
                                                             </section>
                                                         ) : null

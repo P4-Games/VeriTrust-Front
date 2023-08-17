@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconDownload } from '@tabler/icons-react';
+import { IconArrowLeft, IconDownload, IconWorld } from '@tabler/icons-react';
 import { useConnect } from 'wagmi';
 import styles from "./Drawer.module.scss";
 import { AnimatePresence, motion } from 'framer-motion';
@@ -56,6 +56,12 @@ export function ConnectDrawer({
                       ' (connecting)'}
                   </button>
                 ))}
+                <button
+                    disabled={true}
+                    onClick={() => console.log("Connect")}
+                  >
+                    <IconWorld /> Iniciar con World ID
+                  </button>
               </section>
               <section className={styles.drawer_download}>
                 <a href="https://metamask.io/download.html" target="_blank">

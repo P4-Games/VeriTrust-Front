@@ -246,4 +246,73 @@
             font-size: 1.6rem;
         }
     }
+
+    &_tableWinner{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing0_5;
+        & > div{
+            margin-top: $spacing;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing;
+        }
+    }
+
+    &_offers{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+
+        &Company{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+        }
+        span {
+            font-size: 1.2rem;
+            opacity: 0.5;
+            font-family: $font;
+            color: $text;
+            text-decoration: underline;
+        }
+    }
+
+    &_checkbox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 50px;
+        height: 50px;
+
+        border-radius: $radiusOuter;
+        background-color: rgba($primary, 0.2);
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+
+        &Active{
+            width: 35px;
+            height: 35px;
+
+            background-color: $primary;
+            border-radius: $radius;
+            transition: all 0.1s ease-in-out;
+        }
+        
+        &Disabled{
+            width: 35px;
+            height: 35px;
+            
+            background-color: rgba($primary, 0.2);
+            border-radius: $radius;
+            transition: all 0.1s ease-in-out;
+        }
+    }
 }

@@ -6,7 +6,7 @@ import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Tender } from "@/constants/tender";
 import { getTender } from "@/utils/tender";
 import { Button } from '@/components/Button/Button';
-import { IconArrowLeft, IconFileUpload, IconPremiumRights } from '@tabler/icons-react';
+import { IconArrowLeft, IconFileUpload, IconPremiumRights, IconWorld } from '@tabler/icons-react';
 import { NotFound } from '@/components/composed/Tender/NotFound';
 import { TenderBody } from '@/components/composed/Tender/TenderBody';
 import { Select } from '@/components/composed/Tender/Select/Select';
@@ -149,6 +149,12 @@ export default function Page ({ params }: { params: { id: string } }) {
                                 onClick={()=>{}}
                             >
                                 Enviar oferta <IconFileUpload />
+                            </Button>
+                            <Button
+                                type='alt'
+                                onClick={()=>{}}
+                            >
+                                Ofertar con World ID <IconWorld />
                             </Button>
                         </section>
                     </section>
