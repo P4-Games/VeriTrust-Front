@@ -8,6 +8,8 @@ VeriTrust is a desktop platform for tenders and procurement processes that lever
 
 [![Deployed Project](https://img.shields.io/badge/Visit%20the%20Project-VeriTrust-blue)](https://veritrust-front-qj44in647a-uc.a.run.app/)
 
+[![Project Pitch](https://img.shields.io/badge/Watch%20our%20Project%20Pitch%20on-YouTube-red)](https://veritrust-front-qj44in647a-uc.a.run.app/)
+
 ## Important Information
 
 This project is for Eth Argentina 2023.
