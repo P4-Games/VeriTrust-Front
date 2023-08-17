@@ -1,13 +1,14 @@
 'use client';
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../../app/profile/Profile.module.scss";
 import { Button } from "@/components/Button/Button";
-import { IconExternalLink, IconPlus, IconUser } from "@tabler/icons-react";
+import { IconPlus, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { MY_QUOTES, QuoteState } from "@/constants/profile";
-import { formatAddress, formatTX } from "@/utils/format";
-import { Timeline } from "../Tender/Timeline/Timeline";
+import { formatAddress } from "@/utils/format";
 import { useAccount, useEnsName } from "wagmi";
+import { QuotesTable } from "./Quotes";
+import { TendersTable } from "./Tenders";
 
 export const ProfileBody = ()=>{
     const router = useRouter();
@@ -28,6 +29,8 @@ export const ProfileBody = ()=>{
         }
     }, [isConnected])
 
+    const toggleSection = ()=> setSectionType(sectionType == "offers" ? "tenders" : "offers");
+
     return (
         <>
             <section className={styles.profile_header}>
@@ -43,57 +46,28 @@ export const ProfileBody = ()=>{
                 </Button>
                 <Button
                     type="alt"
-                    onClick={() => window.open("https://opensea.io/", "_blank", "noopener noreferrer")}
+                    onClick={() => router.push("/create-profile")}
                 >
-                    <IconUser /> Ver mi perfil
+                    <IconUser /> Crear mi perfil
                 </Button>
             </div>
-            <h3 className={styles.profile_title}>
-                Estado de mis ofertas
-            </h3>
-            <section className={styles.profile_table}>
-                <section className={styles.profile_tableHead}>
-                    <h3>TX Proceso</h3>
-                    <h3>Nombre</h3>
-                    <h3>Tipo</h3>
-                    <h3>Estado</h3>
-                </section>
-                <section className={styles.profile_tableBody}>
-                    {
-                        quotes.map((item: QuoteState, index) => {
-                            return (
-                                <div className={styles.profile_tableRow} key={index}>
-                                    <p>{formatTX(item.txid)}</p>
-                                    <p>{item.name}</p>
-                                    <p>{item.type}</p>
-                                    <p>{item.status}</p>
-                                    <Button
-                                        redirectTo={`/tender/${item.txid}`}
-                                        className={styles.profile_listItemButton}
-                                    >
-                                        Ver Detalles <IconExternalLink />
-                                    </Button>
-                                    <section className={styles.profile_tableRowTimeline}>
-                                        <Timeline
-                                            current={item.stage}
-                                            state={item.status}
-                                            total={4}
-                                            stageText={item.stageText}
-                                            txid={item.txid}
-                                        />
-                                    </section>
-                                </div>
-                            )
-                        })
-                    }
-                </section>
+            <section 
+                className={styles.profile_slider}
+                onClick={toggleSection}
+            >
+                    <div className={sectionType == "offers" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
+                        Mis Ofertas
+                    </div>
+                    <div className={sectionType == "tenders" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
+                        Mis Licitaciones
+                    </div>
             </section>
             {
-                quotes && quotes.length === 0 ? ( 
-                    <section className={styles.profile_header}>
-                        <p>Conecte una wallet para ver tu perfil y hacer un seguimiento de tus ofertas o licitaciones</p>
-                    </section>
-                ) : null
+                sectionType == "offers" ? (
+                    <QuotesTable quotes={quotes} />
+                ) : (
+                    <TendersTable quotes={quotes} />
+                )
             }
         </>
     )

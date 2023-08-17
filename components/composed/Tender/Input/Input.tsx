@@ -7,7 +7,7 @@ interface InputProps{
     type?: string;
     value: string | number;
     label?: string | null;
-    setValue: (React.Dispatch<React.SetStateAction<string>> | ((x: number) => void));
+    setValue: (React.Dispatch<React.SetStateAction<string>> | ((x: number) => void) | ((x: string) => void));
 }
 
 export const Input = ({placeholder = "Enter text", type = "Text", value, setValue, label}: InputProps) => {
@@ -24,7 +24,7 @@ export const Input = ({placeholder = "Enter text", type = "Text", value, setValu
                             placeholder={placeholder}
                             className={styles.input}
                             value={value}
-                            onChange={(e: any) => setValue(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value as never)}
                         />
                     </div>
                 ) : (
@@ -33,7 +33,7 @@ export const Input = ({placeholder = "Enter text", type = "Text", value, setValu
                         placeholder={placeholder}
                         className={styles.input}
                         value={value}
-                        onChange={(e: any) => setValue(e.target.value)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value as never)}
                     />
                 )
             }

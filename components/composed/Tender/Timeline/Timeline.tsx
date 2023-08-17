@@ -5,7 +5,7 @@ import Link from "next/link";
 interface TimelineProps {
     total: number;
     current: number;
-    state: "Pendiente" | "Adjudicado" | "Perdida"; 
+    state: "Pendiente" | "Pendiente de reveal" | "Pendiente de elegir ganador" | "Adjudicado" | "Perdida";
     stageText: [string, string][];
     txid: string;
 }
