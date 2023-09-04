@@ -150,12 +150,6 @@ export default function Page ({ params }: { params: { id: string } }) {
                             >
                                 Enviar oferta <IconFileUpload />
                             </Button>
-                            <Button
-                                type='alt'
-                                onClick={()=>{}}
-                            >
-                                Ofertar con World ID <IconWorld />
-                            </Button>
                         </section>
                     </section>
                 ) : (

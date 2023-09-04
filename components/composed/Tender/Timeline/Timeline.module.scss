@@ -90,3 +90,27 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .timeline{
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: rotate(90deg) translate(100px, calc(45vw - 60px));
+
+        p{
+            transform: rotate(-90deg) translate(calc(45vw + 30px), -115px);
+        }
+
+        &_item{
+            &Text{
+                span{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 60vw;
+                }
+            }
+        }
+    }
+}
