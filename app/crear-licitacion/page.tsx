@@ -391,9 +391,6 @@ export default function CrearLicitacion(): JSX.Element {
             <Button type="main">
               <IconPlus /> Crear licitacion
             </Button>
-            <Button type="alt">
-              <IconWorld /> Crear licitacion con WorldID
-            </Button>
           </div>
         </form>
         {showFormModal && (

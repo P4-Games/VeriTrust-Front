@@ -81,13 +81,13 @@
                 align-items: center; 
                 justify-content: center;
                 border: none;
-                transition: all 0.2s ease-in-out;
+                transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
 
                 &:hover{
                     background-color: lighten($background3, 10%);
                     color: $text;
                     border: none;
-                    transition: all 0.2s ease-in-out;
+                    transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
                 }
             }
         }

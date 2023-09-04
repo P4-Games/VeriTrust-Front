@@ -63,14 +63,14 @@
     height: 20px;
     stroke: $text;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
     &:hover{
         stroke: $primary;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
     }
 
     &Active{
         transform: rotate(180deg);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
     }
 }
