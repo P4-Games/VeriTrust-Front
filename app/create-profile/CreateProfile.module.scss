@@ -44,3 +44,18 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .profile {
+    padding: 0 $spacing0_5;
+    &_body {
+      flex-direction: column;
+      form {
+        width: 100%;
+      }
+      .img_container {
+        display: none;
+      }
+    }
+  }
+}
