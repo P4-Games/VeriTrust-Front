@@ -157,3 +157,39 @@
         gap: 10px;
     }
 }
+
+@media (max-width: 768px){
+    .details{
+        padding: 0 $spacing0_5;
+        &_head{
+            &Title{
+                width: calc(100% - $spacing);
+            }
+            &Button{
+                position: relative;
+                width: calc(50% - $spacing - $spacing);
+                justify-content: space-between;
+                margin-top: $spacing;
+            }
+        }
+        &_body{
+            &Item{
+                p{
+                    font-size: 1rem;
+                }
+            }
+            &Label{
+                font-size: 1rem;
+            }
+            &Row{
+                align-items: flex-start;
+                flex-wrap: wrap;
+                gap: $spacing0_5;
+            }
+            &Button{
+                width: 50%;
+                margin-bottom: $spacing2;
+            }
+        }
+    }
+}

@@ -55,8 +55,8 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
                             return (
                                 <>
                                     <div className={styles.profile_tableRow} key={index}>
-                                        <p>{formatTX(item.txid)}</p>
-                                        <p>{item.name}</p>
+                                        <p className={styles.profile_tableRowTX}>{formatTX(item.txid)}</p>
+                                        <p className={styles.profile_tableRowTitle}>{item.name}</p>
                                         <p>{item.type}</p>
                                         <p>{item.status}</p>
                                         <Button
@@ -83,7 +83,7 @@ export const TendersTable = ({ quotes }: QuotesTableProps)=>{
                                                                 {
                                                                     DUMMY_TENDERS_OFFERS.map((offer, index) => {
                                                                         return (
-                                                                            <section className={styles.profile_offers}>
+                                                                            <section className={styles.profile_offers} key={index}>
                                                                                 <div className={styles.profile_offersCompany}>
                                                                                     <div key={index} className={styles.profile_checkbox}>
                                                                                         <div 

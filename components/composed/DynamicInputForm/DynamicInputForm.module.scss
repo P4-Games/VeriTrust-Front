@@ -35,3 +35,25 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .dynamic_input_form {
+    .inputs_container {
+      .table_list {
+        grid-template-columns: auto auto auto 1fr auto auto;
+      }
+    }
+    .btns_container{
+      flex-direction: column;
+      gap: 1rem;
+      button{
+        width: 100%;
+        background-color: rgba($primary, 0.2);
+
+        &:hover{
+          background-color: rgba($primary, 0.4);
+        }
+      }
+    }
+  }
+}

@@ -55,8 +55,8 @@ export const QuotesTable = ({ quotes }: QuotesTableProps)=>{
                             return (
                                 <>
                                     <div className={styles.profile_tableRow} key={index}>
-                                        <p>{formatTX(item.txid)}</p>
-                                        <p>{item.name}</p>
+                                        <p className={styles.profile_tableRowTX}>{formatTX(item.txid)}</p>
+                                        <p className={styles.profile_tableRowTitle}>{item.name}</p>
                                         <p>{item.type}</p>
                                         <p>{item.status}</p>
                                         <Button

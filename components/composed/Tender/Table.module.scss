@@ -7,6 +7,7 @@
     overflow-y: hidden;
 
     &_head{
+        width: calc(100% - $spacing - $spacing0_5);
         background-color: $background2;
         display: grid;
         grid-template-columns: 30px 70px 100px 650px 100px 70px;
@@ -22,6 +23,7 @@
         }
     }
     &Row{
+        width: calc(100% - $spacing - $spacing0_5);
         display: grid;
         grid-template-columns: 30px 70px 100px 650px 100px 70px;
         align-items: center;
@@ -72,5 +74,16 @@
     &Active{
         transform: rotate(180deg);
         transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
+    }
+}
+
+@media (max-width: 768px){
+    .table{
+        &_head{
+            width: max-content;
+        }
+        &Row{
+            width: max-content;
+        }
     }
 }

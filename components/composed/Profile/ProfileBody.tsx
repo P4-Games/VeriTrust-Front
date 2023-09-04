@@ -27,7 +27,7 @@ export const ProfileBody = ()=>{
                 setDescription(ensName ? ensName : formatAddress(address))
             }
         }
-    }, [isConnected])
+    }, [address, ensName, isConnected])
 
     const toggleSection = ()=> setSectionType(sectionType == "offers" ? "tenders" : "offers");
 
