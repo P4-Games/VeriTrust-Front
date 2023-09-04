@@ -95,13 +95,13 @@
                 align-items: center; 
                 justify-content: center;
                 border: none;
-                transition: all 0.2s ease-in-out;
+                transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
 
                 &:hover{
                     background-color: lighten($background3, 10%);
                     color: $text;
                     border: none;
-                    transition: all 0.2s ease-in-out;
+                    transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
                 }
             }
 
@@ -178,13 +178,13 @@
         align-items: center; 
         justify-content: center;
         border: none;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
 
         &:hover{
             background-color: lighten($background3, 10%);
             color: $text;
             border: none;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
         }
     }
     &_title{
@@ -205,14 +205,14 @@
         & > div{
             font-family: $font;
             border-radius: calc($radiusOuter - (0.5rem / 2));
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
             cursor: pointer;
         }
         
         &Default{
             background-color: rgba($background2, 0.5);
             padding: 1rem 2rem;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
             font-size: 1.2rem;
         }
         &Selected{
@@ -221,7 +221,7 @@
             font-weight: 700;
             color: $primary;
             padding: 1rem 3rem;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
         }
     }
 }
@@ -295,7 +295,7 @@
         border-radius: $radiusOuter;
         background-color: rgba($primary, 0.2);
         cursor: pointer;
-        transition: all 0.1s ease-in-out;
+        transition: all 0.1s cubic-bezier(0.6,0.6,0,0.1);
 
         &Active{
             width: 35px;
@@ -303,7 +303,7 @@
 
             background-color: $primary;
             border-radius: $radius;
-            transition: all 0.1s ease-in-out;
+            transition: all 0.1s cubic-bezier(0.6,0.6,0,0.1);
         }
         
         &Disabled{
@@ -312,7 +312,7 @@
             
             background-color: rgba($primary, 0.2);
             border-radius: $radius;
-            transition: all 0.1s ease-in-out;
+            transition: all 0.1s cubic-bezier(0.6,0.6,0,0.1);
         }
     }
 }

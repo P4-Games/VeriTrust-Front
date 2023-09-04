@@ -37,7 +37,7 @@
             background-color: $background2;
             color: $text;
             border: none;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
             height: 60px;
 
             &:hover{
@@ -61,11 +61,11 @@
             font-family: $font;
             gap: $spacing0_5;
 
-            transition: all 0.2 ease-in-out;
+            transition: all 0.2 cubic-bezier(0.6,0.6,0,0.1);
 
             &:hover{
                 opacity: 1;
-                transition: all 0.2 ease-in-out;
+                transition: all 0.2 cubic-bezier(0.6,0.6,0,0.1);
             }
         }
     }

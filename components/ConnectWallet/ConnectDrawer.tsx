@@ -1,7 +1,7 @@
 import { IconArrowLeft, IconDownload, IconWorld } from '@tabler/icons-react';
 import { useConnect } from 'wagmi';
 import styles from "./Drawer.module.scss";
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, cubicBezier, motion } from 'framer-motion';
 
 interface ConnectDrawerProps {
   openModal: boolean;
@@ -24,6 +24,7 @@ export function ConnectDrawer({
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
+              transition={{duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1)}}
               className={styles.drawerOverlay}
               onClick={toggleModal}
             />
@@ -37,6 +38,7 @@ export function ConnectDrawer({
               initial={{width: 0}}
               animate={{width: "min(500px, 80%)"}}
               exit={{width: 0}}
+              transition={{duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1)}}
               className={styles.drawer}
             >
               <h3 className={styles.drawer_title}>
@@ -56,12 +58,6 @@ export function ConnectDrawer({
                       ' (connecting)'}
                   </button>
                 ))}
-                <button
-                    disabled={true}
-                    onClick={() => console.log("Connect")}
-                  >
-                    <IconWorld /> Iniciar con World ID
-                  </button>
               </section>
               <section className={styles.drawer_download}>
                 <a href="https://metamask.io/download.html" target="_blank">

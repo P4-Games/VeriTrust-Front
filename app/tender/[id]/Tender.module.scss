@@ -125,18 +125,18 @@
 
         h4{
             font-family: $font;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
         }
 
         svg{
             transform: translateX(0px);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
         }
         
         &:hover{
             svg{
                 transform: translateX(-10px);
-                transition: all 0.2s ease-in-out;
+                transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
             }
         }
     }

@@ -23,7 +23,7 @@
       }
       .close {
         cursor: pointer;
-        transition: all ease-in-out 0.2s;
+        transition: all cubic-bezier(0.6,0.6,0,0.1) 0.2s;
         &:hover {
           scale: 1.2;
         }
@@ -57,7 +57,7 @@
       font-weight: 700;
       &:hover {
         background-color: rgba($text, 0.2);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
       }
     }
   }
