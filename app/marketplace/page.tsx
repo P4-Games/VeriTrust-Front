@@ -37,7 +37,7 @@ export default function Marketplace(): JSX.Element{
                         DUMMY_TENDERS.map((tender, index) => (
                             <div className={styles.marketplace_listItem} key={index}>
                                 <p className={styles.marketplace_listItemTX}>{formatTX(tender.txid)}</p>
-                                <p>{tender.name}</p>
+                                <p className={styles.marketplace_listItemTitle}>{tender.name}</p>
                                 <p>{tender.type}</p>
                                 <p>{tender.opening_date}</p>
                                 <Button
