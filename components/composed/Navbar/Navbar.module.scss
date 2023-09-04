@@ -15,9 +15,79 @@
         flex-direction: row;
         align-items: center;
         gap: $spacing;
+
+        &Desktop{
+            @extend .navbar_links;
+        }
     }
 
     /*&_connect{
 
     }*/
+    &_menuIcon{
+        display: none;
+    }
+}
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing0_5;
+        padding: $spacing0_5 $spacing0_5;
+
+        h3{
+            display: none;
+        }
+        &_links{
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing0_5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            z-index: 9999;
+            background-color: $background;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+
+            &Desktop{
+                display: none;
+            }
+        }
+        &_menuIcon{
+            display: block;
+            position: absolute;
+            right: $spacing0_5;
+            top: calc($spacing0_5 + 60px / 2 - 24px / 2);
+            transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
+
+            &:hover, &:active{
+                cursor: pointer;
+                top: calc($spacing0_5 + 60px / 2 - 24px / 2 - 10px);
+                padding: 10px;
+                border-radius: $radius;
+                background-color: rgba($primary, 0.3);
+                color: $primary;
+
+                transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
+            }
+        }
+        &_menuClose{
+            border: none;
+            outline: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 20px 0;
+        }
+    }
 }
