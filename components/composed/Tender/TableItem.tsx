@@ -49,11 +49,11 @@ export const TableItem = ({ item, pricePerUnit, setPricePerUnit }: TableItemProp
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                     >
-                        <h3>Información adicional</h3>
+                        <h3>Additional information</h3>
                         <p>{item.additionalInfo}</p>
-                        <h3>Luegar de entrega</h3>
+                        <h3>Place of delivery</h3>
                         <p>{item.deliveryPlace}</p>
-                        <h3>Fecha de entrega</h3>
+                        <h3>Delivery date</h3>
                         <p>{item.deliveryDeadline}</p>
                     </motion.section>
                 ) : null}

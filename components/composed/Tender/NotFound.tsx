@@ -6,13 +6,13 @@ import { IconArrowLeft } from '@tabler/icons-react';
 export const NotFound = () => {
     return (
         <div className={styles.details}>
-            <h3>No se encontró la licitacion</h3>
-            <p>Presione el siguiente botón para volver al marketplace</p>
+            <h3>Tender not found</h3>
+            <p>Click on the following button to return to the marketplace</p>
             <Button
                 redirectTo='/marketplace'
                 type='main'
             >
-                <IconArrowLeft /> Volver                        
+                <IconArrowLeft /> Return                        
             </Button>
         </div>
     )
