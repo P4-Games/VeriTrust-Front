@@ -10,7 +10,7 @@ export default function Footer() {
       <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         <p>VeriTrust</p>
       </div>
-      <p>Creado para EthArgentina 2023</p>
+      <p>Created during Ethereum Argentina 2023</p>
     </footer>
   );
 }

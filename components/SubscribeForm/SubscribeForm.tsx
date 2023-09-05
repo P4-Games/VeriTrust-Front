@@ -18,7 +18,7 @@ export default function SubscribeForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button type="submit">Suscribirse</button>
+      <button type="submit">Subscribe</button>
     </form>
   );
 }

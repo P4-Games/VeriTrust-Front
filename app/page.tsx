@@ -26,14 +26,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-            >Licita con confianza, VeriTrust te respalda</motion.h2>
+            >Tender with confidence, VeriTrust has your back</motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              Reinventamos el sistema de licitaciones brindando mayor seguridad,
-              transparencia y confianza en los procesos de contratación.
+              We reinvented the bidding system, providing greater security, transparency, and confidence in the contracting process.
             </motion.p>
           </div>
           <motion.div
@@ -42,7 +41,7 @@ export default function Home() {
             transition={{ duration: 0.1, delay: 0.5, ease: cubicBezier(0.6,0.6,0,0.1) }}
           >
             <Button className={styles.button} redirectTo="/marketplace">
-              Ingresar a la app
+              Login to the app
             </Button>
           </motion.div>
           <SeeMore/>
@@ -52,7 +51,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-          >Características</motion.h2>
+          >Features</motion.h2>
           <div className={styles.second_section_body}>
             <motion.div 
               className={styles.marketplace}
@@ -62,8 +61,7 @@ export default function Home() {
             >
               <h3>Marketplace</h3>
               <p>
-                Facilita la búsqueda y promoción de oportunidades, asegurando un
-                ambiente transparente y competitivo para todas las partes.
+                Facilitates the search and promotion of opportunities, ensuring a transparent and competitive environment for all parties.
               </p>
               <div className={styles.marketplace_img}>
                 <Image
@@ -81,11 +79,9 @@ export default function Home() {
                 transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
               >
                 <div>
-                  <h3>Privacidad de las propuestas</h3>
+                  <h3>Privacy of proposals</h3>
                   <p>
-                    Facilita la búsqueda y promoción de oportunidades,
-                    asegurando un ambiente transparente y competitivo para todas
-                    las partes.
+                    Facilitates the search and promotion of opportunities, ensuring a transparent and competitive environment for all parties.
                   </p>
                 </div>
               </motion.div>
@@ -95,10 +91,9 @@ export default function Home() {
                 transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
               >
                 <div>
-                  <h3>Reveal en Blockchain</h3>
+                  <h3>Reveal in Blockchain</h3>
                   <p>
-                    A traves de tecnología blockchain se hace el “reveal” de
-                    forma pública, transparente e inmutable.
+                    Through blockchain technology, the "reveal" is made public, transparent and immutable.
                   </p>
                 </div>
               </motion.div>
@@ -108,10 +103,9 @@ export default function Home() {
                 transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
               >
                 <div>
-                  <h3>Arbitraje</h3>
+                  <h3>Arbitrage</h3>
                   <p>
-                    En casos de disputas o reclamos. Integramos a Kleros, donde
-                    expertos toman decisiones imparciales
+                    In cases of disputes or claims. We integrate Kleros, where experts make impartial decisions
                   </p>
                 </div>
               </motion.div>
@@ -130,35 +124,35 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-          >Beneficios clave</motion.h2>
+          >Key Benefits</motion.h2>
           <div className={styles.card_container}>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              <h3>Mayor Seguridad y Transparencia</h3>
+              <h3>Increased Security and Transparency</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              <h3>Privacidad de las Propuestas</h3>
+              <h3>Privacy of Proposals</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              <h3>Verificabilidad y Auditoría</h3>
+              <h3>Verifiability and Auditability</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.4, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              <h3>Eficiencia y Ahorro de Costos</h3>
+              <h3>Efficiency and Cost Savings</h3>
             </motion.div>
           </div>
         </section>
@@ -176,14 +170,13 @@ export default function Home() {
               initial={{ opacity: 0, x: -250 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-            >Recibe las últimas novedades!</motion.h3>
+            >Get the latest news!</motion.h3>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
             >
-              Solo enviaremos contenido cada tanto, asegurandonos que aporta
-              valor.
+              We will only send content from time to time, making sure that it adds value.
             </motion.p>
           </div>
           <motion.span
