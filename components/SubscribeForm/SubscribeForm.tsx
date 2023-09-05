@@ -14,11 +14,11 @@ export default function SubscribeForm() {
     <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
       <input
         type="email"
-        placeholder="ejemplo@dominio.com"
+        placeholder="example@domain.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button type="submit">Suscribirse</button>
+      <button type="submit">subscribe</button>
     </form>
   );
 }

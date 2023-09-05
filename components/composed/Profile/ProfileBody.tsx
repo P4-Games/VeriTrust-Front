@@ -17,7 +17,7 @@ export const ProfileBody = ()=>{
     const [isWalletConnected, setIsConnected] = useState<boolean>(true);
     const [quotes, setQuotes] = useState<QuoteState[]>([]);
     const [sectionType, setSectionType] = useState<"offers" | "tenders">("offers"); // My offers or My tenders
-    const [description, setDescription] = useState<string>("Wallet no conectada");
+    const [description, setDescription] = useState<string>("Wallet not connected");
 
     useEffect(() => {
         setIsConnected(isConnected);
@@ -34,21 +34,21 @@ export const ProfileBody = ()=>{
     return (
         <>
             <section className={styles.profile_header}>
-                <h1>Mi Perfil - Ejemplo S.A</h1>
+                <h1>My Profile - Example Corp</h1>
                 <p>30-12345678-5 • <span>{description}</span></p>
             </section>
             <div className={styles.profile_actions}>
                 <Button
                     type="main"
-                    onClick={() => router.push("/crear-licitacion")}
+                    onClick={() => router.push("/create-tender")}
                 >
-                    <IconPlus/> Crear licitacion
+                    <IconPlus/> Create tender
                 </Button>
                 <Button
                     type="alt"
                     onClick={() => router.push("/create-profile")}
                 >
-                    <IconUser /> Crear mi perfil
+                    <IconUser /> Create profile
                 </Button>
             </div>
             <section 
@@ -56,10 +56,10 @@ export const ProfileBody = ()=>{
                 onClick={toggleSection}
             >
                     <div className={sectionType == "offers" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        Mis Ofertas
+                        My offers
                     </div>
                     <div className={sectionType == "tenders" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        Mis Licitaciones
+                        My tenders
                     </div>
             </section>
             {

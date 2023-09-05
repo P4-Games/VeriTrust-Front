@@ -20,7 +20,7 @@ interface FormProps {
 }
 
 export default function CreateProfile() {
-  const [option, setOption] = useState<string>("Sociedad Anónima");
+  const [option, setOption] = useState<string>("Corporation");
   const [formState, setFormState] = useState<FormProps>({
     name: "",
     provider: option,
@@ -57,17 +57,17 @@ export default function CreateProfile() {
       <Navbar />
       <main className={styles.profile}>
         <header className={styles.profile_header}>
-          <h1>Creá tu perfil</h1>
+          <h1>Create profile</h1>
           <p>
-            Para evitar repetir siempre los mismos datos, podes crear tu perfil
-            como oferente, para así simplificar la aplicación y búsqueda de
-            licitaciones.
+            To avoid repeating always the same data, you can create your profile
+            as a supplier, in order to simplify the application and the search
+            for tenders.
           </p>
         </header>
         <section className={styles.profile_body}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <h3 className={styles.label}>Tipo de proveedor:</h3>
+              <h3 className={styles.label}>Type of supplier:</h3>
               <Select
                 options={[
                   "Persona Humana",
@@ -92,15 +92,15 @@ export default function CreateProfile() {
               handleChange={handleChange}
               type="text"
               name="name"
-              label="Razon Social:"
-              placeholder="Ejemplo S.A"
+              label="Company name:"
+              placeholder="Example S.A"
             />
             <InputForm
               value={formState.cuit}
               handleChange={handleChange}
               type="number"
               name="cuit"
-              label="Numero de CUIT"
+              label="taxpayer ID number"
               placeholder="01-12345678-1"
             />
             <InputForm
@@ -108,20 +108,20 @@ export default function CreateProfile() {
               handleChange={handleChange}
               type="text"
               name="address"
-              label="Domicilio Legal (calle y nro, CP, localidad, partido, provincia, pais)"
-              placeholder="Ejemplo 1234, B7600 - Mar del Plata, Gral. Pueyrredón, Buenos Aires, Argentina"
+              label="Legal address (street and number, zip code, city, county, province, country)"
+              placeholder="Example 1234, B7600 - Mar del Plata, Gral. Pueyrredón, Buenos Aires, Argentina"
             />
             <DynamicInputForm
               dynamicInputs={formState.categories}
               onDynamicInputChange={handleDynamicInputChange}
               type="text"
               name="categories"
-              label="Rubro/s:"
-              placeholder="Escribe un rubro, Ej. Pinturas"
+              label="Categories:"
+              placeholder="Type a category, e.g. Paints"
             />
             <div className={styles.btn_submit}>
               <Button type="main">
-                <IconPlus /> Crear perfil
+                <IconPlus /> Create profile
               </Button>
             </div>
           </form>

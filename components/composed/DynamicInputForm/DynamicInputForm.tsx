@@ -64,10 +64,10 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
       </div>
       <div className={styles.btns_container}>
         <button onClick={addInput} type="button">
-          <IconPlus /> Agregar
+          <IconPlus /> Add field
         </button>
         <button onClick={removeLastInput} type="button">
-          <IconX /> Eliminar ultimo
+          <IconX /> Delete last
         </button>
       </div>
     </div>

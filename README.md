@@ -4,7 +4,7 @@
 
 > Licita con confianza, VeriTrust te respalda
 
-VeriTrust is a desktop platform for tenders and procurement processes that leverages web3 technology. With VeriTrust, organizations and small participants can participate in transparent and secure bidding processes, ensuring trust and accountability in the procurement process.
+VeriTrust is web platform for tender processes that leverages web3 technology. With VeriTrust, organizations and small participants can participate in transparent and secure bidding processes, ensuring trust and accountability in the tender process.
 
 [![Deployed Project](https://img.shields.io/badge/Visit%20the%20Project-VeriTrust-blue)](https://veritrust-front-qj44in647a-uc.a.run.app/)
 
