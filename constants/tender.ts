@@ -12,7 +12,7 @@ export type TenderItem = {
 export type Tender = {
     txid: string;
     name: string;
-    type: "Licitacion Pública" | "Licitacion Privada";
+    type: "Public tender" | "Private tender";
     opening_date: string;
     currency: string;
     scope: "Argentina" | null;
@@ -44,7 +44,7 @@ export type Tender = {
 export const DEFAULT_TENDER: Tender = {
     txid: "0x6957f607c4b9780a34ece29e98a17beb63933553daa8e2e4e57599147b485ab8",
     name: "",
-    type: "Licitacion Pública",
+    type: "Public tender",
     opening_date: "31/12/2023",
     currency: "ARS",
     scope: "Argentina",
@@ -112,37 +112,37 @@ export const DUMMY_TENDERS: Tender[] = [
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb63933553daa8e2e4e57599147b485ab8",
         name: "Adquisición de elementos de protección personal",
-        type: "Licitacion Pública",
+        type: "Public tender",
         opening_date: "03/08/2023 - 08:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb62933553daa8e2e4e57599147b485ab7",
         name: "Adquisición indumentaria textil",
-        type: "Licitacion Privada",
+        type: "Private tender",
         opening_date: "04/08/2023 - 10:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb61933553daa8e2e4e57599147b485ab6",
         name: "Adquisición de tornillos y accesorios",
-        type: "Licitacion Pública",
+        type: "Public tender",
         opening_date: "05/08/2023 - 12:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb63963553daa8e2e4e57599147b485ab5",
         name: "Adquisición de Medicamentos Gastrológicos",
-        type: "Licitacion Privada",
+        type: "Private tender",
         opening_date: "06/08/2023 - 14:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a24ece29e98a17beb63933553daa8e2e4e57599147b485ab4",
         name: "Adquisición de arena abrasiva",
-        type: "Licitacion Pública",
+        type: "Public tender",
         opening_date: "07/08/2023 - 16:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a31ece29e98a17beb63933553daa8e2e4e57599147b485ab3",
         name: "Cableado para equipo de rayos X",
-        type: "Licitacion Privada",
+        type: "Private tender",
         opening_date: "08/08/2023 - 18:00",
     })
 ];
