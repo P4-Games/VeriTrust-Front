@@ -6,11 +6,16 @@ import React, {
   FormEvent,
   useEffect,
 } from "react";
-import styles from "./CrearLicitacion.module.scss";
+import styles from "./CreateTender.module.scss";
 import Footer from "@/components/Footer/Footer";
 import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Button } from "@/components/Button/Button";
-import { IconPlus, IconX, IconChevronDown, IconWorld } from "@tabler/icons-react";
+import {
+  IconPlus,
+  IconX,
+  IconChevronDown,
+  IconWorld,
+} from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import SwitchForm from "@/components/SwitchForm/SwitchForm";
 import DynamicInputForm from "@/components/composed/DynamicInputForm/DynamicInputForm";
@@ -21,11 +26,11 @@ import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { AnimatePresence, motion } from "framer-motion";
 import { getEthereumPrice } from "@/utils/price";
 
-export default function CrearLicitacion(): JSX.Element {
+export default function CreateTender(): JSX.Element {
   const [formState, setFormState] = useState<Tender>({
     txid: "",
     name: "",
-    type: "Licitacion Pública",
+    type: "Public tender",
     opening_date: "",
     currency: "",
     scope: "Argentina",
@@ -65,8 +70,8 @@ export default function CrearLicitacion(): JSX.Element {
 
   const estimateCosts = () => {
     let totalCosts: number = 0;
-    totalCosts += 0.0001; // fees de red
-    totalCosts += 20 / ethPrice; // timbrados
+    totalCosts += 0.0006 * ethPrice; // fees de red
+    totalCosts += 20; // ethPrice; // timbrados
     return totalCosts;
   };
 
@@ -127,14 +132,14 @@ export default function CrearLicitacion(): JSX.Element {
       <section className={styles.breadcrumbs}>
         <Breadcrumb
           values={[
-            ["Licitaciones", "/marketplace"],
-            // ["Detalles de la licitación", "/tender/"],
+            ["Tenders", "/marketplace"],
+            // ["Tender details", "/tender/"],
           ]}
         />
       </section>
       <main className={styles.main}>
         <div className={styles.title}>
-          <h3>Crear Licitación</h3>
+          <h3>Create tender</h3>
         </div>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
           <InputForm
@@ -142,8 +147,8 @@ export default function CrearLicitacion(): JSX.Element {
             handleChange={handleChange}
             type="text"
             name="name"
-            label="Nombre del proceso:"
-            placeholder="Ej. Adquisición de ..."
+            label="Process name:"
+            placeholder="E.g. Acquisition of ..."
           />
           <div className={styles.form_input}>
             <InputForm
@@ -151,8 +156,8 @@ export default function CrearLicitacion(): JSX.Element {
               handleChange={handleChange}
               type="text"
               name="currency"
-              label="Moneda y alcance:"
-              placeholder="Pesos, Argentina"
+              label="Currency and scope"
+              placeholder="Usd, Argentina"
             />
           </div>
           <div className={styles.form_compound}>
@@ -160,13 +165,13 @@ export default function CrearLicitacion(): JSX.Element {
               name="requires_payment"
               checked={formState.requires_payment}
               handleChange={handleChange}
-              label="Requiere pago:"
+              label="Requires payment:"
             />
             <SwitchForm
               name="allows_extension"
               checked={formState.allows_extension}
               handleChange={handleChange}
-              label="Se acepta prórroga:"
+              label="Allows extension:"
             />
           </div>
           <div className={styles.form_input}>
@@ -175,8 +180,8 @@ export default function CrearLicitacion(): JSX.Element {
               onDynamicInputChange={handleDynamicInputChange}
               type="text"
               name="categories"
-              label="Rubro/s:"
-              placeholder="Escribe un rubro, Ej. Pinturas"
+              label="Categories:"
+              placeholder="Type a category, e.g. Paints"
             />
           </div>
           {/* <div className={styles.form_input}>
@@ -190,14 +195,14 @@ export default function CrearLicitacion(): JSX.Element {
             />
           </div> */}
           <div className={styles.form_input}>
-            <h4>Detalle de productos o servicios</h4>
+            <h4>Detail of products or services</h4>
             <div className={styles.table_list}>
               <div className={styles.table_listHeader}>
                 <h5>#</h5>
-                <h5>Objeto del gasto</h5>
-                <h5>Código del ítem</h5>
-                <h5>Descripción</h5>
-                <h5>Cantidad</h5>
+                <h5>Object of expenditure</h5>
+                <h5>Item code</h5>
+                <h5>Description</h5>
+                <h5>Quantity</h5>
               </div>
               <div className={styles.line}></div>
               {formState.items.map((item, index) => (
@@ -230,14 +235,14 @@ export default function CrearLicitacion(): JSX.Element {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                         >
-                          <h3>Información adicional</h3>
+                          <h3>Additional information</h3>
                           <p>{item.additionalInfo}</p>
-                          <h3>Luegar de entrega</h3>
+                          <h3>Place of delivery</h3>
                           <p>{item.deliveryPlace}</p>
-                          <h3>Fecha de entrega</h3>
+                          <h3>Delivery deadline</h3>
                           <p>{item.deliveryDeadline}</p>
                         </motion.section>
-                      </div>{" "}
+                      </div>
                     </AnimatePresence>
                   )}
                   <div className={styles.line}></div>
@@ -250,7 +255,7 @@ export default function CrearLicitacion(): JSX.Element {
               type="button"
               className={styles.table_button}
             >
-              <IconPlus /> Añadir producto o servicio
+              <IconPlus /> Add product or service
             </button>
           </div>
           <div className={styles.form_compound}>
@@ -259,50 +264,50 @@ export default function CrearLicitacion(): JSX.Element {
               value={formState.pliego}
               handleChange={handleChange}
               name="pliego"
-              label="Pliego de bases y condiciones generales"
+              label="General terms and conditions"
             />
             <InputForm
               type="file"
               value={formState.disposicionAprobatoria}
               handleChange={handleChange}
               name="disposicionAprobatoria"
-              label="Disposición Aprobatoria"
+              label="Approval Provision"
             />
           </div>
 
           <div className={styles.form_input}>
-            <h4>Requisitos mínimos de participación</h4>
+            <h4>Minimum participation requirements</h4>
             <InputForm
               value={formState.financialRequirements}
               handleChange={handleChange}
               name="financialRequirements"
-              label="1. Requisitos económicos y financieros"
-              placeholder="Descripción y tipo de documento"
+              label="1. Economic and financial requirements"
+              placeholder="Description and document type"
             />
             <InputForm
               value={formState.technicalRequirements}
               handleChange={handleChange}
               name="technicalRequirements"
-              label="2. Requisitos técnicos"
-              placeholder="Descripción y tipo de documento"
+              label="2. Technical requirements"
+              placeholder="Description and document type"
             />
             <InputForm
               value={formState.administrativeRequirements}
               handleChange={handleChange}
               name="administrativeRequirements"
-              label="3. Requisitos administrativos"
-              placeholder="Descripción y tipo de documento"
+              label="3. Administrative requirements"
+              placeholder="Description and document type"
             />
           </div>
           <div className={styles.form_input}>
-            <h4>Cláusulas particulares</h4>
+            <h4>Special clauses</h4>
             <div className={styles.form_compound}>
               <InputForm
                 value={formState.clause[0]}
                 handleChange={handleChange}
                 name="clause"
-                label="Documento, Numero GDE, Numero especial, Fecha vinculación"
-                placeholder="Ingresar los datos necesarios"
+                label="Document, Special Number, Linkage Date"
+                placeholder="Enter the required data"
               />
               <InputForm
                 type="file"
@@ -317,8 +322,8 @@ export default function CrearLicitacion(): JSX.Element {
               value={formState.warranty}
               handleChange={handleChange}
               name="warranty"
-              label="Garantías"
-              placeholder="Ingresar los datos necesarios, ej. garantía de impugnación a la preadjudicacion, cumplimiento, etc"
+              label="Warranties"
+              placeholder="Enter the necessary data, e.g., guarantee of pre-award challenge, compliance, etc."
             />
           </div>
           <div className={styles.form_input}>
@@ -327,23 +332,23 @@ export default function CrearLicitacion(): JSX.Element {
               onDynamicInputChange={handleDynamicInputChange}
               type="text"
               name="penalties"
-              label="Penalidades"
-              placeholder="Penalidad segun articulo, etc..."
+              label="Penalties"
+              placeholder="Penalty according to article, etc..."
             />
           </div>
           {/* Penalidades */}
           <div className={styles.form_input}>
-            <h4>Información adicional</h4>
+            <h4>Additional information</h4>
             <div className={styles.form_compound}>
               <InputForm
                 type="datetime-local"
                 value={formState.dates.inquiriesStart}
                 handleChange={handleDatesChange}
                 name="inquiriesStart"
-                label="Fecha y hora de consultas"
+                label="Date and time of inquiries"
               />
               <div className={styles.form_compoundGap}>
-                <p>Hasta</p>
+                <p>To</p>
               </div>
               <InputForm
                 type="datetime-local"
@@ -357,39 +362,39 @@ export default function CrearLicitacion(): JSX.Element {
               value={formState.dates.reveal}
               handleChange={handleDatesChange}
               name="reveal"
-              label="Fecha y hora de la apertura"
+              label="Date and time of reveal"
             />
             <div className={styles.form_compound}>
               <InputForm
                 value={formState.dates.contractStart}
                 handleChange={handleDatesChange}
                 name="contractStart"
-                label="Inicio del contrato"
-                placeholder="Ej. A partir del documento contractual"
+                label="Start of contract"
+                placeholder="E.g. From the contractual document"
               />
               <InputForm
                 value={formState.dates.contractDuration}
                 handleChange={handleDatesChange}
                 name="contractDuration"
-                label="Duracion del contrato"
-                placeholder="Ej. 3 meses"
+                label="Contract duration"
+                placeholder="E.g. 3 months"
               />
             </div>
           </div>
           <section className={styles.details_finalDetails}>
-            <h3>Detalles</h3>
+            <h3>Details</h3>
             <p>
               {/* Precio total: $ {getFormattedPrice()} {postData.currency}
               <br /> <br /> */}
-              <b>Costos:</b> <br />
-              Timbrado: $20 USD <br />
-              Fees de red: 0.0001 ETH
+              <b>Costs:</b> <br />
+              Stamping: $20 USDC <br />
+              Network fees: 0.0006 ETH
             </p>
-            <h3>Total estimado: {estimateCosts().toFixed(8)} ETH</h3>
+            <h3>Estimated total: {estimateCosts()} USDC</h3>
           </section>
           <div className={styles.btn_submit}>
             <Button type="main">
-              <IconPlus /> Crear licitacion
+              <IconPlus /> Create tender
             </Button>
           </div>
         </form>
