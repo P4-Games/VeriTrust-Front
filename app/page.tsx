@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import styles from "./page.module.scss";
 import { logo, marketplace, mouse, envelope } from "@/assets";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <main className={styles.main}>
-        <Loading/>
+        <Loading />
         <header className={styles.logo}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         </header>
@@ -25,45 +25,64 @@ export default function Home() {
             <motion.h2
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-            >Licita con confianza, VeriTrust te respalda</motion.h2>
+              transition={{
+                duration: 0.1,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
+            >
+              Procure with confidence, VeriTrust backs you up
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.3,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              Reinventamos el sistema de licitaciones brindando mayor seguridad,
-              transparencia y confianza en los procesos de contratación.
+              We transformed the tender system, providing greater security,
+              transparency and confidence in the contracting process.
             </motion.p>
           </div>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.5, ease: cubicBezier(0.6,0.6,0,0.1) }}
+            transition={{
+              duration: 0.1,
+              delay: 0.5,
+              ease: cubicBezier(0.6, 0.6, 0, 0.1),
+            }}
           >
             <Button className={styles.button} redirectTo="/marketplace">
-              Ingresar a la app
+              Enter the App
             </Button>
           </motion.div>
-          <SeeMore/>
+          <SeeMore />
         </section>
         <section className={styles.second_section}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-          >Características</motion.h2>
+            transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
+          >
+            Features
+          </motion.h2>
           <div className={styles.second_section_body}>
-            <motion.div 
+            <motion.div
               className={styles.marketplace}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.1,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
               <h3>Marketplace</h3>
               <p>
-                Facilita la búsqueda y promoción de oportunidades, asegurando un
-                ambiente transparente y competitivo para todas las partes.
+                Facilitates the search and promotion of opportunities, ensuring
+                a transparent and competitive environment for all parties.
               </p>
               <div className={styles.marketplace_img}>
                 <Image
@@ -78,40 +97,52 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
+                transition={{
+                  duration: 0.1,
+                  delay: 0.2,
+                  ease: cubicBezier(0.6, 0.6, 0, 0.1),
+                }}
               >
                 <div>
-                  <h3>Privacidad de las propuestas</h3>
+                  <h3>Proposal privacy</h3>
                   <p>
-                    Facilita la búsqueda y promoción de oportunidades,
-                    asegurando un ambiente transparente y competitivo para todas
-                    las partes.
+                    Through zero-knowledge proofs, the privacy of proposals
+                    submitted by bidders is guaranteed until the appropriate
+                    time.
                   </p>
                 </div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
+                transition={{
+                  duration: 0.1,
+                  delay: 0.3,
+                  ease: cubicBezier(0.6, 0.6, 0, 0.1),
+                }}
               >
                 <div>
-                  <h3>Reveal en Blockchain</h3>
+                  <h3>Reveal on Blockchain</h3>
                   <p>
-                    A traves de tecnología blockchain se hace el “reveal” de
-                    forma pública, transparente e inmutable.
+                    Through blockchain technology the reveal is made public,
+                    transparent and immutable.
                   </p>
                 </div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
+                transition={{
+                  duration: 0.1,
+                  delay: 0.3,
+                  ease: cubicBezier(0.6, 0.6, 0, 0.1),
+                }}
               >
                 <div>
-                  <h3>Arbitraje</h3>
+                  <h3>Arbitration</h3>
                   <p>
-                    En casos de disputas o reclamos. Integramos a Kleros, donde
-                    expertos toman decisiones imparciales
+                    In cases of disputes or claims. We integrate Kleros, where
+                    experts make impartial decisions.
                   </p>
                 </div>
               </motion.div>
@@ -122,52 +153,80 @@ export default function Home() {
           <motion.p
             initial={{ x: 0 }}
             whileInView={{ x: -100 }}
-            transition={{ duration: 0.3, delay: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-          >{Array(repetitions).fill(pattern).join("")}</motion.p>
+            transition={{
+              duration: 0.3,
+              delay: 0.1,
+              ease: cubicBezier(0.6, 0.6, 0, 0.1),
+            }}
+          >
+            {Array(repetitions).fill(pattern).join("")}
+          </motion.p>
         </div>
         <section className={styles.third_section}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-          >Beneficios clave</motion.h2>
+            transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
+          >
+            Key Benefits
+          </motion.h2>
           <div className={styles.card_container}>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.1,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              <h3>Mayor Seguridad y Transparencia</h3>
+              <h3>Increased Security and Transparency</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.2,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              <h3>Privacidad de las Propuestas</h3>
+              <h3>Proposal Privacy</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.3,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              <h3>Verificabilidad y Auditoría</h3>
+              <h3>Verifiability and Auditability</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.4, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.4,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              <h3>Eficiencia y Ahorro de Costos</h3>
+              <h3>Efficiency and Cost Savings</h3>
             </motion.div>
           </div>
         </section>
         <section className={styles.newsletter}>
-          <motion.div 
+          <motion.div
             className={styles.envelope_img}
             initial={{ opacity: 0, x: 250 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.1, delay: 0.5, ease: cubicBezier(0.6,0.6,0,0.1) }}
+            transition={{
+              duration: 0.1,
+              delay: 0.5,
+              ease: cubicBezier(0.6, 0.6, 0, 0.1),
+            }}
           >
             <Image src={envelope} alt="envelop image" />
           </motion.div>
@@ -175,21 +234,34 @@ export default function Home() {
             <motion.h3
               initial={{ opacity: 0, x: -250 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.1, ease: cubicBezier(0.6,0.6,0,0.1) }}
-            >Recibe las últimas novedades!</motion.h3>
+              transition={{
+                duration: 0.1,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
+            >
+              Get the latest news!
+            </motion.h3>
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.1, delay: 0.2, ease: cubicBezier(0.6,0.6,0,0.1) }}
+              transition={{
+                duration: 0.1,
+                delay: 0.2,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
             >
-              Solo enviaremos contenido cada tanto, asegurandonos que aporta
-              valor.
+              We will only send content from time to time, making sure it adds
+              value.
             </motion.p>
           </div>
           <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.3, ease: cubicBezier(0.6,0.6,0,0.1) }}
+            transition={{
+              duration: 0.1,
+              delay: 0.3,
+              ease: cubicBezier(0.6, 0.6, 0, 0.1),
+            }}
           >
             <SubscribeForm />
           </motion.span>

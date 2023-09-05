@@ -224,6 +224,7 @@
       position: absolute;
       top: 3rem;
       right: 3rem;
+      z-index: 0;
       @media only screen and (max-width: 768px) {
         right: -95px;
         opacity: 0.3;
