@@ -146,3 +146,25 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .main {
+    margin: 0 $spacing0_5;
+    form {
+      .form_input {
+        .table_list {
+          width: 100%;
+          overflow: scroll;
+        }
+      }
+      .form_compound{
+        flex-direction: column;
+        &Gap {
+          p {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
