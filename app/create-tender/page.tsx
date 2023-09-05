@@ -37,7 +37,7 @@ export default function CreateTender(): JSX.Element {
     requires_payment: false,
     allows_extension: false,
     categories: [""],
-    quoteType: "Todos los items",
+    quoteType: "All items",
     additionalInfo: [], //Title and value of the custom input
     items: [],
     pliego: "", //IPFS Hash (PDF) - Pliego
