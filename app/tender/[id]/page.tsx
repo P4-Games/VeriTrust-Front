@@ -20,8 +20,8 @@ export default async function Page ({ params }: { params: { id: string } }) {
                     <section className={styles.details}>
                         <Breadcrumb 
                             values={[
-                                ["Licitaciones", "/marketplace"],
-                                ["Detalles de la licitación", "/tender/" + params?.id],
+                                ["Tenders", "/marketplace"],
+                                ["Tender details", "/tender/" + params?.id],
                             ]}
                         />
                         <section className={styles.details_head}>
@@ -32,7 +32,7 @@ export default async function Page ({ params }: { params: { id: string } }) {
                                 type='main'
                                 className={styles.details_headButton}
                             >
-                                Ofertar <IconPremiumRights />
+                                Bid <IconPremiumRights />
                             </Button>
                         </section>
                         <TenderBody tender={postData} />

@@ -5,12 +5,12 @@ import Link from "next/link";
 interface TimelineProps {
     total: number;
     current: number;
-    state: "Pendiente" | "Pendiente de reveal" | "Pendiente de elegir ganador" | "Adjudicado" | "Perdida";
+    status: "Pending" | "Pending reveal" | "Pending winner selection" | "Granted" | "Forfeited";
     stageText: [string, string][];
     txid: string;
 }
 
-export const Timeline = ({ total, current, state, stageText, txid }: TimelineProps)=>{
+export const Timeline = ({ total, current, status, stageText, txid }: TimelineProps)=>{
     const allTexts: string[] = [
         "Publicación",
         "Envío de oferta",
@@ -22,7 +22,7 @@ export const Timeline = ({ total, current, state, stageText, txid }: TimelinePro
         if ((item + 2) > current ) {
             res = styles.timeline_itemDisabled;
         }else{
-            if(state == "Adjudicado"){
+            if(status == "Granted"){
                 res = styles.timeline_itemSuccess;
             }
         }
@@ -35,11 +35,11 @@ export const Timeline = ({ total, current, state, stageText, txid }: TimelinePro
         if(item == total - 1){
             res = styles.timeline_circleActive;
             
-            if (state == "Adjudicado") {
+            if (status == "Granted") {
                 res = styles.timeline_circleActiveSuccess;
             }
         }else{
-            if (state == "Adjudicado") {
+            if (status == "Granted") {
                 res = styles.timeline_circleSuccess;
             }
         }
@@ -49,7 +49,7 @@ export const Timeline = ({ total, current, state, stageText, txid }: TimelinePro
     const getTimelineClassName = (): string => {
         let res = styles.timeline;
 
-        if(state == "Adjudicado"){
+        if(status == "Granted"){
             res = styles.timelineSuccess;
         }
 

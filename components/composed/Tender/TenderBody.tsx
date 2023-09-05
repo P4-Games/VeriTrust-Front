@@ -171,7 +171,7 @@ export const TenderBody = ({tender}: TenderBodyProps) => {
                 type='main'
                 className={styles.details_bodyButton}
             >
-                Ofertar <IconPremiumRights />
+                Bid <IconPremiumRights />
             </Button>
         </section>
     )
