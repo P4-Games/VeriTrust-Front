@@ -70,7 +70,7 @@ export default function CreateProfile() {
               <h3 className={styles.label}>Type of supplier:</h3>
               <Select
                 options={[
-                  "Persona Humana",
+                  /*"Persona Humana",
                   "Sociedades de hecho",
                   "Cooperativas",
                   "Unión Transitoria de Empresas",
@@ -80,7 +80,17 @@ export default function CreateProfile() {
                   "Otras Formas Societarias (Ej: Colectiva, en Com. Simp., S.C.A)",
                   "Organismo Público",
                   "Persona humana extranjera no residente en el país",
-                  "Persona jurídica extranjera sin sucursal en el país",
+                  "Persona jurídica extranjera sin sucursal en el país",*/
+                  //US Entities
+                  "Corporation",
+                  "Limited Liability Company",
+                  "General Partnership",
+                  "Limited Partnership",
+                  "Limited Liability Partnership",
+                  "Sole Proprietorship",
+                  "Nonprofit Corporation",
+                  "Cooperative",
+                  "Other",
                 ]}
                 option={option}
                 setOption={setOption}

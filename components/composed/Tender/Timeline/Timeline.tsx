@@ -12,10 +12,10 @@ interface TimelineProps {
 
 export const Timeline = ({ total, current, status, stageText, txid }: TimelineProps)=>{
     const allTexts: string[] = [
-        "Publicación",
-        "Envío de oferta",
-        "Apertura/Reveal",
-        "Resultado"
+        "Tender created",
+        "Bid Submission",
+        "Opening/Reveal",
+        "Results"
     ]
     const getItemClassName = (item: number): string => {
         let res: string = styles.timeline_item;

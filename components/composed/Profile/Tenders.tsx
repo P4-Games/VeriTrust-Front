@@ -71,7 +71,7 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                     }
                   >
                     {item.status === "Pending winner selection"
-                      ? "Select offer"
+                      ? "Select"
                       : "Details"}
                     <IconChevronDown />
                   </Button>
@@ -86,8 +86,8 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                     >
                       <h3>
                         {item.status === "Pending winner selection"
-                          ? "Elegir ganador:"
-                          : "Detalles:"}
+                          ? "Select winner:"
+                          : "Details:"}
                       </h3>
                       {item.status === "Pending winner selection" ? (
                         <section className={styles.profile_tableWinner}>

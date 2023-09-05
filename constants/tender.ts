@@ -19,7 +19,7 @@ export type Tender = {
     requires_payment: boolean;
     allows_extension: boolean;
     categories: string[];
-    quoteType: "Todos los items" | "Todos los items, o algunos";
+    quoteType: "All items" | "All items, or some of them";
     additionalInfo: [string, string][]; //Title and value of the custom input
     items: TenderItem[];
     pliego: string; //IPFS Hash (PDF) - Pliego
@@ -51,54 +51,54 @@ export const DEFAULT_TENDER: Tender = {
     requires_payment: false,
     allows_extension: false,
     categories: [
-        "Textil",
-        "Proteccion Personal",
+        "Textile",
+        "Personal Protection",
     ],
-    quoteType: "Todos los items",
+    quoteType: "All items",
     additionalInfo: [
-        ["Nombre de la empresa", "ABC"],
+        ["Company name", "ABC"],
     ],
     items: [
         {
             id: 1,
             object: "2.2.2",
             code: "2.2.2-1629.210",
-            description: "GUANTES; PROTECCION: MOTEADO ANTIDESLIZANTE, MATERIAL: ALGODON Y PVC , TIPO: PALMA ANTIDESLIZANTE, INTERIOR: ALGODON, LARGO: STANDARD, CIERRE: SIN, MATERIAL INTERNO: ALGODON",
+            description: "GLOVES; PROTECTION: ANTI-SLIP MOTIF, MATERIAL: COTTON AND PVC, TYPE: ANTI-SLIP PALM, INTERIOR: COTTON, LENGTH: STANDARD, CLOSURE: NONE, INTERNAL MATERIAL: COTTON",
             quantity: 800,
-            additionalInfo: "Talle: 10",
-            deliveryDeadline: "3 meses",
+            additionalInfo: "Size: 10",
+            deliveryDeadline: "3 months",
             deliveryPlace: "Constitucion 1234, CABA",
         },
         {
             id: 2, 
             object: "2.2.2",
             code: "2.2.2-1629.283",
-            description: "GUANTES; PROTECCION: P/TAREAS GENERALES, MATERIAL: CUERO VAQUETA, TIPO: 5 DEDOS, LARGO: HASTA MUÑECA, CIERRE: SIN, MATERIAL INTERNO: SIN",
+            description: "GLOVES; PROTECTION: FOR GENERAL TASKS, MATERIAL: COWHIDE, TYPE: 5 FINGERS, LENGTH: UP TO WRIST, CLOSURE: NONE, INTERNAL MATERIAL: NONE",
             quantity: 150,
-            additionalInfo: "Talle: 11",
-            deliveryDeadline: "3 meses",
+            additionalInfo: "Size: 11",
+            deliveryDeadline: "3 months",
             deliveryPlace: "Constitucion 1233, CABA",
         }
     ],
     pliego: "aaa123",
     disposicionAprobatoria: "aaa123",
-    financialRequirements: "Descripción y tipo de documento",
-    technicalRequirements: "Descripción y tipo de documento",
-    administrativeRequirements: "Descripción y tipo de documento",
-    clause: ["Ingresar los datos necesarios", "aaa123"],
-    warranty: "Ingresar los datos necesarios, ej. garantía de impugnación a la preadjudicacion, cumplimiento, etc",
+    financialRequirements: "Description and type of document",
+    technicalRequirements: "Description and type of document",
+    administrativeRequirements: "Description and type of document",
+    clause: ["Enter the necessary data", "aaa123"],
+    warranty: "Enter the necessary data, e.g. guarantee of challenge to pre-award, compliance, etc.",
     penalties: [
-        "DE ACUERDO A LOS ARTÍCULOS 102 AL 105 DEL DECRETO 1030/2016"
+        "ACCORDING TO ARTICLES 102 TO 105 OF DECREE 1030/2016"
     ],
     annexes: [
-        ["Nombre/Tipo/Descripción del anexo", "aaa212"]
+        ["Name/Type/Description of the annex", "aaa212"]
     ],
     dates: {
         inquiriesStart: "20/11/2023 - 15:00",
         inquiriesEnd: "20/11/2023 - 15:00",
         reveal: "20/11/2023 - 15:00",
-        contractStart: "A partir del documento contractual",
-        contractDuration: "3 meses",
+        contractStart: "From the contractual document",
+        contractDuration: "3 months",
     },
 };
 
@@ -111,38 +111,38 @@ const getTender = (extraData: Partial<Tender> = {}): Tender => {
 export const DUMMY_TENDERS: Tender[] = [
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb63933553daa8e2e4e57599147b485ab8",
-        name: "Adquisición de elementos de protección personal",
+        name: "Acquisition of personal protective equipment",
         type: "Public tender",
         opening_date: "03/08/2023 - 08:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb62933553daa8e2e4e57599147b485ab7",
-        name: "Adquisición indumentaria textil",
+        name: "Acquisition of textile clothing",
         type: "Private tender",
         opening_date: "04/08/2023 - 10:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb61933553daa8e2e4e57599147b485ab6",
-        name: "Adquisición de tornillos y accesorios",
+        name: "Acquisition of screws and accessories",
         type: "Public tender",
         opening_date: "05/08/2023 - 12:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a34ece29e98a17beb63963553daa8e2e4e57599147b485ab5",
-        name: "Adquisición de Medicamentos Gastrológicos",
+        name: "Acquisition of Gastrological Medicines",
         type: "Private tender",
         opening_date: "06/08/2023 - 14:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a24ece29e98a17beb63933553daa8e2e4e57599147b485ab4",
-        name: "Adquisición de arena abrasiva",
+        name: "Acquisition of abrasive sand",
         type: "Public tender",
         opening_date: "07/08/2023 - 16:00",
     }),
     getTender({
         txid: "0x6957f607c4b9780a31ece29e98a17beb63933553daa8e2e4e57599147b485ab3",
-        name: "Cableado para equipo de rayos X",
+        name: "Wiring for X-ray equipment",
         type: "Private tender",
         opening_date: "08/08/2023 - 18:00",
-    })
+    }),
 ];

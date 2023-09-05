@@ -61,12 +61,12 @@ export function ConnectDrawer({
               </section>
               <section className={styles.drawer_download}>
                 <a href="https://metamask.io/download.html" target="_blank">
-                  No tienes billetera? Descargue Metamask haciendo click acá
+                  Don&apos;t have a wallet? Download Metamask by clicking here
                   <IconDownload />
                 </a>
               </section>
               <button className={styles.drawer_close} onClick={toggleModal}>
-                <IconArrowLeft /> Cerrar
+                <IconArrowLeft /> Close
               </button>
 
             </motion.div>

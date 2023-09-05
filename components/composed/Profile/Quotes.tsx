@@ -82,11 +82,11 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                     >
-                      <h3>Detalles: </h3>
+                      <h3>Details: </h3>
                       {item.status == "Pending reveal" ? (
                         <section className={styles.profile_tableRowReveal}>
                           <div className={styles.profile_tableRowRevealInput}>
-                            Enviar tu URL para revelar la oferta
+                            Submit your URL to reveal the offer
                             <Input
                               setValue={(url: string) =>
                                 setIndividualUrl(item.txid, url)
@@ -105,7 +105,7 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                               );
                             }}
                           >
-                            Revelar
+                            Reveal
                           </Button>
                         </section>
                       ) : null}
