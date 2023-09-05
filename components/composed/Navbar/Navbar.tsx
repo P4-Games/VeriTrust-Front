@@ -43,7 +43,7 @@ export const Navbar = (): JSX.Element => {
                                 className={styles.navbar_menuClose}
                                 onClick={toggleMenu}
                             >
-                                <IconX /> Cerrar menu
+                                <IconX /> Close menu
                             </Button>
                         </motion.section>
                     ) : null
