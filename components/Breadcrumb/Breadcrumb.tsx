@@ -10,7 +10,7 @@ export const Breadcrumb = ({ values }: BreadcrumbProps) => {
         <div className={styles.breadcrumb}>
             {values.map((value, index) => {
                 return (
-                    <>
+                    <React.Fragment key={index}>
                         <Link 
                             key={index}
                             href={value[1]}
@@ -19,7 +19,7 @@ export const Breadcrumb = ({ values }: BreadcrumbProps) => {
                             {value[0]}
                         </Link>
                         {index < values.length - 1 && <span className={styles.breadcrumb_separator}>{"/"}</span>}
-                    </>
+                    </React.Fragment>
                 );
             })}
         </div>

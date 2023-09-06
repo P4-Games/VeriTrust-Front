@@ -8,6 +8,7 @@ import { Button } from "../../Button/Button";
 import { Connect } from "../../ConnectWallet/Connect";
 import { IconMenu, IconMenu2, IconX } from "@tabler/icons-react";
 import { AnimatePresence, cubicBezier, motion } from "framer-motion";
+import { Web3Button } from "@web3modal/react";
 
 export const Navbar = (): JSX.Element => {
     const [openMenu, setOpenMenu] = React.useState<boolean>(false);
@@ -37,7 +38,8 @@ export const Navbar = (): JSX.Element => {
                                     >{link[0]}</Button>
                                 ))
                             }
-                            <Connect />
+                            {/*<Connect />*/}
+                            <Web3Button />
                             <Button
                                 type="link"
                                 className={styles.navbar_menuClose}
@@ -61,7 +63,8 @@ export const Navbar = (): JSX.Element => {
                         >{link[0]}</Button>
                     ))
                 }
-                <Connect />
+                {/*<Connect />*/}
+                <Web3Button />
             </section>
         </nav>
     )

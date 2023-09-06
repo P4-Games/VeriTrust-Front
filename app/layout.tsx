@@ -1,5 +1,7 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './globals.css'
 import localFont from 'next/font/local'
+import Providers from '@/providers/Providers';
 
 //Uso en el css: var(--font-satoshi)
 export const SATOSHI = localFont({
@@ -25,10 +27,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={
-        SATOSHI.variable + " " + TASA_EXPLORER.variable
-      }>{children}</body>
-    </html>
+      <html lang="es">
+        <body className={
+          SATOSHI.variable + " " + TASA_EXPLORER.variable
+        }>
+          <Providers>
+            {children}
+          </Providers>
+          </body>
+      </html>
   )
 }

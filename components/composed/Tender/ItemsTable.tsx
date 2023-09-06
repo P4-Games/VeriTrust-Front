@@ -1,3 +1,4 @@
+'use client';
 import styles from "./Table.module.scss";
 
 import { TenderItem } from "@/constants/tender";
@@ -27,10 +28,9 @@ export const ItemsTable = ({
       </section>
       <section className={styles.table_body}>
         {items.map((item, index) => (
-          <>
+          <React.Fragment key={index}>
             <TableItem
               item={item}
-              key={index}
               pricePerUnit={allQuotes[item.id]}
               setPricePerUnit={(value: number) => {
                 if (!setAllQuotes) return;
@@ -39,7 +39,7 @@ export const ItemsTable = ({
                 setAllQuotes(newAllQuotes);
               }}
             />
-          </>
+          </React.Fragment>
         ))}
       </section>
     </section>
