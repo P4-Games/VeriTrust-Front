@@ -1,0 +1,131 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_deployFee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bidFee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_chainlinkAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "contract Veritrust",
+        "name": "contractAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "ContractDeployed",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "bidFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "deployFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_ipfsUrl",
+        "type": "string"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_commitDeadline",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint128",
+        "name": "_revealDeadline",
+        "type": "uint128"
+      },
+      {
+        "internalType": "uint256",
+        "name": "warrantyAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "deployVeritrust",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getContracts",
+    "outputs": [
+      {
+        "internalType": "contract Veritrust[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getLatestData",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "",
+        "type": "int256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
+  }
+]

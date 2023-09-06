@@ -25,6 +25,9 @@ import Overlay from "@/components/Overlay/Overlay";
 import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { AnimatePresence, motion } from "framer-motion";
 import { getEthereumPrice } from "@/utils/price";
+import { useContractWrite } from "wagmi";
+import contractABI from "../../constants/contractABI.json";
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function CreateTender(): JSX.Element {
   const [formState, setFormState] = useState<Tender>({
@@ -61,6 +64,50 @@ export default function CreateTender(): JSX.Element {
   const [showFormModal, setShowFormModal] = useState(false);
   const [showTableRow, setShowTableRow] = useState(-1);
   const [ethPrice, setEthPrice] = useState<number>(0);
+  const [ipfsHash, setIpfsHash] = useState<string>("");
+  const veritrustFactoryAddressGoerli =
+    "0x3Cf98c0076e0bb56d10Bb03B90f33E7171d1DBfa";
+
+  const {
+    // data,
+    isLoading,
+    // isSuccess,
+    write: deployContract,
+  } = useContractWrite({
+    address: veritrustFactoryAddressGoerli,
+    abi: contractABI,
+    functionName: "deployVeritrust",
+    args: [
+      formState.name,
+      ipfsHash,
+      //_commitDeadline
+      //_revealDeadline
+      //warrantyAmount
+    ],
+  });
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    fetch("/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formState),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data.result.IpfsHash);
+        setIpfsHash(data.result.IpfsHash);
+        deployContract();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    console.log(formState);
+  };
 
   useEffect(() => {
     getEthereumPrice().then((price) => {
@@ -97,11 +144,6 @@ export default function CreateTender(): JSX.Element {
       ...formState,
       [name]: dynamicInputs,
     });
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(formState);
   };
 
   const handleDynamicFormSubmit = (formData: TenderItem) => {
