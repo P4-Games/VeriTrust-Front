@@ -106,9 +106,7 @@ export default function Home() {
                 <div>
                   <h3>Proposal privacy</h3>
                   <p>
-                    Through zero-knowledge proofs, the privacy of proposals
-                    submitted by bidders is guaranteed until the appropriate
-                    time.
+                  During the bidding phase, only one hash is sent with the bid. Then there is a reveal phase where the hash is compared with the real information, and it is verified that it is the correct information.
                   </p>
                 </div>
               </motion.div>
