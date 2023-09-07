@@ -1,0 +1,136 @@
+@import "../../../../styles/variables.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  .form_input {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    label {
+      font-size: 1.25rem;
+    }
+    .table_button {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing0_5;
+      padding: 0.75rem 2rem;
+      border-radius: $radius;
+      cursor: pointer;
+      background-color: $background-grey;
+      width: fit-content;
+      border: none;
+      font-family: $font;
+      font-size: 1rem;
+      font-weight: 700;
+      &:hover {
+        background-color: rgba($text, 0.2);
+        transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
+      }
+    }
+    .table_list {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: auto auto auto 1fr auto auto auto;
+      .expanded_row {
+        grid-column: span 7;
+        display: flex;
+        // padding: $spacing;
+        h3 {
+          font-size: 1rem;
+          color: $text;
+          margin-bottom: 10px;
+        }
+        p {
+          margin-bottom: $spacing0_5;
+        }
+      }
+      .line {
+        border-bottom: 1pt solid $placeholder;
+        grid-column: span 7;
+      }
+      &Header {
+        display: contents;
+        h5 {
+          font-weight: 500;
+          font-family: $font;
+          font-size: 1.25rem;
+          padding: 0.5rem 0;
+        }
+      }
+      &Row {
+        display: contents;
+        .description {
+          justify-content: flex-start;
+        }
+        &Btn {
+          cursor: pointer;
+          padding: 5px;
+          background-color: $background;
+          color: $text;
+          border: none;
+          border-radius: $radiusOuter;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &:hover {
+            background-color: $background-grey;
+            transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
+          }
+        }
+        p {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          color: $text;
+          font-family: $font;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  .form_compound {
+    display: flex;
+    gap: 2rem;
+    &Gap {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      p {
+        padding: 1rem 0;
+        font-size: 1.25rem;
+      }
+    }
+  }
+  .btn_submit {
+    margin-bottom: 3rem;
+    button {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .form {
+    .form_input {
+      .table_list {
+        width: 100%;
+        overflow: scroll;
+      }
+    }
+    .form_compound {
+      flex-direction: column;
+      &Gap {
+        p {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
