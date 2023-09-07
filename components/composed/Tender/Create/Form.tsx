@@ -1,34 +1,23 @@
 'use client';
 "use client";
 import React, {
-  useState,
-  ChangeEvent,
-  ChangeEventHandler,
-  FormEvent,
-  useEffect,
+  useState, FormEvent,
+  useEffect
 } from "react";
 import styles from "../../../../app/create-tender/CreateTender.module.scss";
-import Footer from "@/components/Footer/Footer";
-import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Button } from "@/components/Button/Button";
 import {
   IconPlus,
   IconX,
-  IconChevronDown,
-  IconWorld,
+  IconChevronDown
 } from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import SwitchForm from "@/components/SwitchForm/SwitchForm";
 import DynamicInputForm from "@/components/composed/DynamicInputForm/DynamicInputForm";
-import DynamicFormModal from "@/components/composed/DynamicFormModal/DynamicFormModal";
-import { TenderItem, Tender } from "@/constants/tender";
-import Overlay from "@/components/Overlay/Overlay";
-import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
+import { Tender } from "@/constants/tender";
 import { AnimatePresence, motion } from "framer-motion";
-import { getEthereumPrice } from "@/utils/price";
 import { useContractWrite } from "wagmi";
-import contractABI from "@/constants/contractABI.json";
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { contractABIGoerli, veritrustFactoryAddressGoerli } from "@/constants/factory";
 
 interface FormProps{
     formState: Tender;
@@ -54,11 +43,9 @@ export const Form = ({
 }: FormProps) => {
 
     const [ipfsHash, setIpfsHash] = useState<string>("");
-    const veritrustFactoryAddressGoerli =
-    "0x3Cf98c0076e0bb56d10Bb03B90f33E7171d1DBfa";
     const [_commitDeadline, setCommitDeadline] = useState<number>(new Date().getTime() + 1000 * 60 * 60 * 24 * 7);
     const [_revealDeadline, setRevealDeadline] = useState<number>(new Date().getTime() + 1000 * 60 * 60 * 24 * 8);
-    const [warrantyAmount, setWarrantyAmount] = useState<number>(1);
+    const [warrantyAmount, setWarrantyAmount] = useState(BigInt("10000000000000000"));
 
     const {
         // data,
@@ -67,7 +54,7 @@ export const Form = ({
         write: deployContract,
     } = useContractWrite({
         address: veritrustFactoryAddressGoerli,
-        abi: contractABI,
+        abi: contractABIGoerli,
         functionName: "deployVeritrust",
             args: [
                 formState.name,
@@ -76,6 +63,7 @@ export const Form = ({
                 _revealDeadline,
                 warrantyAmount,
             ],
+            value: warrantyAmount,
     });
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -91,8 +79,7 @@ export const Form = ({
             .then((response) => response.json())
             .then((data) => {
                 console.log("Success:", data.result.IpfsHash);
-                setIpfsHash(data.result.IpfsHash);
-                deployContract();
+                setIpfsHash(data.result.IpfsHash)
             })
             .catch((error) => {
             console.error("Error:", error);
@@ -101,6 +88,13 @@ export const Form = ({
         console.log(formState);
         };
 
+    useEffect(() => {
+        if (ipfsHash !== "") {
+            deployContract();
+            console.log("deploying contract");
+        }
+    }, [ipfsHash]);
+    
     return (
         <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
           <InputForm

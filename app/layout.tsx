@@ -1,7 +1,9 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import './globals.css'
-import localFont from 'next/font/local'
+import './globals.css';
+import 'react-loading-skeleton/dist/skeleton.css';
+
+import localFont from 'next/font/local';
 import Providers from '@/providers/Providers';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 //Uso en el css: var(--font-satoshi)
 export const SATOSHI = localFont({
@@ -32,7 +34,9 @@ export default function RootLayout({
           SATOSHI.variable + " " + TASA_EXPLORER.variable
         }>
           <Providers>
-            {children}
+            <SkeletonTheme baseColor="#f9f9f980" highlightColor="#0066ff20">
+              {children}
+            </SkeletonTheme>
           </Providers>
           </body>
       </html>

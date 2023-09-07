@@ -49,11 +49,24 @@
             background-color: $background2;
             border-radius: $radiusOuter;
             justify-content: space-between;
-
+            &Skeleton{
+                @extend .marketplace_listItem;
+                height: 105px;
+                padding: 0 $spacing;
+                align-items: center;
+            }
             &TX{
                 text-decoration: underline;
                 color: $text;
+                font-family: $font;
+                font-size: 1rem;
+                padding: 0;
+                width: fit-content;
+                border: none;
+                background-color: transparent;
+                outline: none;
                 opacity: 0.5;
+                cursor: pointer;
             }
 
             p{

@@ -5,8 +5,7 @@ import styles from "./Navbar.module.scss";
 import { Logo } from "../../Logo/Logo";
 import { NAV_LINKS } from "@/constants/links";
 import { Button } from "../../Button/Button";
-import { Connect } from "../../ConnectWallet/Connect";
-import { IconMenu, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 import { AnimatePresence, cubicBezier, motion } from "framer-motion";
 import { Web3Button } from "@web3modal/react";
 
