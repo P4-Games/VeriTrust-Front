@@ -32,6 +32,8 @@
       }
     }
     .dynamic_form {
+      display: flex;
+      flex-direction: column;
       gap: 1.75rem;
       .form_section {
         display: flex;
