@@ -8,6 +8,7 @@ import { Button } from "@/components/Button/Button";
 import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
+import { DetectLanguage } from "@/components/Lang/DetectLanguage";
 
 export default function Home() {
   const pattern = " • VeriTrust";
@@ -17,6 +18,7 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <Loading />
+        <DetectLanguage />
         <header className={styles.logo}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         </header>
