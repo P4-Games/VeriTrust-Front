@@ -68,6 +68,7 @@ export const CreateTenderForm = () => {
   });
 
   const [ipfsHash, setIpfsHash] = useState<string>("");
+
   const [_commitDeadline, setCommitDeadline] = useState<number>(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 7
   );
@@ -79,10 +80,6 @@ export const CreateTenderForm = () => {
   );
   const [showFormModal, setShowFormModal] = useState(false);
   const [showTableRow, setShowTableRow] = useState(-1);
-
-
-
-
 
   const handleChange = (name: string, inputValue: any) => {
     setFormState({
@@ -415,7 +412,7 @@ export const CreateTenderForm = () => {
             />
           </div>
         </div>
-        <CostsDetails />
+        <CostsDetails feeTypeToShow="contract" />
         <div className={styles.btn_submit}>
           <Button type="main" onClick={() => console.log(formState)}>
             <IconPlus /> Create tender
