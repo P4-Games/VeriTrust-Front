@@ -3,12 +3,22 @@ import React from "react";
 import styles from "../../app/page.module.scss";
 import { motion } from "framer-motion";
 import { mouse } from "@/assets";
+import { Langs } from "@/utils/ip";
 
-export const SeeMore = ()=>{
+interface SeeMore{
+    lang?: Langs;
+}
+export const SeeMore = ({lang = "EN"}: SeeMore) => {
     return (
         <>
             <div className={styles.scroll_text}>
-                <p>Haga scroll para ver mas</p>
+                <p>{
+                    lang == "ES" ? (
+                        "Haga scroll para ver mas"
+                    ) : (
+                        "Scroll to see more"
+                    )
+                }</p>
                 <motion.img 
                     initial={{ y: 0, opacity: 0}}
                     animate={{ y: 10, opacity: 1}}

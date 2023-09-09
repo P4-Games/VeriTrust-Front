@@ -8,6 +8,7 @@ import { Button } from "@/components/Button/Button";
 import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
+import { DetectLanguage } from "@/components/Lang/DetectLanguage";
 
 export default function Home() {
   const pattern = " • VeriTrust";
@@ -17,6 +18,7 @@ export default function Home() {
     <>
       <main className={styles.main}>
         <Loading />
+        <DetectLanguage />
         <header className={styles.logo}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
         </header>
@@ -106,9 +108,7 @@ export default function Home() {
                 <div>
                   <h3>Proposal privacy</h3>
                   <p>
-                    Through zero-knowledge proofs, the privacy of proposals
-                    submitted by bidders is guaranteed until the appropriate
-                    time.
+                  During the bidding phase, only one hash is sent with the bid. Then there is a reveal phase where the hash is compared with the real information, and it is verified that it is the correct information.
                   </p>
                 </div>
               </motion.div>
