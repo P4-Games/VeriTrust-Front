@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CostsDetails.module.scss";
 import { getEthereumPrice } from "@/utils/price";
-import { useContractRead } from "wagmi";
+import { useContractRead, useFeeData } from "wagmi";
 import {
   contractABIGoerli,
   veritrustFactoryAddressGoerli,
@@ -17,6 +17,9 @@ export default function CostsDetails({
   const [ethPrice, setEthPrice] = useState<number>(0);
   const [totalCosts, setTotalCosts] = useState<string>("");
   const [fee, setFee] = useState<string | undefined>(undefined);
+
+  //   const { data: gasPrice, isError, isLoading } = useFeeData();
+  //   console.log(Number(gasPrice?.gasPrice));
 
   const { data: deployFeeData } = useContractRead({
     address: veritrustFactoryAddressGoerli,
@@ -41,7 +44,7 @@ export default function CostsDetails({
     setFee(feeInEther);
     let costs: number = 0;
     costs += 0.0008 * ethPrice; // network fees
-    costs += (Number(feeInEther) / 10 ** 18) * ethPrice; // stamping or bid fee
+    costs += (Number(feeInt) / 10 ** 18) * ethPrice; // stamping or bid fee
     const costsStr = costs.toFixed(2);
     setTotalCosts(costsStr);
   }, [ethPrice, bidFeeData, deployFeeData, feeTypeToShow]);
@@ -54,16 +57,17 @@ export default function CostsDetails({
 
   return (
     <section className={styles.details_finalDetails}>
-      <h3>Details</h3>
-      <p>
-        <b>Costs:</b> <br />
-        {feeTypeToShow === "contract"
-          ? `Stamping fee: ${fee} ETH `
-          : `Bid fee: ${fee} ETH `}
-        <br />
-        Network fees: 0.0008 ??? ETH
-      </p>
-      <h3>Estimated total: {totalCosts} USD</h3>
+      <h4>Details</h4>
+      <div>
+        <h4>Costs:</h4>
+        <p>
+          {feeTypeToShow === "contract"
+            ? `Stamping fee: ${fee} ETH `
+            : `Bid fee: ${fee} ETH `}
+        </p>
+        <p>Network fees: 0.0008 ??? ETH</p>
+      </div>
+      <h4>Estimated total: {totalCosts} USD</h4>
     </section>
   );
 }
