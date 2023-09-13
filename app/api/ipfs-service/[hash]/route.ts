@@ -5,10 +5,9 @@ export async function GET(
   { params }: { params: { hash: string } }
 ) {
   const hash = params.hash;
-  console.log(`${process.env.PINATA_GATEWAY_URL}/ipfs/${hash}`);
   try {
     const response = await fetch(
-      `${process.env.PINATA_GATEWAY_URL}/ipfs/${hash}`,
+      `${process.env.IPFS_URL}/${hash}`,
       {
         method: "GET",
         headers: {
@@ -28,7 +27,7 @@ export async function GET(
       throw new Error("Error parsing JSON!");
     }
 
-    return NextResponse.json({ result });
+    return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: `${error}` }, { status: 500 });
   }
