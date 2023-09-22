@@ -23,14 +23,15 @@ const InputForm: React.FC<InputFormProps> = ({
   required = false,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(name, e.target.value, index);
+    if (type === "file") handleChange(name, e.target, index);
+    else handleChange(name, e.target.value, index);
   };
 
   return (
     <div
       className={`${styles.container} ${
-        type == "date" || (type == "datetime-local" && styles.fit)
-      }`}
+        (type == "date" || type == "datetime-local") && styles.fit
+      } ${type == "file" && styles.file}`}
     >
       {label && <label htmlFor={name}>{label}</label>}
       <input

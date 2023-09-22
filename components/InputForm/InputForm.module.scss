@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.fit{
+.fit {
   width: fit-content;
 }
 .container {
@@ -29,6 +29,25 @@
       color: $placeholder;
       opacity: 0.8;
       font-family: $font;
+    }
+  }
+}
+.file {
+  input {
+    padding: 13px 2rem;
+    cursor: pointer;
+    &::file-selector-button {
+      cursor: pointer;
+      border: 1px solid $placeholder;
+      padding: 0.25rem 0.5rem;
+      box-sizing: border-box;
+      border-radius: $radius;
+      margin-right: 0.5rem;
+      background-color: $background-grey-light;
+      font-weight: 600;
+      &:hover {
+        background-color: $background;
+      }
     }
   }
 }

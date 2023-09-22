@@ -21,9 +21,12 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "ethers": "^6.7.1",
+    "formidable": "^3.5.1",
     "framer-motion": "^10.15.1",
+    "fs": "^0.0.1-security",
     "lokijs": "1.x",
     "next": "13.4.12",
+    "next-connect": "^1.0.0",
     "pino-pretty": "^10.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -37,6 +40,7 @@
     "web3": "^4.1.1"
   },
   "devDependencies": {
+    "@types/formidable": "^3.4.3",
     "@types/react-world-flags": "^1.4.2"
   }
 }

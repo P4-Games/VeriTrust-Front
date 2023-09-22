@@ -20,8 +20,8 @@ import {
   useContractRead,
 } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
-import { ipfsGet, ipfsPost } from "@/utils/ipfsServices";
-import { isKeyObject } from "util/types";
+import { ipfsGet, ipfsUploadFile, ipfsUploadJson } from "@/utils/ipfsServices";
+import { uploadToIPFS } from "@pinata/sdk";
 
 // interface FormProps{
 //     formState: Tender;
@@ -49,8 +49,8 @@ export const CreateTenderForm = () => {
     quoteType: "All items",
     additionalInfo: [], //Title and value of the custom input
     items: [],
-    pliego: "", //IPFS Hash (PDF) - Pliego
-    disposicionAprobatoria: "", //IPFS Hash (PDF)
+    specifications: "", //IPFS Hash (PDF) - Pliego
+    approvingProvision: "", //IPFS Hash (PDF)
     financialRequirements: "",
     technicalRequirements: "",
     administrativeRequirements: "",
@@ -98,6 +98,29 @@ export const CreateTenderForm = () => {
       ...formState,
       [name]: inputValue,
     });
+  };
+
+  const handleFileChange = (name: string, target: any, index?: number) => {
+
+    (async () => {
+      const fileResponse = await ipfsUploadFile(target.files[0]);
+      console.log(fileResponse);
+    })();
+
+
+    if (index) {
+      let auxArray = [...formState[name]];
+      auxArray[index] = target.value;
+      setFormState({
+        ...formState,
+        [name]: auxArray,
+      });
+    } else {
+      setFormState({
+        ...formState,
+        [name]: target.value,
+      });
+    }
   };
 
   const handleDatesChange = (name: string, inputValue: any) => {
@@ -156,16 +179,17 @@ export const CreateTenderForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { isOk, data } = await ipfsPost(formState);
+    const { isOk, data } = await ipfsUploadJson(formState);
 
-    if (isOk) {
-      // console.log("IPFS contract hash:", data);
-      setIpfsHash(data);
-    }
+    // if (isOk) {
+    //   // console.log("IPFS contract hash:", data);
+    //   setIpfsHash(data);
+    // }
+
     // const ipfsRes = await ipfsGet(data as string);
-    
+
     // console.log(ipfsRes.data)
-    // console.log(formState);
+    console.log(formState);
   };
 
   useEffect(() => {
@@ -297,16 +321,16 @@ export const CreateTenderForm = () => {
         <div className={styles.form_compound}>
           <InputForm
             type="file"
-            value={formState.pliego}
-            handleChange={handleChange}
-            name="pliego"
+            value={formState.specifications}
+            handleChange={handleFileChange}
+            name="specifications"
             label="General terms and conditions"
           />
           <InputForm
             type="file"
-            value={formState.disposicionAprobatoria}
-            handleChange={handleChange}
-            name="disposicionAprobatoria"
+            value={formState.approvingProvision}
+            handleChange={handleFileChange}
+            name="approvingProvision"
             label="Approval Provision"
           />
         </div>
@@ -342,14 +366,16 @@ export const CreateTenderForm = () => {
               value={formState.clause[0]}
               handleChange={handleChange}
               name="clause"
+              index={0}
               label="Document, Special Number, Linkage Date"
               placeholder="Enter the required data"
             />
             <InputForm
               type="file"
               value={formState.clause[1]}
-              handleChange={handleChange}
+              handleChange={handleFileChange}
               name="clause"
+              index={1}
             />
           </div>
         </div>

@@ -10,6 +10,7 @@ export type TenderItem = {
 }
 
 export type Tender = {
+    [key: string]: any;
     txid: string;
     name: string;
     type: "Public tender" | "Private tender";
@@ -22,8 +23,8 @@ export type Tender = {
     quoteType: "All items" | "All items, or some of them";
     additionalInfo: [string, string][]; //Title and value of the custom input
     items: TenderItem[];
-    pliego: string; //IPFS Hash (PDF) - Pliego
-    disposicionAprobatoria: string; //IPFS Hash (PDF)
+    specifications: string; //IPFS Hash (PDF) - Pliego
+    approvingProvision: string; //IPFS Hash (PDF)
     financialRequirements: string;
     technicalRequirements: string;
     administrativeRequirements: string;
@@ -80,8 +81,8 @@ export const DEFAULT_TENDER: Tender = {
             deliveryPlace: "Constitucion 1233, CABA",
         }
     ],
-    pliego: "aaa123",
-    disposicionAprobatoria: "aaa123",
+    specifications: "aaa123",
+    approvingProvision: "aaa123",
     financialRequirements: "Description and type of document",
     technicalRequirements: "Description and type of document",
     administrativeRequirements: "Description and type of document",
