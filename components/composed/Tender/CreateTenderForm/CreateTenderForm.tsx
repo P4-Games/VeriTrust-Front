@@ -14,14 +14,10 @@ import {
   contractABIGoerli,
   veritrustFactoryAddressGoerli,
 } from "@/constants/factory";
-import {
-  useContractWrite,
-  usePrepareContractWrite,
-  useContractRead,
-} from "wagmi";
+import { useContractWrite, useContractRead } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { ipfsGet, ipfsUploadFile, ipfsUploadJson } from "@/utils/ipfsServices";
-import { uploadToIPFS } from "@pinata/sdk";
+import InputFileForm from "@/components/InputFileForm/InputFileForm";
 
 // interface FormProps{
 //     formState: Tender;
@@ -68,6 +64,8 @@ export const CreateTenderForm = () => {
   });
 
   const [ipfsHash, setIpfsHash] = useState<string>("");
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [showTableRow, setShowTableRow] = useState(-1);
 
   const [_commitDeadline, setCommitDeadline] = useState<number>(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 7
@@ -90,27 +88,14 @@ export const CreateTenderForm = () => {
     setWarrantyAmount(deployFeeData as bigint);
   }, [deployFeeData]);
 
-  const [showFormModal, setShowFormModal] = useState(false);
-  const [showTableRow, setShowTableRow] = useState(-1);
-
-  const handleChange = (name: string, inputValue: any) => {
-    setFormState({
-      ...formState,
-      [name]: inputValue,
-    });
-  };
-
-  const handleFileChange = (name: string, target: any, index?: number) => {
-
-    (async () => {
-      const fileResponse = await ipfsUploadFile(target.files[0]);
-      console.log(fileResponse);
-    })();
-
-
-    if (index) {
+  const handleChange = async (
+    name: string,
+    inputValue: string,
+    index?: number
+  ) => {
+    if (index !== undefined) {
       let auxArray = [...formState[name]];
-      auxArray[index] = target.value;
+      auxArray[index] = inputValue;
       setFormState({
         ...formState,
         [name]: auxArray,
@@ -118,7 +103,7 @@ export const CreateTenderForm = () => {
     } else {
       setFormState({
         ...formState,
-        [name]: target.value,
+        [name]: inputValue,
       });
     }
   };
@@ -319,22 +304,19 @@ export const CreateTenderForm = () => {
           </button>
         </div>
         <div className={styles.form_compound}>
-          <InputForm
-            type="file"
-            value={formState.specifications}
-            handleChange={handleFileChange}
+          <InputFileForm
+            // hash={formState.specifications}
+            handleChange={handleChange}
             name="specifications"
             label="General terms and conditions"
           />
-          <InputForm
-            type="file"
-            value={formState.approvingProvision}
-            handleChange={handleFileChange}
+          <InputFileForm
+            // hash={formState.approvingProvision}
+            handleChange={handleChange}
             name="approvingProvision"
             label="Approval Provision"
           />
         </div>
-
         <div className={styles.form_input}>
           <h4>Minimum participation requirements</h4>
           <InputForm
@@ -370,10 +352,8 @@ export const CreateTenderForm = () => {
               label="Document, Special Number, Linkage Date"
               placeholder="Enter the required data"
             />
-            <InputForm
-              type="file"
-              value={formState.clause[1]}
-              handleChange={handleFileChange}
+            <InputFileForm
+              handleChange={handleChange}
               name="clause"
               index={1}
             />

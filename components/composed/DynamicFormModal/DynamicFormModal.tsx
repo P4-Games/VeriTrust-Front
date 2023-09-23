@@ -4,7 +4,6 @@ import { TenderItem } from "@/constants/tender";
 import { IconX } from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import TextArea from "@/components/TextAreaForm/TextAreaForm";
-import { Button } from "@/components/Button/Button";
 
 interface DynamicFormModalProps {
   onFormSubmit: (formData: TenderItem) => void;
