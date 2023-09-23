@@ -1,27 +1,29 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import formidable from "formidable";
 import pinataSDK from "@pinata/sdk";
-import fs from "fs";
+import { Readable } from "stream";
 
 const pinata = new pinataSDK(
   process.env.PINATA_API_KEY,
   process.env.PINATA_SECRET_API_KEY
 );
 
-const saveFile = async (filePath: string) => {
+const saveFile = async (buffer: Buffer, fileName: string) => {
   try {
-    const stream = fs.createReadStream(filePath);
+    const readable = new Readable();
+    readable.push(buffer);
+    readable.push(null);
+
     const options = {
       pinataMetadata: {
-        name: "hola",
+        name: fileName,
       },
     };
-    const response = await pinata.pinFileToIPFS(stream, options);
-    fs.unlinkSync(filePath);
+    const response = await pinata.pinFileToIPFS(readable, options);
 
     return response;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
@@ -32,8 +34,8 @@ export async function POST(req: NextRequest) {
   if (contentType === "application/json") {
     const data = await req.json();
     try {
-      const result = await pinata.pinJSONToIPFS(data);
-      return NextResponse.json({ result }, { status: 201 });
+      const response = await pinata.pinJSONToIPFS(data);
+      return NextResponse.json({ response }, { status: 201 });
     } catch (error) {
       return NextResponse.json(
         { message: "Error uploading json to IPFS" },
@@ -51,28 +53,10 @@ export async function POST(req: NextRequest) {
 
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const path = `/tmp/${file.name}`;
 
-      // old code
-
-      // const form = formidable();
-      // console.log(form);
-      // const body = new Body(req);
-      // form.parse(req, async function (err, files) {
-      //   if (err) {
-      //     console.log({ err });
-      //     return NextResponse.json(
-      //       { message: "Upload Error" },
-      //       { status: 500 }
-      //     );
-      //   }
-
-      //   console.log(typeof files.file, files.file);
-      console.log(path);
-      const response = await saveFile(path);
+      const response = await saveFile(buffer, file.name);
 
       return NextResponse.json({ response }, { status: 201 });
-      // });
     } catch (error) {
       return NextResponse.json(
         { message: "Error uploading file to IPFS" },

@@ -29,7 +29,7 @@ export const ipfsUploadJson = async (
     const data = await response.json();
     return {
       isOk: true,
-      data: data.result.IpfsHash,
+      data: data.response.IpfsHash,
       error: null,
     };
   } catch (err) {
@@ -44,17 +44,16 @@ export const ipfsUploadJson = async (
 
 export const ipfsUploadFile = async (file: any): Promise<IPFSResponse> => {
   const formData = new FormData();
-  formData.set("file", file); // include file name??
+  formData.set("file", file);
   try {
     const response = await fetch(`${url}`, {
       method: "POST",
       body: formData,
     });
     const data = await response.json();
-    console.log(data);
     return {
       isOk: true,
-      data: data.result.IpfsHash,
+      data: data.response.IpfsHash,
       error: null,
     };
   } catch (err) {
@@ -78,7 +77,7 @@ export const ipfsGet = async (hash: string): Promise<IPFSResponse> => {
     const data = await response.json();
     return {
       isOk: true,
-      data: data.result,
+      data: data.response,
       error: null,
     };
   } catch (err) {
