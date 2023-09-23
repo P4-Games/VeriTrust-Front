@@ -1,0 +1,73 @@
+@import "../../styles/variables.scss";
+
+.fit {
+  width: fit-content;
+}
+.container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 620px;
+  label {
+    font-size: 1.25rem;
+  }
+  input {
+    padding: 13px 54px 13px 2rem;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    background-color: $background-grey-light;
+    border-radius: $radius;
+    color: $background-dark;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    font-family: $font;
+    &:focus {
+      outline: 1px solid $primary;
+    }
+    &::placeholder {
+      color: $placeholder;
+      opacity: 0.8;
+      font-family: $font;
+    }
+    &::file-selector-button {
+      cursor: pointer;
+      border: 1px solid $placeholder;
+      padding: 0.25rem 0.5rem;
+      box-sizing: border-box;
+      border-radius: $radius;
+      margin-right: 0.5rem;
+      background-color: $background-grey-light;
+      font-weight: 600;
+      &:hover {
+        background-color: $background;
+      }
+    }
+  }
+  &_input {
+    position: relative;
+    @keyframes rotating {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .file_status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+    .spinner {
+      animation: rotating 0.8s linear infinite;
+    }
+    .check {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  }
+}
