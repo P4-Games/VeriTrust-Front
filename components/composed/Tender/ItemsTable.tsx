@@ -32,12 +32,14 @@ export const ItemsTable = ({
             <TableItem
               item={item}
               pricePerUnit={allQuotes[item.id]}
-              setPricePerUnit={(value: number) => {
-                if (!setAllQuotes) return;
-                const newAllQuotes = [...allQuotes];
-                newAllQuotes[item.id] = value;
-                setAllQuotes(newAllQuotes);
-              }}
+              setPricePerUnit={
+                setAllQuotes ? (value: number) => {
+                  if (!setAllQuotes) return;
+                  const newAllQuotes = [...allQuotes];
+                  newAllQuotes[item.id] = value;
+                  setAllQuotes(newAllQuotes);
+                } : undefined
+              }
             />
           </React.Fragment>
         ))}

@@ -16,13 +16,13 @@ export type TransactionDetails = {
     }
 }
 
-const getTXFromLS = (hash: string): TransactionDetails | null => {
+export const getTXFromLS = (hash: string): TransactionDetails | null => {
     const transactions = JSON.parse(localStorage.getItem("transactions") || "[]");
     const transaction = transactions.find((t: TransactionDetails) => t.hash === hash);
     return transaction || null;
 };
 
-const saveTXLS = (transaction: TransactionDetails): void => {
+export const saveTXLS = (transaction: TransactionDetails): void => {
     const transactions = JSON.parse(localStorage.getItem("transactions") || "[]");
     transactions.push(transaction);
     localStorage.setItem("transactions", JSON.stringify(transactions));
