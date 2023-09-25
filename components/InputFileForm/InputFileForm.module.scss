@@ -13,11 +13,12 @@
     font-size: 1.25rem;
   }
   input {
+    padding: 13px 54px 13px 2rem;
+    cursor: pointer;
     border: none;
     box-sizing: border-box;
     background-color: $background-grey-light;
     border-radius: $radius;
-    padding: 1rem 2rem;
     color: $background-dark;
     letter-spacing: 0.5px;
     font-size: 1rem;
@@ -30,12 +31,6 @@
       opacity: 0.8;
       font-family: $font;
     }
-  }
-}
-.file {
-  input {
-    padding: 13px 2rem;
-    cursor: pointer;
     &::file-selector-button {
       cursor: pointer;
       border: 1px solid $placeholder;
@@ -48,6 +43,31 @@
       &:hover {
         background-color: $background;
       }
+    }
+  }
+  &_input {
+    position: relative;
+    @keyframes rotating {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .file_status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+    .spinner {
+      animation: rotating 0.8s linear infinite;
+    }
+    .check {
+      color: green;
+    }
+    .error {
+      color: red;
     }
   }
 }

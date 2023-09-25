@@ -14,14 +14,10 @@ import {
   contractABIGoerli,
   veritrustFactoryAddressGoerli,
 } from "@/constants/factory";
-import {
-  useContractWrite,
-  usePrepareContractWrite,
-  useContractRead,
-} from "wagmi";
+import { useContractWrite, useContractRead } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
-import { ipfsGet, ipfsPost } from "@/utils/ipfsServices";
-import { isKeyObject } from "util/types";
+import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
+import InputFileForm from "@/components/InputFileForm/InputFileForm";
 
 // interface FormProps{
 //     formState: Tender;
@@ -49,8 +45,8 @@ export const CreateTenderForm = () => {
     quoteType: "All items",
     additionalInfo: [], //Title and value of the custom input
     items: [],
-    pliego: "", //IPFS Hash (PDF) - Pliego
-    disposicionAprobatoria: "", //IPFS Hash (PDF)
+    specifications: "", //IPFS Hash (PDF) - Pliego
+    approvingProvision: "", //IPFS Hash (PDF)
     financialRequirements: "",
     technicalRequirements: "",
     administrativeRequirements: "",
@@ -68,6 +64,8 @@ export const CreateTenderForm = () => {
   });
 
   const [ipfsHash, setIpfsHash] = useState<string>("");
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [showTableRow, setShowTableRow] = useState(-1);
 
   const [_commitDeadline, setCommitDeadline] = useState<number>(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 7
@@ -90,14 +88,24 @@ export const CreateTenderForm = () => {
     setWarrantyAmount(deployFeeData as bigint);
   }, [deployFeeData]);
 
-  const [showFormModal, setShowFormModal] = useState(false);
-  const [showTableRow, setShowTableRow] = useState(-1);
-
-  const handleChange = (name: string, inputValue: any) => {
-    setFormState({
-      ...formState,
-      [name]: inputValue,
-    });
+  const handleChange = async (
+    name: string,
+    inputValue: string,
+    index?: number
+  ) => {
+    if (index !== undefined) {
+      let auxArray = [...formState[name]];
+      auxArray[index] = inputValue;
+      setFormState({
+        ...formState,
+        [name]: auxArray,
+      });
+    } else {
+      setFormState({
+        ...formState,
+        [name]: inputValue,
+      });
+    }
   };
 
   const handleDatesChange = (name: string, inputValue: any) => {
@@ -156,16 +164,17 @@ export const CreateTenderForm = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { isOk, data } = await ipfsPost(formState);
+    const { isOk, data } = await ipfsUploadJson(formState);
 
-    if (isOk) {
-      // console.log("IPFS contract hash:", data);
-      setIpfsHash(data);
-    }
+    // if (isOk) {
+    //   // console.log("IPFS contract hash:", data);
+    //   setIpfsHash(data);
+    // }
+
     // const ipfsRes = await ipfsGet(data as string);
-    
+
     // console.log(ipfsRes.data)
-    // console.log(formState);
+    console.log(formState);
   };
 
   useEffect(() => {
@@ -295,22 +304,19 @@ export const CreateTenderForm = () => {
           </button>
         </div>
         <div className={styles.form_compound}>
-          <InputForm
-            type="file"
-            value={formState.pliego}
+          <InputFileForm
+            // hash={formState.specifications}
             handleChange={handleChange}
-            name="pliego"
+            name="specifications"
             label="General terms and conditions"
           />
-          <InputForm
-            type="file"
-            value={formState.disposicionAprobatoria}
+          <InputFileForm
+            // hash={formState.approvingProvision}
             handleChange={handleChange}
-            name="disposicionAprobatoria"
+            name="approvingProvision"
             label="Approval Provision"
           />
         </div>
-
         <div className={styles.form_input}>
           <h4>Minimum participation requirements</h4>
           <InputForm
@@ -342,14 +348,14 @@ export const CreateTenderForm = () => {
               value={formState.clause[0]}
               handleChange={handleChange}
               name="clause"
+              index={0}
               label="Document, Special Number, Linkage Date"
               placeholder="Enter the required data"
             />
-            <InputForm
-              type="file"
-              value={formState.clause[1]}
+            <InputFileForm
               handleChange={handleChange}
               name="clause"
+              index={1}
             />
           </div>
         </div>

@@ -1,14 +1,16 @@
-import './globals.css';
-import 'react-loading-skeleton/dist/skeleton.css';
+import "./globals.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
-import localFont from 'next/font/local';
-import Providers from '@/providers/Providers';
-import { SkeletonTheme } from 'react-loading-skeleton';
+import localFont from "next/font/local";
+import Providers from "@/providers/Providers";
+import { SkeletonTheme } from "react-loading-skeleton";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //Uso en el css: var(--font-satoshi)
 export const SATOSHI = localFont({
   src: "Satoshi-Variable.woff2",
-  variable: "--font-satoshi", 
+  variable: "--font-satoshi",
   display: "swap",
 });
 
@@ -20,25 +22,36 @@ export const TASA_EXPLORER = localFont({
 
 export const metadata = {
   title: "VeriTrust - Licita con confianza",
-  description: "Seguridad, transparencia y confianza en los procesos de contratación.",
+  description:
+    "Seguridad, transparencia y confianza en los procesos de contratación.",
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-      <html lang="es">
-        <body className={
-          SATOSHI.variable + " " + TASA_EXPLORER.variable
-        }>
-          <Providers>
-            <SkeletonTheme baseColor="#f9f9f980" highlightColor="#0066ff20">
-              {children}
-            </SkeletonTheme>
-          </Providers>
-          </body>
-      </html>
-  )
+    <html lang="es">
+      <body className={SATOSHI.variable + " " + TASA_EXPLORER.variable}>
+        <Providers>
+          <SkeletonTheme baseColor="#f9f9f980" highlightColor="#0066ff20">
+            {children}
+          </SkeletonTheme>
+        </Providers>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={8000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light"
+        />
+      </body>
+    </html>
+  );
 }

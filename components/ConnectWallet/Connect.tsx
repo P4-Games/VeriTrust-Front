@@ -1,8 +1,6 @@
-'use client';
-
-import { ConnectButton } from './ConnectButton';
-import { useEffect, useState } from 'react';
-
+"use client";
+import { ConnectButton } from "./ConnectButton";
+import { useEffect, useState } from "react";
 
 export const Connect = ({}): JSX.Element => {
   const [showContent, setShowContent] = useState<boolean>(false);
@@ -10,14 +8,6 @@ export const Connect = ({}): JSX.Element => {
   useEffect(() => {
     setShowContent(true);
   }, []);
-  
-  return (
-    <>
-      {
-      showContent ? (
-          <ConnectButton />
-        ) : null
-      }
-    </>
-  )
-}
+
+  return <>{showContent ? <ConnectButton /> : null}</>;
+};
