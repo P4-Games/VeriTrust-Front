@@ -17,7 +17,7 @@ export default function CostsDetails({
   const [totalCosts, setTotalCosts] = useState<string>("");
   const [fee, setFee] = useState<string | undefined>(undefined);
 
-  let functionToCall = "bidFee";
+  let functionToCall = "";
   functionToCall == "bid"
     ? (functionToCall = "bidFee")
     : (functionToCall = "deployFee");
@@ -33,7 +33,6 @@ export default function CostsDetails({
   });
 
   useEffect(() => {
-    console.log(isError);
     if (!isSuccess) return;
     let feeInt: number = 0;
     feeInt = Number(feeData);
