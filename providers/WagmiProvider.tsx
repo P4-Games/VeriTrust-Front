@@ -8,6 +8,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli } from "wagmi/chains";
+import { JsonRpcProvider } from "ethers";
 
 type WagmiProviderType = {
   children: React.ReactNode;
@@ -22,13 +23,15 @@ const wagmiConfig = createConfig({
 connectors: w3mConnectors({ projectId, chains }),
   publicClient,
 });
-
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
+
 const WagmiProvider = ({ children }: WagmiProviderType) => {
   return (
     <>
-      <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      <WagmiConfig config={wagmiConfig}>
+        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        {children}
+      </WagmiConfig>
     </>
   );
 };

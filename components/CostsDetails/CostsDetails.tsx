@@ -32,21 +32,23 @@ export default function CostsDetails({
     abi: contractABIGoerli,
     functionName: "bidFee",
   });
-
+  
   useEffect(() => {
-    let feeInt: Number = 0;
-    if (feeTypeToShow == "contract") {
-      feeInt = Number(deployFeeData);
-    } else {
-      feeInt = Number(bidFeeData);
+    if(bidFeeData && deployFeeData){
+      let feeInt: Number = 0;
+      if (feeTypeToShow == "contract") {
+        feeInt = Number(deployFeeData);
+      } else {
+        feeInt = Number(bidFeeData);
+      }
+      const feeInEther = ethers.formatEther(feeInt.toString());
+      setFee(feeInEther);
+      let costs: number = 0;
+      costs += 0.0008 * ethPrice; // network fees
+      costs += (Number(feeInt) / 10 ** 18) * ethPrice; // stamping or bid fee
+      const costsStr = costs.toFixed(2);
+      setTotalCosts(costsStr);
     }
-    const feeInEther = ethers.formatEther(feeInt.toString());
-    setFee(feeInEther);
-    let costs: number = 0;
-    costs += 0.0008 * ethPrice; // network fees
-    costs += (Number(feeInt) / 10 ** 18) * ethPrice; // stamping or bid fee
-    const costsStr = costs.toFixed(2);
-    setTotalCosts(costsStr);
   }, [ethPrice, bidFeeData, deployFeeData, feeTypeToShow]);
 
   useEffect(() => {
