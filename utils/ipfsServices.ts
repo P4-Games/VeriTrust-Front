@@ -1,4 +1,6 @@
 import { Tender } from "@/constants/tender";
+import { toast } from "react-toastify";
+
 const url = "/api/ipfs-service";
 
 type IPFSSuccess = {
@@ -51,6 +53,13 @@ export const ipfsUploadFile = async (file: any): Promise<IPFSResponse> => {
       body: formData,
     });
     const data = await response.json();
+
+    // toast.promise(response, {
+    //   pending: "We are processing your request",
+    //   success: "All done, thank you for reaching out!",
+    //   error: "Ups, something went wrong try again later!",
+    // });
+
     return {
       isOk: true,
       data: data.response.IpfsHash,
