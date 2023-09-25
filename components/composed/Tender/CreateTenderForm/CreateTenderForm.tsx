@@ -16,7 +16,7 @@ import {
 } from "@/constants/factory";
 import { useContractWrite, useContractRead } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
-import { ipfsGet, ipfsUploadFile, ipfsUploadJson } from "@/utils/ipfsServices";
+import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
 import InputFileForm from "@/components/InputFileForm/InputFileForm";
 
 // interface FormProps{
