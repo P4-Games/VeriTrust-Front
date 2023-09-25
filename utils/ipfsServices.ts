@@ -15,7 +15,9 @@ type IPFSError = {
 
 type IPFSResponse = IPFSSuccess | IPFSError;
 
-export const ipfsPost = async (formState: Tender): Promise<IPFSResponse> => {
+export const ipfsUploadJson = async (
+  formState: Tender
+): Promise<IPFSResponse> => {
   try {
     const response = await fetch(`${url}`, {
       method: "POST",
@@ -27,7 +29,31 @@ export const ipfsPost = async (formState: Tender): Promise<IPFSResponse> => {
     const data = await response.json();
     return {
       isOk: true,
-      data: data.result.IpfsHash,
+      data: data.response.IpfsHash,
+      error: null,
+    };
+  } catch (err) {
+    console.error("Error:", err);
+    return {
+      isOk: false,
+      data: null,
+      error: (err as Error).message,
+    };
+  }
+};
+
+export const ipfsUploadFile = async (file: any): Promise<IPFSResponse> => {
+  const formData = new FormData();
+  formData.set("file", file);
+  try {
+    const response = await fetch(`${url}`, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    return {
+      isOk: true,
+      data: data.response.IpfsHash,
       error: null,
     };
   } catch (err) {
@@ -51,7 +77,7 @@ export const ipfsGet = async (hash: string): Promise<IPFSResponse> => {
     const data = await response.json();
     return {
       isOk: true,
-      data: data.result,
+      data: data.response,
       error: null,
     };
   } catch (err) {

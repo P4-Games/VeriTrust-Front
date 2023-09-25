@@ -56,9 +56,9 @@ export default function Profile(): JSX.Element {
         <div>
             <Navbar />
             <section className={styles.profile}>
-                <WagmiConfig config={config}>
+                {/* <WagmiConfig config={config}> */}
                     <ProfileBody />
-                </WagmiConfig>
+                {/* </WagmiConfig> */}
             </section>
         </div>
     )
