@@ -39,8 +39,6 @@ export const getTender = async (id: string): Promise<Tender> => {
         
         const ipfsDataJSON = await ipfsData.json();
 
-        console.log(ipfsDataJSON);
-
         res = ipfsDataJSON;
         res.txid = id;
 
