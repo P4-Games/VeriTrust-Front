@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/composed/Tender/Input/Input";
 import { ItemsTable } from "@/components/composed/Tender/ItemsTable";
 import { getEthereumPrice } from "@/utils/price";
+import CostsDetails from "@/components/CostsDetails/CostsDetails";
 
 export default function Page({ params }: { params: { id: string } }) {
   const [postData, setPostData] = useState<Tender>({} as Tender);
@@ -132,7 +133,7 @@ export default function Page({ params }: { params: { id: string } }) {
               <h3 className={styles.details_warrantiesTitle}>Guarantees</h3>
               <p>Not required</p>
             </section>
-            <section className={styles.details_finalDetails}>
+            {/* <section className={styles.details_finalDetails}>
               <h3>Details</h3>
               <p>
                 Total bid price: $ {getFormattedPrice()} {postData.currency}
@@ -143,7 +144,8 @@ export default function Page({ params }: { params: { id: string } }) {
                 Network fees: 0.0006 ETH
               </p>
               <h3>Estimated total: $ {estimateCosts()} USDC</h3>
-            </section>
+            </section> */}
+            <CostsDetails feeTypeToShow="bid" />
             <Button type="main" onClick={() => {}}>
               Place bid <IconFileUpload />
             </Button>

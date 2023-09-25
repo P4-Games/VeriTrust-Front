@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  useState,
-  ChangeEvent,
-  ChangeEventHandler,
-  FormEvent,
-  useEffect,
-} from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import styles from "./CreateTenderForm.module.scss";
 import { Button } from "@/components/Button/Button";
 import { IconPlus, IconX, IconChevronDown } from "@tabler/icons-react";
@@ -20,8 +14,14 @@ import {
   contractABIGoerli,
   veritrustFactoryAddressGoerli,
 } from "@/constants/factory";
-import { useContractWrite } from "wagmi";
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useContractRead,
+} from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
+import { ipfsGet, ipfsPost } from "@/utils/ipfsServices";
+import { isKeyObject } from "util/types";
 
 // interface FormProps{
 //     formState: Tender;
@@ -68,21 +68,30 @@ export const CreateTenderForm = () => {
   });
 
   const [ipfsHash, setIpfsHash] = useState<string>("");
+
   const [_commitDeadline, setCommitDeadline] = useState<number>(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 7
   );
   const [_revealDeadline, setRevealDeadline] = useState<number>(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 8
   );
+
   const [warrantyAmount, setWarrantyAmount] = useState(
     BigInt("10000000000000000")
   );
+
+  const { data: deployFeeData } = useContractRead({
+    address: veritrustFactoryAddressGoerli,
+    abi: contractABIGoerli,
+    functionName: "deployFee",
+  });
+
+  useEffect(() => {
+    setWarrantyAmount(deployFeeData as bigint);
+  }, [deployFeeData]);
+
   const [showFormModal, setShowFormModal] = useState(false);
   const [showTableRow, setShowTableRow] = useState(-1);
-
-
-
-
 
   const handleChange = (name: string, inputValue: any) => {
     setFormState({
@@ -144,32 +153,24 @@ export const CreateTenderForm = () => {
     value: warrantyAmount,
   });
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    fetch("/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formState),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data.result.IpfsHash);
-        setIpfsHash(data.result.IpfsHash);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    const { isOk, data } = await ipfsPost(formState);
 
-    console.log(formState);
+    if (isOk) {
+      // console.log("IPFS contract hash:", data);
+      setIpfsHash(data);
+    }
+    // const ipfsRes = await ipfsGet(data as string);
+    
+    // console.log(ipfsRes.data)
+    // console.log(formState);
   };
 
   useEffect(() => {
     if (ipfsHash !== "") {
       deployContract();
-      console.log("deploying contract");
     }
   }, [ipfsHash]);
 
@@ -183,6 +184,7 @@ export const CreateTenderForm = () => {
           name="name"
           label="Process name:"
           placeholder="E.g. Acquisition of ..."
+          required
         />
         <div className={styles.form_input}>
           <InputForm
@@ -415,9 +417,9 @@ export const CreateTenderForm = () => {
             />
           </div>
         </div>
-        <CostsDetails />
+        <CostsDetails feeTypeToShow="contract" />
         <div className={styles.btn_submit}>
-          <Button type="main" onClick={() => console.log(formState)}>
+          <Button type="main">
             <IconPlus /> Create tender
           </Button>
         </div>
