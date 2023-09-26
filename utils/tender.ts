@@ -1,17 +1,12 @@
-import { DEFAULT_TENDER, DUMMY_TENDERS, Tender } from "@/constants/tender"
-import { ALCHEMY_API_URL, getTXFromLS, saveTXLS } from "./marketplace";
+import { DEFAULT_TENDER, Tender } from "@/constants/tender";
+import { ALCHEMY_API_URL } from "./marketplace";
 import Web3 from "web3";
 import { Alchemy, Network } from "alchemy-sdk";
 
 export const getTender = async (id: string): Promise<Tender> => {
-    const allTenders: Tender[] = DUMMY_TENDERS;
     let res: Tender = DEFAULT_TENDER;
 
-    allTenders.forEach((tender: Tender) => {
-        if (tender.txid === id) {
-            res = tender;
-        }
-    })
+    if(id.length < 64) return res;
 
     const web3 = new Web3(ALCHEMY_API_URL);
     const settings = {

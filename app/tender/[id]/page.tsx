@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb';
 import styles from './Tender.module.scss';
 
@@ -6,7 +5,7 @@ import { Navbar } from "@/components/composed/Navbar/Navbar";
 import { Tender } from "@/constants/tender";
 import { getTender } from "@/utils/tender";
 import { Button } from '@/components/Button/Button';
-import { IconArrowLeft, IconPremiumRights } from '@tabler/icons-react';
+import { IconPremiumRights } from '@tabler/icons-react';
 import { NotFound } from '@/components/composed/Tender/NotFound';
 import { TenderBody } from '@/components/composed/Tender/TenderBody';
 
