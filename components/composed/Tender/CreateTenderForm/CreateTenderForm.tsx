@@ -19,18 +19,6 @@ import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
 import InputFileForm from "@/components/InputFileForm/InputFileForm";
 
-// interface FormProps{
-//     formState: Tender;
-//     setShowFormModal: React.Dispatch<React.SetStateAction<boolean>>;
-//     handleDynamicInputChange: (name: string, dynamicInputs: string[]) => void;
-//     handleDatesChange: (name: string, inputValue: any) => void;
-//     handleShowMore: (index: number) => void;
-//     handleDeleteRow: (index: number) => void;
-//     estimateCosts: () => number;
-//     handleChange: (name: string, inputValue: any) => void;
-//     showTableRow: number;
-// }
-
 export const CreateTenderForm = () => {
   const [formState, setFormState] = useState<Tender>({
     txid: "",
@@ -171,9 +159,6 @@ export const CreateTenderForm = () => {
     //   setIpfsHash(data);
     // }
 
-    // const ipfsRes = await ipfsGet(data as string);
-
-    // console.log(ipfsRes.data)
     console.log(formState);
   };
 

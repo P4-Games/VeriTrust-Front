@@ -50,23 +50,23 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
           <div className={styles.form_section}>
             <InputForm
               required
-              label="Objeto del gasto"
+              label="Object name"
               name="object"
               handleChange={handleInputChange}
               value={formState.object}
-              placeholder="Numero objeto"
+              placeholder="Object name"
             />
             <InputForm
               required
-              label="Código del ítem"
+              label="Item ID code"
               name="code"
               handleChange={handleInputChange}
               value={formState.code}
-              placeholder="Codigo"
+              placeholder="ID code"
             />
             <InputForm
               required
-              label="Cantidad"
+              label="Quantity"
               name="quantity"
               type="number"
               handleChange={handleInputChange}
@@ -77,38 +77,38 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
 
           <TextArea
             required
-            label="Descripción"
+            label="Description"
             name="description"
             handleChange={handleInputChange}
             value={formState.description}
-            placeholder="descripción..."
+            placeholder="Description"
           />
           <div className={styles.form_section}>
             <InputForm
-              label="Luegar de entrega"
+              label="Delivery place"
               name="deliveryPlace"
               handleChange={handleInputChange}
               value={formState.deliveryPlace}
-              placeholder="Luegar de entrega"
+              placeholder="Delivery place"
             />
             <InputForm
               type="date"
-              label="Fecha de entrega"
+              label="Delivery deadline"
               name="deliveryDeadline"
               handleChange={handleInputChange}
               value={formState.deliveryDeadline}
-              placeholder="Fecha de entrega"
+              placeholder="Delivery deadline"
             />
             <InputForm
-              label="Información adicional"
+              label="Additional Information"
               name="additionalInfo"
               handleChange={handleInputChange}
               value={formState.additionalInfo}
-              placeholder="Información adicional"
+              placeholder="Additional Information"
             />
           </div>
           <button className={styles.btn_submit} type="submit">
-            Agregar
+            Add
           </button>
         </form>
       </div>

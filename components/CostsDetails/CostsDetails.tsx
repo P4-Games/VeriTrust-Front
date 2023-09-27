@@ -64,7 +64,7 @@ export default function CostsDetails({
             ? `Stamping fee: ${fee} ETH `
             : `Bid fee: ${fee} ETH `}
         </p>
-        <p>Network fees: 0.0008 ??? ETH</p>
+        {/* <p>Network fees: 0.0008 ??? ETH</p> */}
       </div>
       <h4>Estimated total: {totalCosts} USD</h4>
     </section>
