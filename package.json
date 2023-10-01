@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "translations:extract": "lingui extract --clean "
   },
   "dependencies": {
+    "@lingui/core": "^4.5.0",
+    "@lingui/react": "^4.5.0",
     "@pinata/sdk": "^2.1.0",
     "@tabler/icons-react": "^2.30.0",
     "@types/node": "20.4.7",
@@ -37,6 +40,10 @@
     "web3": "^4.1.1"
   },
   "devDependencies": {
+    "@lingui/cli": "^4.5.0",
+    "@lingui/loader": "^4.5.0",
+    "@lingui/macro": "^4.5.0",
+    "@lingui/swc-plugin": "^4.0.4",
     "@types/formidable": "^3.4.3",
     "@types/react-world-flags": "^1.4.2"
   }

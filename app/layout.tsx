@@ -28,13 +28,14 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  //pageProps,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html>
       <body className={SATOSHI.variable + " " + TASA_EXPLORER.variable}>
-        <Providers>
+        <Providers pageProps={pageProps}>
           <SkeletonTheme baseColor="#f9f9f980" highlightColor="#0066ff20">
             {children}
           </SkeletonTheme>
