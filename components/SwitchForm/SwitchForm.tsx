@@ -14,7 +14,6 @@ const SwitchForm: React.FC<SwitchFormProps> = ({
   name,
   label,
 }) => {
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(name, e.target.checked);
   };
@@ -24,6 +23,7 @@ const SwitchForm: React.FC<SwitchFormProps> = ({
       <label htmlFor={name}>{label}</label>
       <label className={styles.switch}>
         <input
+          id={name}
           type="checkbox"
           name={name}
           checked={checked}

@@ -28,6 +28,7 @@ const TextArea: React.FC<TextAreaProps> = ({
     <div className={styles.container}>
       {label && <label htmlFor={name}>{label}</label>}
       <textarea
+        id={name}
         required={required}
         rows={4}
         name={name}

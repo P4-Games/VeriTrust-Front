@@ -54,6 +54,7 @@ const InputFileForm: React.FC<InputFormProps> = ({
       {label && <label htmlFor={name}>{label}</label>}
       <div className={styles.container_input}>
         <input
+          id={name}
           required={required}
           type="file"
           name={name}

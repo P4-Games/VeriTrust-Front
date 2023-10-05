@@ -35,6 +35,7 @@ const InputForm: React.FC<InputFormProps> = ({
       {label && <label htmlFor={name}>{label}</label>}
 
       <input
+        id={name}
         required={required}
         type={type}
         name={name}

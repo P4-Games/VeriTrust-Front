@@ -47,7 +47,7 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
 
   return (
     <div className={styles.dynamic_input_form}>
-      <label htmlFor={name}>{label}</label>
+      <label>{label}</label>
       <div className={styles.inputs_container}>
         {formState.map((inputValue, index) => (
           <div key={index}>
