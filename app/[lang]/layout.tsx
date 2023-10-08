@@ -6,6 +6,7 @@ import Providers from "@/providers/Providers";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LayoutProps } from "framer-motion";
 
 //Uso en el css: var(--font-satoshi)
 export const SATOSHI = localFont({
@@ -26,15 +27,22 @@ export const metadata = {
     "Seguridad, transparencia y confianza en los procesos de contratación.",
 };
 
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ lang: locale }));
+}
+
+interface LayoutProps {
+  children: React.ReactNode;
+  params: { lang: AVAILABLE_LOCALES};
+}
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  params,
+}: LayoutProps) {
   return (
-    <html lang="es">
+    <html>
       <body className={SATOSHI.variable + " " + TASA_EXPLORER.variable}>
-        <Providers>
+        <Providers pageProps={pageProps}>
           <SkeletonTheme baseColor="#f9f9f980" highlightColor="#0066ff20">
             {children}
           </SkeletonTheme>
