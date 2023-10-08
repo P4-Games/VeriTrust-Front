@@ -23,4 +23,4 @@ module.exports = {
     },
   ],
   format: formatter({ origins: false }),
-}
+}}
