@@ -27,6 +27,7 @@
     "framer-motion": "^10.15.1",
     "lokijs": "^1.5.12",
     "next": "13.4.12",
+    "next-intl": "^2.20.2",
     "pino-pretty": "^10.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,4 +1,4 @@
-@import "../styles/variables.scss";
+@import "../../styles/variables.scss";
 
 .main {
   display: flex;
@@ -241,6 +241,49 @@
           max-width: 200px;
         }
       }
+    }
+  }
+}
+
+.lang{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing0_5;
+  margin-top: $spacing;
+  flex-wrap: wrap;
+  section{
+    cursor: pointer;
+    padding: $spacing0_5;
+    background-color: rgba($secondary, 0.5);
+    border-radius: $radiusOuter;
+    p{
+      font-size: 1.2rem;
+      color: $primary;
+      font-weight: bold;
+    }
+    img, svg{
+      height: 70px;
+      object-fit: cover;
+      border-radius: $radius;
+    }
+
+    transition: all 0.1s cubic-bezier(0.6,0.6,0,0.1);
+    border: 1px solid $secondary;
+    box-sizing: border-box;
+    &:hover{
+      border: 3px solid $secondary;
+      background-color: rgba($secondary, 0.8);
+      transition: all 0.1s cubic-bezier(0.6,0.6,0,0.1);
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .lang{
+    section{
+      width: 100%;
     }
   }
 }

@@ -1,0 +1,30 @@
+{
+    "Index": {
+        "title": "Procure with confidence, VeriTrust backs you up",
+        "description": "We transformed the tender system, providing greater security, transparency and confidence in the contracting process.",
+        "button": "Enter the app",
+        "scroll": "Scroll to see more",
+        "heading2": "Features",
+        "marketplace_title": "Marketplace",
+        "marketplace_description": "Facilitates the search and promotion of opportunities, ensuring a transparent and competitive environment for all parties.",
+        "characteristics_title": "Proposal privacy",
+        "characteristics_description": "During the bidding phase, only one hash is sent with the bid. Then there is a reveal phase where the hash is compared with the real information, and it is verified that it is the correct information.",
+        "characteristics_title2": "Reveal on Blockchain",
+        "characteristics_description2": "Through blockchain technology the reveal is made public, transparent and immutable.",
+        "characteristics_title3": "Arbitration",
+        "characteristics_description3": "In cases of disputes or claims. We integrate Kleros, where experts make impartial decisions.",
+        "benefits_title": "Key Benefits",
+        "benefits_item": "Increased Security and Transparency",
+        "benefits_item2": "Proposal Privacy",
+        "benefits_item3": "Verifiability and Auditability",
+        "benefits_item4": "Efficiency and Cost Savings",
+        "newsletter": "Get the latest news!",
+        "newsletter_description": "We will only send content from time to time, making sure it adds value.",
+        "newsletter_placeholder": "example@domain.com",
+        "newsletter_button": "Subscribe"
+    },
+    "Footer": {
+        "lang": "Language",
+        "createdBy": "Created during EthArgentina 2023"
+    }
+}

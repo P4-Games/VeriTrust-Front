@@ -1,0 +1,30 @@
+{
+    "Index": {
+        "title": "Licite con confianza, VeriTrust lo respalda",
+        "description": "Transformamos el sistema de licitaciones, brindando mayor seguridad, transparencia y confianza en el proceso de contratación.",
+        "button": "Ingresar a la aplicación",
+        "scroll": "Desplácese para ver más",
+        "heading2": "Características",
+        "marketplace_title": "Mercado",
+        "marketplace_description": "Facilita la búsqueda y promoción de oportunidades, asegurando un entorno transparente y competitivo para todas las partes.",
+        "characteristics_title": "Privacidad de propuestas",
+        "characteristics_description": "Durante la fase de licitación, se envía solo un hash con la oferta. Luego hay una fase de revelación donde se compara el hash con la información real, y se verifica que sea la información correcta.",
+        "characteristics_title2": "Revelación en Blockchain",
+        "characteristics_description2": "A través de la tecnología blockchain, la revelación se hace pública, transparente e inmutable.",
+        "characteristics_title3": "Arbitraje",
+        "characteristics_description3": "En casos de disputas o reclamos. Integramos Kleros, donde los expertos toman decisiones imparciales.",
+        "benefits_title": "Beneficios clave",
+        "benefits_item": "Mayor seguridad y transparencia",
+        "benefits_item2": "Privacidad de propuestas",
+        "benefits_item3": "Verificabilidad y auditabilidad",
+        "benefits_item4": "Eficiencia y ahorro de costos",
+        "newsletter": "¡Obtenga las últimas noticias!",
+        "newsletter_description": "Solo enviaremos contenido de vez en cuando, asegurándonos de que agregue valor.",
+        "newsletter_placeholder": "ejemplo@dominio.com",
+        "newsletter_button": "Suscribirse"
+    },
+    "Footer": {
+        "lang": "Idioma",
+        "createdBy": "Creado durante EthArgentina 2023"
+    }
+}

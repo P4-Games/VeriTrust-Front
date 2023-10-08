@@ -6,17 +6,18 @@ import styles from "./Footer.module.scss";
 import { Langs } from "@/utils/ip";
 import { IconChevronDown, IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence, cubicBezier, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
-interface FooterProps {
-  lang?: Langs;
-}
-export default function Footer({ lang = "EN" }: FooterProps) {
+export default function Footer() {
   const [open, setOpen] = useState(false);
-
-  const handleChange = (lang: Langs) => {
-    localStorage.setItem("lang", lang);
-    window.location.reload();
-  };
+  const t = useTranslations('Footer');
+  const router = useRouter();
+  
+  const toggleLang = (lang: string) => {
+    //Replace the 2 first letters of the pathname after the / with the current language
+    router.push(window.location.pathname.replace(/^\/.{2}/, `/${lang}`));
+  }
 
   return (
     <footer className={styles.footer}>
@@ -25,7 +26,7 @@ export default function Footer({ lang = "EN" }: FooterProps) {
           onClick={() => setOpen(!open)}
           className={styles.footer_lang_button}
         >
-          {lang == "EN" ? "Language" : "Idioma "}
+          {t("lang")}
           {
             !open ? (
               <IconChevronRight />
@@ -42,8 +43,8 @@ export default function Footer({ lang = "EN" }: FooterProps) {
                 transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
                 className={styles.footer_lang_options}
               >
-                <button onClick={() => handleChange("EN")}>English</button>
-                <button onClick={() => handleChange("ES")}>Español</button>
+                <button onClick={() => toggleLang("en")}>English</button>
+                <button onClick={() => toggleLang("es")}>Español</button>
               </motion.section>
             ) : null
           }
@@ -54,7 +55,7 @@ export default function Footer({ lang = "EN" }: FooterProps) {
           <Image width={40} height={40} src={logo} alt="VeriTrust logo" />
           <p>VeriTrust</p>
         </div>
-        <p>{lang == "EN" ? "Created during" : "Creado en"} EthArgentina 2023</p>
+        <p>{t("createdBy")}</p>
       </section>
     </footer>
   );
