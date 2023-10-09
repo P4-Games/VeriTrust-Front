@@ -95,7 +95,7 @@ export function generateStaticParams() {
 
 interface LayoutProps {
   children: ReactNode;
-  params: {locale: string}
+  params: { locale: string }
 }
 
 export default async function LocaleLayout({children, params}: LayoutProps) {
