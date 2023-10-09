@@ -25,9 +25,10 @@
     "eslint-config-next": "13.4.12",
     "ethers": "^6.7.1",
     "framer-motion": "^10.15.1",
+    "lodash": "^4.17.21",
     "lokijs": "^1.5.12",
     "next": "13.4.12",
-    "next-intl": "^2.20.2",
+    "next-intl": "^3.0.0-beta.19",
     "pino-pretty": "^10.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -46,6 +47,7 @@
     "@lingui/macro": "^4.5.0",
     "@lingui/swc-plugin": "^4.0.4",
     "@types/formidable": "^3.4.3",
+    "@types/lodash": "^4.14.199",
     "@types/react-world-flags": "^1.4.2"
   }
 }
