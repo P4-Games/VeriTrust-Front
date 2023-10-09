@@ -3,7 +3,7 @@ import { QuoteState } from "@/constants/profile";
 import { formatAddress, formatTX } from "@/utils/format";
 import React, { Dispatch } from "react";
 
-import styles from "../../../app/profile/Profile.module.scss";
+import styles from "../../../app/[locale]/profile/Profile.module.scss";
 
 import { IconChevronDown, IconExternalLink } from "@tabler/icons-react";
 import { Timeline } from "../Tender/Timeline/Timeline";

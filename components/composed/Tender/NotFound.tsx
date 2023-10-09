@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../../app/tender/[id]/Tender.module.scss";
+import styles from "../../../app/[locale]/tender/[id]/Tender.module.scss";
 import { Button } from '@/components/Button/Button';
 import { IconArrowLeft } from '@tabler/icons-react';
 

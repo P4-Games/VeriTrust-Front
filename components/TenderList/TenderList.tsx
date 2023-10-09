@@ -1,6 +1,6 @@
 //Client component that displays all the tenders, and it's responsible for fetching or retrieving the TXs
 'use client';
-import styles from "@/app/marketplace/Marketplace.module.scss";
+import styles from "@/app/[locale]/marketplace/Marketplace.module.scss";
 import Skeleton from 'react-loading-skeleton';
 import { useEffect, useState } from "react";
 import { Button } from "../Button/Button";

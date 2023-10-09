@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
-import styles from "../../../app/profile/Profile.module.scss";
+import styles from "../../../app/[locale]/profile/Profile.module.scss";
 import { Button } from "@/components/Button/Button";
 import { IconPlus, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";

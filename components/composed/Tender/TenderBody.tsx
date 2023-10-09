@@ -1,5 +1,5 @@
 import { Tender } from "@/constants/tender";
-import styles from "../../../app/tender/[id]/Tender.module.scss";
+import styles from "../../../app/[locale]/tender/[id]/Tender.module.scss";
 import React from "react";
 import { SmallCard } from "@/components/SmallCard/SmallCard";
 import { TenderCurrency } from "./Currency";
