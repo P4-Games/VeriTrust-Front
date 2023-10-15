@@ -21,7 +21,10 @@
         "newsletter": "¡Obtenga las últimas noticias!",
         "newsletter_description": "Solo enviaremos contenido de vez en cuando, asegurándonos de que agregue valor.",
         "newsletter_placeholder": "ejemplo@dominio.com",
-        "newsletter_button": "Suscribirse"
+        "newsletter_button": "Suscribirse",
+        "characteristics_title4": "Nos adaptamos a tu organización!",
+        "characteristics_description4": "Ofrecemos servicios de app a medida, para empresas, ONGs, entidades gubernamentales o un particular. Nuestro protocolo es totalmente open source.",
+        "characteristics_description4End": "Envianos un correo a: "
     },
     "Footer": {
         "lang": "Idioma",

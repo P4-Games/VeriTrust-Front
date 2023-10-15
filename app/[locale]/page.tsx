@@ -139,6 +139,14 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+          <div className={styles.characteristicsLast}>
+            <h2>{t("characteristics_title4")}</h2>
+            <p>
+              {t("characteristics_description4")} <br /> <br />
+              {t("characteristics_description4End")} <a href="mailto:team@veritrust.tdm.ar" target="_blank">team@veritrust.tdm.ar</a>
+            </p>
+          </div>
+          
         </section>
         <div className={styles.repeat_pattern}>
           <motion.p
@@ -153,6 +161,7 @@ export default function Home() {
             {Array(repetitions).fill(pattern).join("")}
           </motion.p>
         </div>
+        
         <section className={styles.third_section}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}

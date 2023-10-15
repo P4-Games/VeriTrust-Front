@@ -21,7 +21,10 @@
         "newsletter": "Get the latest news!",
         "newsletter_description": "We will only send content from time to time, making sure it adds value.",
         "newsletter_placeholder": "example@domain.com",
-        "newsletter_button": "Subscribe"
+        "newsletter_button": "Subscribe",
+        "characteristics_title4": "We adapt to your organization!",
+        "characteristics_description4": "We offer custom app services for companies, NGOs, governmental entities or an individual. Our protocol is fully open source.",
+        "characteristics_description4End": "Send us an email to: "
     },
     "Footer": {
         "lang": "Language",
