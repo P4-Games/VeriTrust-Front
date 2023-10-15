@@ -9,12 +9,14 @@ import { IconChevronDown, IconExternalLink } from "@tabler/icons-react";
 import { Timeline } from "../Tender/Timeline/Timeline";
 import { Input } from "../Tender/Input/Input";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface QuotesTableProps {
   quotes: QuoteState[];
 }
 
 export const QuotesTable = ({ quotes }: QuotesTableProps) => {
+  const t = useTranslations("Profile");
   const [urls, setUrls] = React.useState<Map<string, string>>(
     new Map<string, string>()
   );
@@ -48,10 +50,10 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
     <React.Fragment>
       <section className={styles.profile_table}>
         <section className={styles.profile_tableHead}>
-          <h3>TX Process</h3>
-          <h3>Name</h3>
-          <h3>Type</h3>
-          <h3>Status</h3>
+          <h3>{t("tableHeading1")}</h3>
+          <h3>{t("tableHeading2")}</h3>
+          <h3>{t("tableHeading3")}</h3>
+          <h3>{t("tableHeading4")}</h3>
         </section>
         <section className={styles.profile_tableBody}>
           {quotes.map((item: QuoteState, index) => {
@@ -69,8 +71,8 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                     type={item.status == "Pending reveal" ? "main" : "card"}
                   >
                     {item.status == "Pending reveal"
-                      ? "Reveal"
-                      : "More details"}{" "}
+                      ? t("reveal")
+                      : t("seeDetails")}{" "}
                     <IconChevronDown />
                   </Button>
                 </div>
@@ -82,11 +84,11 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                     >
-                      <h3>Details: </h3>
+                      <h3>{t("details")}</h3>
                       {item.status == "Pending reveal" ? (
                         <section className={styles.profile_tableRowReveal}>
                           <div className={styles.profile_tableRowRevealInput}>
-                            Submit your URL to reveal the offer
+                            {t("submitText")}
                             <Input
                               setValue={(url: string) =>
                                 setIndividualUrl(item.txid, url)
@@ -105,7 +107,7 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                               );
                             }}
                           >
-                            Reveal
+                            {t("submit")}
                           </Button>
                         </section>
                       ) : null}
@@ -128,10 +130,7 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
       </section>
       {quotes && quotes.length === 0 ? (
         <section className={styles.profile_header}>
-          <p>
-            Connect a wallet to view your profile and keep track of your offers
-            or tenders
-          </p>
+          <p>{t("guestText")}</p>
         </section>
       ) : null}
     </React.Fragment>

@@ -9,8 +9,10 @@ import { formatAddress } from "@/utils/format";
 import { useAccount, useEnsName } from "wagmi";
 import { QuotesTable } from "./Quotes";
 import { TendersTable } from "./Tenders";
+import { useTranslations } from "next-intl";
 
 export const ProfileBody = ()=>{
+    const t = useTranslations("Profile")
     const router = useRouter();
     const { address, isConnected } = useAccount();
     const { data: ensName } = useEnsName({ address });
@@ -34,21 +36,21 @@ export const ProfileBody = ()=>{
     return (
         <>
             <section className={styles.profile_header}>
-                <h1>My Profile - Example Corp</h1>
-                <p>30-12345678-5 • <span>{description}</span></p>
+                <h1>{t("defaultTitle")}</h1>
+                <p>{t("defaultTaxID")} • <span>{description}</span></p>
             </section>
             <div className={styles.profile_actions}>
                 <Button
                     type="main"
                     onClick={() => router.push("/create-tender")}
                 >
-                    <IconPlus/> Create tender
+                    <IconPlus/> {t("action1")}
                 </Button>
                 <Button
                     type="alt"
                     onClick={() => router.push("/create-profile")}
                 >
-                    <IconUser /> Create profile
+                    <IconUser /> {t("action2")}
                 </Button>
             </div>
             <section 
@@ -56,10 +58,10 @@ export const ProfileBody = ()=>{
                 onClick={toggleSection}
             >
                     <div className={sectionType == "offers" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        My offers
+                        {t("action3")}
                     </div>
                     <div className={sectionType == "tenders" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        My tenders
+                        {t("action4")}
                     </div>
             </section>
             {

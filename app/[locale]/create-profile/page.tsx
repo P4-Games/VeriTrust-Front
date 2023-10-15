@@ -10,6 +10,7 @@ import { Button } from "@/components/Button/Button";
 import { IconPlus } from "@tabler/icons-react";
 import Image from "next/image";
 import { offer } from "@/assets";
+import { useTranslations } from "next-intl";
 
 interface FormProps {
   name: string;
@@ -20,6 +21,8 @@ interface FormProps {
 }
 
 export default function CreateProfile() {
+  const t = useTranslations("CreateProfile");
+
   const [option, setOption] = useState<string>("Corporation");
   const [formState, setFormState] = useState<FormProps>({
     name: "",
@@ -57,17 +60,15 @@ export default function CreateProfile() {
       <Navbar />
       <main className={styles.profile}>
         <header className={styles.profile_header}>
-          <h1>Create profile</h1>
+          <h1>{t("title")}</h1>
           <p>
-            To avoid repeating always the same data, you can create your profile
-            as a supplier, in order to simplify the application and the search
-            for tenders.
+            {t("description")}
           </p>
         </header>
         <section className={styles.profile_body}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <h3 className={styles.label}>Type of supplier:</h3>
+              <h3 className={styles.label}>{t("type")}</h3>
               <Select
                 options={[
                   /*"Persona Humana",
@@ -102,36 +103,36 @@ export default function CreateProfile() {
               handleChange={handleChange}
               type="text"
               name="name"
-              label="Company name:"
-              placeholder="Example S.A"
+              label={t("company")}
+              placeholder={t("company_placeholder")}
             />
             <InputForm
               value={formState.cuit}
               handleChange={handleChange}
               type="number"
               name="cuit"
-              label="taxpayer ID number"
-              placeholder="01-12345678-1"
+              label={t("taxid")}
+              placeholder={t("taxid_placeholder")}
             />
             <InputForm
               value={formState.address}
               handleChange={handleChange}
               type="text"
               name="address"
-              label="Legal address (street and number, zip code, city, county, province, country)"
-              placeholder="Example 1234, B7600 - Mar del Plata, Gral. Pueyrredón, Buenos Aires, Argentina"
+              label={t("address")}
+              placeholder={t("address_placeholder")}
             />
             <DynamicInputForm
               dynamicInputs={formState.categories}
               onDynamicInputChange={handleDynamicInputChange}
               type="text"
               name="categories"
-              label="Categories:"
-              placeholder="Type a category, e.g. Paints"
+              label={t("categories")}
+              placeholder={t("categories_placeholder")}
             />
             <div className={styles.btn_submit}>
               <Button type="main">
-                <IconPlus /> Create profile
+                <IconPlus /> {t("categoriesAction1")}
               </Button>
             </div>
           </form>
