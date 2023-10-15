@@ -15,6 +15,11 @@ export default function Footer() {
   const router = useRouter();
   
   const toggleLang = (lang: string) => {
+    if(window.location.pathname.startsWith("/" + lang)) return; //If the pathname already starts with the current language, do nothing
+    if(window.location.pathname === "/" || window.location.pathname === "") {
+      router.push(`/${lang}`);
+      return;
+    }
     //Replace the 2 first letters of the pathname after the / with the current language
     router.push(window.location.pathname.replace(/^\/.{2}/, `/${lang}`));
   }
@@ -45,6 +50,7 @@ export default function Footer() {
               >
                 <button onClick={() => toggleLang("en")}>English</button>
                 <button onClick={() => toggleLang("es")}>Español</button>
+                <button onClick={() => toggleLang("pt")}>Português</button>
               </motion.section>
             ) : null
           }
