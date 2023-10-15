@@ -10,28 +10,31 @@ import {
 } from "@tabler/icons-react";
 import { Button } from "@/components/Button/Button";
 import { ItemsTable } from "./ItemsTable";
+import { useTranslations } from "next-intl";
 
 interface TenderBodyProps {
   tender: Tender;
 }
 export const TenderBody = ({ tender }: TenderBodyProps) => {
+  const t = useTranslations("Details");
+  
   return (
     <section className={styles.details_body}>
       <section className={styles.details_bodyItem}>
-        <p>Currency and scope: </p>
+        <p>{t("subheading")}</p>
         <section className={styles.details_bodyRow}>
           <TenderCurrency currency={tender.currency} />
           <SmallCard>{tender.scope}</SmallCard>
         </section>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>Requires payment: {tender.requires_payment ? "Sí" : "No"} </p>
+        <p>{t("i2")} {tender.requires_payment ? t("yes") : t("no")} </p>
         <p>
-          Extension of time accepted: {tender.allows_extension ? "Sí" : "No"}
+          {t("i3")} {tender.allows_extension ? t("yes") : t("no")}
         </p>
       </section>
       <p>
-        <b>Categories</b>
+        <b>{t("i4")}</b>
       </p>
       <section className={styles.details_bodyItem}>
         {tender.categories.map((category, index) => (
@@ -39,13 +42,13 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
         ))}
       </section>
       <p>
-        <b>Type of quotation</b>
+        <b>{t("i5")}</b>
       </p>
       <section className={styles.details_bodyItem}>
         <SmallCard>{tender.quoteType}</SmallCard>
       </section>
       <p>
-        <b>Additional Information</b>
+        <b>{t("i6")}</b>
       </p>
       <section className={styles.details_bodyItem}>
         {tender.additionalInfo.map((info, index) => (
@@ -56,53 +59,52 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
         ))}
       </section>
       <p>
-        <b>Details of products or services</b>
+        <b>{t("i7")}</b>
       </p>
       <ItemsTable items={tender.items} />
       <section className={styles.details_bodyRow}>
         <section className={styles.details_bodyItem}>
-          <p>Specifications for terms and conditions</p>
+          <p>{t("i10")}</p>
           {
             tender.pliego ? (
               <SmallCard className={styles.flagContainer}>
                 <IconFileTypePdf size={24} />
-                See specifications
               </SmallCard>
             ) : (
-              <SmallCard>Not provided</SmallCard>
+              <SmallCard>{t("i11")}</SmallCard>
             )
           }
         </section>
         <section className={styles.details_bodyItem}>
-          <p>Approval provision</p>
+          <p>{t("i9")}</p>
           {
             tender.disposicionAprobatoria ? (
               <SmallCard className={styles.flagContainer}>
                 <IconFileTypePdf size={24} />
-                See provision
+                {t("i12")}
               </SmallCard>
             ) : (
-              <SmallCard>Not provided</SmallCard>
+              <SmallCard>{t("NotProvided")}</SmallCard>
             )
           }
         </section>
       </section>
       <p>
-        <b>Minimum participation requirements</b>
+        <b>{t("i12")}</b>
       </p>
       <section className={styles.details_bodyItem}>
-        <p>1. Economic and financial requirements</p>
+        <p>{t("i13")}</p>
         <SmallCard>{tender.financialRequirements || "Not specified"}</SmallCard>
-        <p>2. Technical requirements</p>
+        <p>{t("i14")}</p>
         <SmallCard>{tender.technicalRequirements || "Not specified"}</SmallCard>
-        <p>3. Administrative requirements</p>
+        <p>{t("i15")}</p>
         <SmallCard>{tender.administrativeRequirements || "Not specified"}</SmallCard>
       </section>
       <p>
-        <b>Special clauses</b>
+        <b>{t("i16")}</b>
       </p>
       <section className={styles.details_bodyItem}>
-        <p>Document, Special Number, Linkage Date</p>
+        <p>{t('i17')}</p>
         <section className={styles.details_bodyRow}>
           {
             (tender.clause[0] && tender.clause[1]) ? (
@@ -110,19 +112,19 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
                 <SmallCard>{tender.clause}</SmallCard>
                 <SmallCard className={styles.flagContainer}>
                   <IconFileTypePdf size={24} />
-                  See document
+                  {t("i18")}
                 </SmallCard>
               </>
-            ): <SmallCard>No document specified</SmallCard>
+            ): <SmallCard>{t("i18-2")}</SmallCard>
           }
         </section>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>Guarantees</p>
-        <SmallCard>{tender.warranty || "No Guarantees"}</SmallCard>
+        <p>{t("i19")}</p>
+        <SmallCard>{tender.warranty || t("i19-2")}</SmallCard>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>Penalties</p>
+        <p>{t("i20")}</p>
         <SmallCard>
           {(tender.penalties && tender.penalties.length > 0 && tender.penalties[0]) ? (
             <>
@@ -133,47 +135,47 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
               }
             </>
           ) : (
-            <p>No penalties</p>
+            <p>{t("i20-2")}</p>
           )}
         </SmallCard>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>Attachments</p>
+        <p>{t("i21")}</p>
         {tender.annexes?.length > 0 ? tender.annexes.map((annexes, index) => (
           <section className={styles.details_bodyRow} key={index}>
             <SmallCard>{annexes[0]}</SmallCard>
             <SmallCard className={styles.flagContainer}>
               <IconFileTypePdf size={24} />
-              See attachment
+              {t("i22")}
             </SmallCard>
           </section>
         )) : (
-          <SmallCard>No attachments</SmallCard>
+          <SmallCard>{t("i22-2")}</SmallCard>
         )}
       </section>
       <p>
-        <b>Additional information</b>
+        <b>{t("i23")}</b>
       </p>
       <section className={styles.details_bodyItem}>
-        <p>Date and time of inquiries</p>
+        <p>{t("i24")}</p>
         <section className={styles.details_bodyRow}>
           <SmallCard>{tender.dates.inquiriesStart || "-"}</SmallCard>
-          <p>To</p>
+          <p>{t("i25")}</p>
           <SmallCard>{tender.dates.inquiriesEnd || "-"}</SmallCard>
         </section>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>Date and time of opening or reveal</p>
-        <SmallCard>{tender.dates.reveal || "Not specified"}</SmallCard>
+        <p>{t("i26")}</p>
+        <SmallCard>{tender.dates.reveal || t("NotProvided")}</SmallCard>
       </section>
       <section className={styles.details_bodyRow}>
         <section className={styles.details_bodyItem}>
-          <p>Commencement of contract</p>
-          <SmallCard>From the contractual document</SmallCard>
+          <p>{t("i27")}</p>
+          <SmallCard>{t("i28")}</SmallCard>
         </section>
         <section className={styles.details_bodyItem}>
-          <p>Contract duration</p>
-          <SmallCard>{tender.dates.contractDuration || "Not specified"}</SmallCard>
+          <p>{t("i29")}</p>
+          <SmallCard>{tender.dates.contractDuration || t("NotProvided")}</SmallCard>
         </section>
       </section>
       <Button
@@ -181,7 +183,7 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
         type="main"
         className={styles.details_bodyButton}
       >
-        Bid <IconPremiumRights />
+        {t("i30")} <IconPremiumRights />
       </Button>
     </section>
   );
