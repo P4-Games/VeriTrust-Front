@@ -20,8 +20,19 @@ export default function Footer() {
       router.push(`/${lang}`);
       return;
     }
-    //Replace the 2 first letters of the pathname after the / with the current language
-    router.push(window.location.pathname.replace(/^\/.{2}/, `/${lang}`));
+    if(window.location.pathname.lastIndexOf("/") === 0) { 
+      //Replace the 2 first letters of the pathname after the / with the current language
+      if(window.location.pathname.length === 3) {
+        router.push(window.location.pathname.replace(/^\/.{2}/, `/${lang}`));
+      }else{
+        router.push(`/${lang}/` + window.location.pathname);
+      }
+      return;
+    }
+    //If the router has for example /es/create-tender or /create-tender (en), Add the language or replace accordingly
+    router.push(window.location.pathname.replace(/\/.{2}\//, `/${lang}/`));
+    
+
   }
 
   return (

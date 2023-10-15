@@ -5,6 +5,7 @@ import { TenderItem } from "@/constants/tender";
 import { IconChevronDown } from "@tabler/icons-react";
 import React from "react";
 import { TableItem } from "./TableItem";
+import { useTranslations } from "next-intl";
 
 interface ItemsaTableProps {
   items: TenderItem[];
@@ -16,15 +17,16 @@ export const ItemsTable = ({
   allQuotes = [],
   setAllQuotes,
 }: ItemsaTableProps) => {
+  const t = useTranslations("BidTable");
   return (
     <section className={styles.table}>
       <section className={styles.table_head}>
-        <h3>#</h3>
-        <h3>Object of expense</h3>
-        <h3>Item code</h3>
-        <h3>Description</h3>
-        {setAllQuotes && <h3>Unit price</h3>}
-        <h3>Quantity</h3>
+        <h3>{t("i1")}</h3>
+        <h3>{t("i2")}</h3>
+        <h3>{t("i3")}</h3>
+        <h3>{t("i4")}</h3>
+        {setAllQuotes && <h3>{t("i5")}</h3>}
+        <h3>{t("i6")}</h3>
       </section>
       <section className={styles.table_body}>
         {items.map((item, index) => (

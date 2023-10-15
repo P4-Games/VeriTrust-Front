@@ -18,8 +18,12 @@ import { useContractWrite, useContractRead } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
 import InputFileForm from "@/components/InputFileForm/InputFileForm";
+import { useTranslations } from "next-intl";
 
 export const CreateTenderForm = () => {
+  const tDetails = useTranslations("Details");
+  const t = useTranslations("CreateTender");
+
   const [formState, setFormState] = useState<Tender>({
     txid: "",
     name: "",
@@ -176,8 +180,8 @@ export const CreateTenderForm = () => {
           handleChange={handleChange}
           type="text"
           name="name"
-          label="Process name:"
-          placeholder="E.g. Acquisition of ..."
+          label={t("i0") + ":"}
+          placeholder={t('i0_placeholder')}
           required
         />
         <div className={styles.form_input}>
@@ -186,8 +190,8 @@ export const CreateTenderForm = () => {
             handleChange={handleChange}
             type="text"
             name="currency"
-            label="Currency and scope"
-            placeholder="Usd, Argentina"
+            label={tDetails("i1")}
+            placeholder="USD, Argentina"
           />
         </div>
         <div className={styles.form_compound}>
@@ -195,13 +199,13 @@ export const CreateTenderForm = () => {
             name="requires_payment"
             checked={formState.requires_payment}
             handleChange={handleChange}
-            label="Requires payment:"
+            label={tDetails("i2")}
           />
           <SwitchForm
             name="allows_extension"
             checked={formState.allows_extension}
             handleChange={handleChange}
-            label="Allows extension:"
+            label={tDetails("i3")}
           />
         </div>
         <div className={styles.form_input}>
@@ -210,8 +214,8 @@ export const CreateTenderForm = () => {
             onDynamicInputChange={handleDynamicInputChange}
             type="text"
             name="categories"
-            label="Categories:"
-            placeholder="Type a category, e.g. Paints"
+            label={tDetails("i4")}
+            placeholder={t("categoriesPlaceholder")}
           />
         </div>
         {/* <div className={styles.form_input}>
@@ -225,14 +229,14 @@ export const CreateTenderForm = () => {
             />
           </div> */}
         <div className={styles.form_input}>
-          <h4>Detail of products or services</h4>
+          <h4>{tDetails("i7")}</h4>
           <div className={styles.table_list}>
             <div className={styles.table_listHeader}>
-              <h5>#</h5>
-              <h5>Object of expenditure</h5>
-              <h5>Item code</h5>
-              <h5>Description</h5>
-              <h5>Quantity</h5>
+              <h5>{t("productsHeading1")}</h5>
+              <h5>{t("productsHeading2")}</h5>
+              <h5>{t("productsHeading3")}</h5>
+              <h5>{t("productsHeading4")}</h5>
+              <h5>{t("productsHeading5")}</h5>
             </div>
             <div className={styles.line}></div>
             {formState.items.map((item, index) => (
@@ -265,11 +269,11 @@ export const CreateTenderForm = () => {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                       >
-                        <h3>Additional information</h3>
+                        <h3>{t("productDetail1")}</h3>
                         <p>{item.additionalInfo}</p>
-                        <h3>Place of delivery</h3>
+                        <h3>{t("productDetail2")}</h3>
                         <p>{item.deliveryPlace}</p>
-                        <h3>Delivery deadline</h3>
+                        <h3>{t("productDetail3")}</h3>
                         <p>{item.deliveryDeadline}</p>
                       </motion.section>
                     </div>
@@ -285,7 +289,7 @@ export const CreateTenderForm = () => {
             type="button"
             className={styles.table_button}
           >
-            <IconPlus /> Add product or service
+            <IconPlus /> {t("productsAction1")}
           </button>
         </div>
         <div className={styles.form_compound}>
@@ -293,49 +297,49 @@ export const CreateTenderForm = () => {
             // hash={formState.specifications}
             handleChange={handleChange}
             name="specifications"
-            label="General terms and conditions"
+            label={tDetails("i8")}
           />
           <InputFileForm
             // hash={formState.approvingProvision}
             handleChange={handleChange}
             name="approvingProvision"
-            label="Approval Provision"
+            label={tDetails("i10")}
           />
         </div>
         <div className={styles.form_input}>
-          <h4>Minimum participation requirements</h4>
+          <h4>{tDetails("i12")}</h4>
           <InputForm
             value={formState.financialRequirements}
             handleChange={handleChange}
             name="financialRequirements"
-            label="1. Economic and financial requirements"
-            placeholder="Description and document type"
+            label={tDetails("i13")}
+            placeholder={t("i13_placeholder")}
           />
           <InputForm
             value={formState.technicalRequirements}
             handleChange={handleChange}
             name="technicalRequirements"
-            label="2. Technical requirements"
-            placeholder="Description and document type"
+            label={tDetails("i14")}
+            placeholder={t("i13_placeholder")}
           />
           <InputForm
             value={formState.administrativeRequirements}
             handleChange={handleChange}
             name="administrativeRequirements"
-            label="3. Administrative requirements"
-            placeholder="Description and document type"
+            label={tDetails("i15")}
+            placeholder={t("i13_placeholder")}
           />
         </div>
         <div className={styles.form_input}>
-          <h4>Special clauses</h4>
+          <h4>{tDetails("i16")}</h4>
           <div className={styles.form_compound}>
             <InputForm
               value={formState.clause[0]}
               handleChange={handleChange}
               name="clause"
               index={0}
-              label="Document, Special Number, Linkage Date"
-              placeholder="Enter the required data"
+              label={tDetails("i17")}
+              placeholder={t("i17_placeholder")}
             />
             <InputFileForm
               handleChange={handleChange}
@@ -349,8 +353,8 @@ export const CreateTenderForm = () => {
             value={formState.warranty}
             handleChange={handleChange}
             name="warranty"
-            label="Warranties"
-            placeholder="Enter the necessary data, e.g., guarantee of pre-award challenge, compliance, etc."
+            label={tDetails("i19")}
+            placeholder={t("i19_placeholder")}
           />
         </div>
         <div className={styles.form_input}>
@@ -359,23 +363,23 @@ export const CreateTenderForm = () => {
             onDynamicInputChange={handleDynamicInputChange}
             type="text"
             name="penalties"
-            label="Penalties"
-            placeholder="Penalty according to article, etc..."
+            label={tDetails("i20")}
+            placeholder={t("i20_placeholder")}
           />
         </div>
         {/* Penalidades */}
         <div className={styles.form_input}>
-          <h4>Additional information</h4>
+          <h4>{tDetails("i23")}</h4>
           <div className={styles.form_compound}>
             <InputForm
               type="datetime-local"
               value={formState.dates.inquiriesStart}
               handleChange={handleDatesChange}
               name="inquiriesStart"
-              label="Date and time of inquiries"
+              label={tDetails("i24")}
             />
             <div className={styles.form_compoundGap}>
-              <p>To</p>
+              <p>{tDetails("i25")}</p>
             </div>
             <InputForm
               type="datetime-local"
@@ -389,29 +393,29 @@ export const CreateTenderForm = () => {
             value={formState.dates.reveal}
             handleChange={handleDatesChange}
             name="reveal"
-            label="Date and time of reveal"
+            label={tDetails("i26")}
           />
           <div className={styles.form_compound}>
             <InputForm
               value={formState.dates.contractStart}
               handleChange={handleDatesChange}
               name="contractStart"
-              label="Start of contract"
-              placeholder="E.g. From the contractual document"
+              label={tDetails("i27")}
+              placeholder={t("i27_placeholder")}
             />
             <InputForm
               value={formState.dates.contractDuration}
               handleChange={handleDatesChange}
               name="contractDuration"
-              label="Contract duration"
-              placeholder="E.g. 3 months"
+              label={tDetails("i29")}
+              placeholder={t("i29_placeholder")}
             />
           </div>
         </div>
         <CostsDetails feeTypeToShow="contract" />
         <div className={styles.btn_submit}>
           <Button type="main">
-            <IconPlus /> Create tender
+            <IconPlus /> {t("title")}
           </Button>
         </div>
       </form>

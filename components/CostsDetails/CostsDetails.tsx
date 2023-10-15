@@ -7,12 +7,14 @@ import {
   veritrustFactoryAddressGoerli,
 } from "@/constants/factory";
 import { ethers } from "ethers";
+import { useTranslations } from "next-intl";
 
 export default function CostsDetails({
   feeTypeToShow,
 }: {
   feeTypeToShow: "contract" | "bid";
 }) {
+  const t = useTranslations("CreateTender");
   const [ethPrice, setEthPrice] = useState<number>(0);
   const [totalCosts, setTotalCosts] = useState<string>("");
   const [fee, setFee] = useState<string | undefined>(undefined);
@@ -56,17 +58,17 @@ export default function CostsDetails({
 
   return (
     <section className={styles.details_finalDetails}>
-      <h4>Details</h4>
+      <h4>{t("finalDetailsTitle")}</h4>
       <div>
-        <h4>Costs:</h4>
+        <h4>{t("finalDetailsConcept")}</h4>
         <p>
           {feeTypeToShow === "contract"
-            ? `Stamping fee: ${fee} ETH `
-            : `Bid fee: ${fee} ETH `}
+            ? `${t("finalDetailsConcept1")} ${fee} ETH `
+            : `${t("finalDetailsConcept2")} ${fee} ETH `}
         </p>
         {/* <p>Network fees: 0.0008 ??? ETH</p> */}
       </div>
-      <h4>Estimated total: {totalCosts} USD</h4>
+      <h4>{t("finalDetailsTotal")} {totalCosts} USD</h4>
     </section>
   );
 }
