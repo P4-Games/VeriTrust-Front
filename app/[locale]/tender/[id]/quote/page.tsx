@@ -21,8 +21,11 @@ import { Input } from "@/components/composed/Tender/Input/Input";
 import { ItemsTable } from "@/components/composed/Tender/ItemsTable";
 import { getEthereumPrice } from "@/utils/price";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
+import { useTranslations } from "next-intl";
+import Footer from "@/components/Footer/Footer";
 
 export default function Page({ params }: { params: { id: string } }) {
+  const t = useTranslations("Bid");
   const [postData, setPostData] = useState<Tender>({} as Tender);
   const [option, setOption] = useState<string>("Corporation");
   const [razonSocial, setRazonSocial] = useState<string>("");
@@ -74,21 +77,21 @@ export default function Page({ params }: { params: { id: string } }) {
         <section className={styles.details}>
           <Breadcrumb
             values={[
-              ["Tenders", "/marketplace"],
-              ["Tender details", "/tender/" + params?.id],
-              ["Bid", "/tender/" + params?.id + "/quote"],
+              [t("route1"), "/marketplace"],
+              [t("route2"), "/tender/" + params?.id],
+              [t("route3"), "/tender/" + params?.id + "/quote"],
             ]}
           />
           <div className={styles.details_back} onClick={() => router.back()}>
             <IconArrowLeft className={styles.details_backIcon} />
-            <h4>Return</h4>
+            <h4>{t("return")}</h4>
           </div>
           <section className={styles.details_head}>
             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
-            <p>Deadline: {postData.dates.reveal} </p>
+            <p>{t("deadline")} {postData.dates.reveal} </p>
           </section>
           <section className={styles.details_body}>
-            <h3 className={styles.details_bodyLabel}>Supplier type:</h3>
+            <h3 className={styles.details_bodyLabel}>{t("supplier")}</h3>
             <Select
               options={[
                 "Persona Humana",
@@ -109,20 +112,20 @@ export default function Page({ params }: { params: { id: string } }) {
             <Input
               value={razonSocial}
               setValue={setRazonSocial}
-              label="Company name"
-              placeholder="Example Corp"
+              label={t("company")}
+              placeholder={t("company_placeholder")}
             />
             <Input
               value={cuit}
               setValue={setCuit}
-              label="Tax ID number"
-              placeholder="30-12345678-5"
+              label={t("taxid")}
+              placeholder={t("taxid_placeholder")}
             />
             <Input
               value={domicilio}
               setValue={setDomicilio}
-              label="Address (street and number, zip code, city, county, province, country)"
-              placeholder="Example 1234, B7600 - Mar del Plata, Gral. Pueyrredón, Buenos Aires, Argentina"
+              label={t("address")}
+              placeholder={t("address_placeholder")}
             />
             <ItemsTable
               items={postData.items}
@@ -130,8 +133,8 @@ export default function Page({ params }: { params: { id: string } }) {
               setAllQuotes={setAllQuotes}
             />
             <section className={styles.details_warranties}>
-              <h3 className={styles.details_warrantiesTitle}>Guarantees</h3>
-              <p>Not required</p>
+              <h3 className={styles.details_warrantiesTitle}>{t("warranties")}</h3>
+              <p>{t("warrantiesDefault")}</p>
             </section>
             {/* <section className={styles.details_finalDetails}>
               <h3>Details</h3>
@@ -147,13 +150,14 @@ export default function Page({ params }: { params: { id: string } }) {
             </section> */}
             <CostsDetails feeTypeToShow="bid" />
             <Button type="main" onClick={() => {}}>
-              Place bid <IconFileUpload />
+              {t("action")} <IconFileUpload />
             </Button>
           </section>
         </section>
       ) : (
         <NotFound />
       )}
+      <Footer />
     </>
   );
 }

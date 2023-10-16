@@ -4,6 +4,7 @@ import { TenderItem } from "@/constants/tender";
 import { IconX } from "@tabler/icons-react";
 import InputForm from "@/components/InputForm/InputForm";
 import TextArea from "@/components/TextAreaForm/TextAreaForm";
+import { useTranslations } from "next-intl";
 
 interface DynamicFormModalProps {
   onFormSubmit: (formData: TenderItem) => void;
@@ -14,6 +15,7 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
   onFormSubmit,
   handleClose,
 }) => {
+  const t = useTranslations("CreateTender");
   const [formState, setFormState] = useState<TenderItem>({
     id: 0,
     object: "",
@@ -41,7 +43,7 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
       {/* <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}> */}
       <div className={styles.modal}>
         <header>
-          <h3>Añadir producto o servicio</h3>
+          <h3>{t("productDetailTitle")}</h3>
           <div className={styles.close} onClick={handleClose}>
             <IconX size={35} />
           </div>
@@ -50,23 +52,23 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
           <div className={styles.form_section}>
             <InputForm
               required
-              label="Objeto del gasto"
+              label={t("productsHeading2")}
               name="object"
               handleChange={handleInputChange}
               value={formState.object}
-              placeholder="Numero objeto"
+              placeholder={t("productsHeading2")}
             />
             <InputForm
               required
-              label="Código del ítem"
+              label={t("productsHeading3")}
               name="code"
               handleChange={handleInputChange}
               value={formState.code}
-              placeholder="Codigo"
+              placeholder={t("productsHeading3")}
             />
             <InputForm
               required
-              label="Cantidad"
+              label={t("productsHeading5")}
               name="quantity"
               type="number"
               handleChange={handleInputChange}
@@ -77,38 +79,38 @@ const DynamicFormModal: React.FC<DynamicFormModalProps> = ({
 
           <TextArea
             required
-            label="Descripción"
+            label={t("productsHeading4")}
             name="description"
             handleChange={handleInputChange}
             value={formState.description}
-            placeholder="descripción..."
+            placeholder={t("productsHeading4")}
           />
           <div className={styles.form_section}>
             <InputForm
-              label="Luegar de entrega"
+              label={t("productDetail2")}
               name="deliveryPlace"
               handleChange={handleInputChange}
               value={formState.deliveryPlace}
-              placeholder="Luegar de entrega"
+              placeholder={t("productDetail2")} 
             />
             <InputForm
               type="date"
-              label="Fecha de entrega"
+              label={t("productDetail3")}
               name="deliveryDeadline"
               handleChange={handleInputChange}
               value={formState.deliveryDeadline}
-              placeholder="Fecha de entrega"
+              placeholder={t("productDetail3")}
             />
             <InputForm
-              label="Información adicional"
+              label={t("productDetail1")}
               name="additionalInfo"
               handleChange={handleInputChange}
               value={formState.additionalInfo}
-              placeholder="Información adicional"
+              placeholder={t("productDetail1")}
             />
           </div>
           <button className={styles.btn_submit} type="submit">
-            Agregar
+            {t("productDetailAction")}
           </button>
         </form>
       </div>

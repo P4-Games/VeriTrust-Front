@@ -1,5 +1,5 @@
 'use client';
-import styles from "../../../app/tender/[id]/Tender.module.scss";
+import styles from "../../../app/[locale]/tender/[id]/Tender.module.scss";
 
 import { SmallCard } from "@/components/SmallCard/SmallCard";
 import { WORLD_CURRENCIES } from "@/constants/worldCurrencies";

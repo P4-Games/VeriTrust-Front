@@ -3,19 +3,21 @@ import { QuoteState } from "@/constants/profile";
 import { formatAddress, formatTX } from "@/utils/format";
 import React, { Dispatch } from "react";
 
-import styles from "../../../app/profile/Profile.module.scss";
+import styles from "../../../app/[locale]/profile/Profile.module.scss";
 
 import { IconChevronDown, IconExternalLink } from "@tabler/icons-react";
 import { Timeline } from "../Tender/Timeline/Timeline";
 import { Input } from "../Tender/Input/Input";
 import { AnimatePresence, motion } from "framer-motion";
 import { DUMMY_TENDERS_OFFERS } from "@/constants/offers";
+import { useTranslations } from "next-intl";
 
 interface QuotesTableProps {
   quotes: QuoteState[];
 }
 
 export const TendersTable = ({ quotes }: QuotesTableProps) => {
+  const t = useTranslations("Profile");
   const [winner, setWinner] = React.useState<string>(""); // Address del oferente
   const [openAccordion, closeAccordion] = React.useState<Map<string, boolean>>(
     new Map<string, boolean>()
@@ -46,10 +48,10 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
     <React.Fragment>
       <section className={styles.profile_table}>
         <section className={styles.profile_tableHead}>
-          <h3>TX Process</h3>
-          <h3>Name</h3>
-          <h3>Type</h3>
-          <h3>Status</h3>
+          <h3>{t("tableHeading1")}</h3>
+          <h3>{t("tableHeading2")}</h3>
+          <h3>{t("tableHeading3")}</h3>
+          <h3>{t("tableHeading4")}</h3>
         </section>
         <section className={styles.profile_tableBody}>
           {quotes.map((item: QuoteState, index) => {
@@ -71,8 +73,8 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                     }
                   >
                     {item.status === "Pending winner selection"
-                      ? "Select"
-                      : "Details"}
+                      ? t("actions5")
+                      : t("actions6")}
                     <IconChevronDown />
                   </Button>
                 </div>
@@ -86,8 +88,8 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                     >
                       <h3>
                         {item.status === "Pending winner selection"
-                          ? "Select winner:"
-                          : "Details:"}
+                          ? t("title")
+                          : t("details")}
                       </h3>
                       {item.status === "Pending winner selection" ? (
                         <section className={styles.profile_tableWinner}>
@@ -113,7 +115,7 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                                       />
                                     </div>
                                     <p>
-                                      Oferente: {offer.businessName} -{" "}
+                                      {t("bidder")} {offer.businessName} -{" "}
                                       <span>
                                         {" "}
                                         {formatAddress(offer.address)}
@@ -121,10 +123,10 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                                     </p>
                                   </div>
 
-                                  <p>Address: {offer.businessAddres}</p>
-                                  <p>Tax payer ID: {offer.cuit}</p>
+                                  <p>{t("address")} {offer.businessAddres}</p>
+                                  <p>{t("taxid")} {offer.cuit}</p>
                                   <p>
-                                    Budget Total: $
+                                    {t("total")} $
                                     {getFormattedPrice(offer.totalPrice)}
                                   </p>
                                 </section>
@@ -132,7 +134,7 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
                             })}
                           </div>
                           <Button type="main" onClick={() => {}}>
-                            Select winner
+                            {t("selectWinner")}
                           </Button>
                         </section>
                       ) : null}
@@ -156,8 +158,7 @@ export const TendersTable = ({ quotes }: QuotesTableProps) => {
       {quotes && quotes.length === 0 ? (
         <section className={styles.profile_header}>
           <p>
-            Connect a wallet to view your profile and keep track of your offers or
-            tenders
+            {t("guestText")}
           </p>
         </section>
       ) : null}
