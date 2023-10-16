@@ -5,44 +5,6 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  &_lang{
-    width: min(80vw, 200px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    
-    &_button{
-      background: none;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between
-    }
-
-    button{
-      font-family: $font;
-      width: 100%;
-      cursor: pointer;
-      border: none;
-    }
-
-    &_options{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-
-      & > button{
-        background-color: $secondary;
-        padding: 10px 0;
-        border-radius: $radius;
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-    }
-  }
   
   &_bottom{
     color: $placeholder;

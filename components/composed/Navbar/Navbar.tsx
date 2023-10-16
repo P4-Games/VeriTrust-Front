@@ -6,9 +6,10 @@ import { Logo } from "../../Logo/Logo";
 import { NAV_LINKS } from "@/constants/links";
 import { Button } from "../../Button/Button";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { AnimatePresence, cubicBezier, motion } from "framer-motion";
 import { Web3Button } from "@web3modal/react";
 import useDocumentScroll from "@/hooks/useDocumentScroll";
+import { AnimatePresence, cubicBezier, motion } from "framer-motion";
+import LangButton from "@/components/LangButton/LangButton";
 
 export const Navbar = (): JSX.Element => {
   const [openMenu, setOpenMenu] = React.useState<boolean>(false);
@@ -42,8 +43,8 @@ export const Navbar = (): JSX.Element => {
                 {link[0]}
               </Button>
             ))}
-            {/*<Connect />*/}
             <Web3Button />
+            <LangButton />
             <Button
               type="link"
               className={styles.navbar_menuClose}
@@ -62,6 +63,7 @@ export const Navbar = (): JSX.Element => {
         ))}
         {/*<Connect />*/}
         <Web3Button />
+        <LangButton />
       </section>
     </nav>
   );

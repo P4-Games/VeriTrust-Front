@@ -13,8 +13,9 @@
   width: -webkit-fill-available;
   margin: 0;
   padding: $spacing0_5 $spacing2;
-  background-color: $background;
-  border-bottom: 1px solid #c6c6c6;
+  background-color: apply-opacity($background, 0.6);
+  backdrop-filter: blur(7px);
+  // border-bottom: 1px solid #c6c6c6;
   z-index: 100;
   &_links {
     display: flex;
@@ -27,9 +28,6 @@
     }
   }
 
-  /*&_connect{
-
-    }*/
   &_menuIcon {
     display: none;
   }

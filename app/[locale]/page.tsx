@@ -8,20 +8,22 @@ import { Button } from "@/components/Button/Button";
 import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
+import LangButton from "@/components/LangButton/LangButton";
 
 export default function Home() {
   const pattern = " • VeriTrust";
   const repetitions = 42;
-  const t = useTranslations('Index');
+  const t = useTranslations("Index");
 
   return (
     <>
       <main className={styles.main}>
         <Loading />
         {/*<DetectLanguage /> */}
-        <header className={styles.logo}>
+        <header className={styles.header}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
+          <LangButton />
         </header>
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
@@ -82,9 +84,7 @@ export default function Home() {
               }}
             >
               <h3>{t("marketplace_title")}</h3>
-              <p>
-                {t("marketplace_description")}
-              </p>
+              <p>{t("marketplace_description")}</p>
               <div className={styles.marketplace_img}>
                 <Image
                   sizes="100vw"
@@ -143,10 +143,12 @@ export default function Home() {
             <h2>{t("characteristics_title4")}</h2>
             <p>
               {t("characteristics_description4")} <br /> <br />
-              {t("characteristics_description4End")} <a href="mailto:team@veritrust.tdm.ar" target="_blank">team@veritrust.tdm.ar</a>
+              {t("characteristics_description4End")}{" "}
+              <a href="mailto:team@veritrust.tdm.ar" target="_blank">
+                team@veritrust.tdm.ar
+              </a>
             </p>
           </div>
-          
         </section>
         <div className={styles.repeat_pattern}>
           <motion.p
@@ -161,7 +163,7 @@ export default function Home() {
             {Array(repetitions).fill(pattern).join("")}
           </motion.p>
         </div>
-        
+
         <section className={styles.third_section}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
