@@ -20,6 +20,8 @@ import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
 import InputFileForm from "@/components/InputFileForm/InputFileForm";
 import { useTranslations } from "next-intl";
 
+const DATE_NOW_ISO = new Date().toISOString().slice(0, 16);
+
 export const CreateTenderForm = () => {
   const tDetails = useTranslations("Details");
   const t = useTranslations("CreateTender");
@@ -49,7 +51,8 @@ export const CreateTenderForm = () => {
     dates: {
       inquiriesStart: "",
       inquiriesEnd: "",
-      reveal: "",
+      commitDeadline: "",
+      revealDeadline: "",
       contractStart: "", // It should be "A partir del documento contractual"
       contractDuration: "", // E.g. "3 months"
     },
@@ -60,15 +63,13 @@ export const CreateTenderForm = () => {
   const [showTableRow, setShowTableRow] = useState(-1);
 
   const [_commitDeadline, setCommitDeadline] = useState<number>(
-    new Date().getTime() + 1000 * 60 * 60 * 24 * 7
+    new Date().getTime()
   );
   const [_revealDeadline, setRevealDeadline] = useState<number>(
-    new Date().getTime() + 1000 * 60 * 60 * 24 * 8
+    new Date().getTime()
   );
 
-  const [warrantyAmount, setWarrantyAmount] = useState(
-    BigInt("10000000000000000")
-  );
+  const [warrantyAmount, setWarrantyAmount] = useState<bigint>();
 
   const { data: deployFeeData } = useContractRead({
     address: veritrustFactoryAddressGoerli,
@@ -108,6 +109,18 @@ export const CreateTenderForm = () => {
         [name]: inputValue,
       },
     });
+
+    // date.time en segundos a partir de la fecha actual
+    const date = Math.round(
+      (new Date(inputValue).getTime() - new Date().getTime()) / 1000
+    );
+
+    // reveal deadline se cuenta a partir del commit deadline
+    if (name == "commitDeadline") {
+      setCommitDeadline(date);
+    } else if (name == "revealDeadline") {
+      setRevealDeadline(date);
+    }
   };
 
   const handleDynamicInputChange = (name: string, dynamicInputs: string[]) => {
@@ -143,34 +156,52 @@ export const CreateTenderForm = () => {
     address: veritrustFactoryAddressGoerli,
     abi: contractABIGoerli,
     functionName: "deployVeritrust",
-    args: [
-      formState.name,
-      ipfsHash,
-      _commitDeadline,
-      _revealDeadline,
-      warrantyAmount,
-    ],
     value: warrantyAmount,
   });
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { isOk, data } = await ipfsUploadJson(formState);
+    const { isOk, data: ipfsFormHash } = await ipfsUploadJson(formState);
 
-    // if (isOk) {
-    //   // console.log("IPFS contract hash:", data);
-    //   setIpfsHash(data);
-    // }
+    if (isOk) {
+      setIpfsHash(ipfsFormHash);
+      deployContract({
+        args: [
+          formState.name,
+          ipfsFormHash,
+          _commitDeadline,
+          _revealDeadline,
+          warrantyAmount,
+        ],
+      });
+      console.log([
+        formState.name,
+        ipfsFormHash, // ipfs hash
+        _commitDeadline,
+        _revealDeadline,
+        warrantyAmount,
+      ]);
+    }
+
+    // const ipfsRes = await ipfsGet(data as string);
+    // console.log(ipfsRes.data)
 
     console.log(formState);
   };
 
-  useEffect(() => {
-    if (ipfsHash !== "") {
-      deployContract();
-    }
-  }, [ipfsHash]);
+  // useEffect(() => {
+  //   // if (ipfsHash !== "") {
+  //   //   deployContract();
+  //   // }
+  //   console.log([
+  //     formState.name,
+  //     ipfsHash,
+  //     _commitDeadline,
+  //     _revealDeadline,
+  //     warrantyAmount,
+  //   ]);
+  // }, [ipfsHash]);
 
   return (
     <>
@@ -181,7 +212,7 @@ export const CreateTenderForm = () => {
           type="text"
           name="name"
           label={t("i0") + ":"}
-          placeholder={t('i0_placeholder')}
+          placeholder={t("i0_placeholder")}
           required
         />
         <div className={styles.form_input}>
@@ -377,6 +408,7 @@ export const CreateTenderForm = () => {
               handleChange={handleDatesChange}
               name="inquiriesStart"
               label={tDetails("i24")}
+              min={DATE_NOW_ISO}
             />
             <div className={styles.form_compoundGap}>
               <p>{tDetails("i25")}</p>
@@ -386,14 +418,26 @@ export const CreateTenderForm = () => {
               value={formState.dates.inquiriesEnd}
               handleChange={handleDatesChange}
               name="inquiriesEnd"
+              min={DATE_NOW_ISO}
             />
           </div>
           <InputForm
             type="datetime-local"
-            value={formState.dates.reveal}
+            value={formState.dates.commitDeadline}
             handleChange={handleDatesChange}
-            name="reveal"
-            label={tDetails("i26")}
+            name="commitDeadline"
+            label={tDetails("commit")}
+            min={DATE_NOW_ISO}
+            required
+          />
+          <InputForm
+            type="datetime-local"
+            value={formState.dates.revealDeadline}
+            handleChange={handleDatesChange}
+            name="revealDeadline"
+            label={tDetails("reveal")}
+            min={formState.dates.commitDeadline.slice(0, 16) || DATE_NOW_ISO}
+            required
           />
           <div className={styles.form_compound}>
             <InputForm

@@ -10,6 +10,7 @@ interface InputFormProps {
   label?: string;
   placeholder?: string;
   required?: boolean;
+  min?: string;
 }
 
 const InputForm: React.FC<InputFormProps> = ({
@@ -21,11 +22,11 @@ const InputForm: React.FC<InputFormProps> = ({
   label = null,
   placeholder,
   required = false,
+  min = undefined,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(name, e.target.value, index);
   };
-
   return (
     <div
       className={`${styles.container} ${
@@ -42,6 +43,7 @@ const InputForm: React.FC<InputFormProps> = ({
         value={value}
         onChange={handleInputChange}
         placeholder={placeholder}
+        min={min}
       />
     </div>
   );

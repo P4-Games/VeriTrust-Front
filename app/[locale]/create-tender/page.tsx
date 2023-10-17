@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/Breadcrumb/Breadcrumb";
 import { CreateTenderForm } from "@/components/composed/Tender/CreateTenderForm/CreateTenderForm";
 import { useTranslations } from "next-intl";
 
-export default function CreateTender(): JSX.Element {
+export default function CreateTender() {
   const t = useTranslations("CreateTender");
   return (
     <>

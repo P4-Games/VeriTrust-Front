@@ -7,7 +7,7 @@ import { IconPlus } from "@tabler/icons-react";
 import { TenderList } from "@/components/TenderList/TenderList";
 import { useTranslations } from "next-intl";
 
-export default function Marketplace(): JSX.Element {
+export default function Marketplace() {
   const t = useTranslations('Marketplace');
 
   return (
