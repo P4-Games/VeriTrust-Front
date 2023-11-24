@@ -1,4 +1,4 @@
-
+'use client';
 import { Navbar } from "@/components/composed/Navbar/Navbar";
 
 import styles from "./Marketplace.module.scss";
