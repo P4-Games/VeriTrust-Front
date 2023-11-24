@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+.lang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+
+  &_button {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    gap: 0.15rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  button {
+    font-family: $font;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+  }
+
+  &_options {
+    z-index: 20;
+    position: absolute;
+    right: -1.5rem;
+    top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid #c6c6c6;
+    background-color: $background;
+    border-radius: $radius;
+    overflow-y: hidden;
+    li {
+      list-style-type: none;
+      button {
+        padding: 0.2rem 0.25rem;
+        text-align: start;
+        background-color: transparent;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      transition: 0.1s ease-in-out;
+      &:hover {
+        transform: scale(1.1) translateX(3px);
+      }
+    }
+  }
+}

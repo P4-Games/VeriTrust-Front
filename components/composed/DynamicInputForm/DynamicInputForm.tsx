@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import styles from "./DynamicInputForm.module.scss";
 import InputForm from "@/components/InputForm/InputForm";
 import { IconPlus, IconX } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 interface DynamicFormProps {
   dynamicInputs: string[];
@@ -21,6 +22,7 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
   placeholder,
 }) => {
   const [formState, setFormState] = useState<string[]>(dynamicInputs);
+  const t = useTranslations("CreateTender");
 
   const addInput = () => {
     const updatedForm = [...formState, ""];
@@ -47,7 +49,7 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
 
   return (
     <div className={styles.dynamic_input_form}>
-      <label htmlFor={name}>{label}</label>
+      <label>{label}</label>
       <div className={styles.inputs_container}>
         {formState.map((inputValue, index) => (
           <div key={index}>
@@ -64,10 +66,10 @@ const DynamicInputForm: React.FC<DynamicFormProps> = ({
       </div>
       <div className={styles.btns_container}>
         <button onClick={addInput} type="button">
-          <IconPlus /> Add field
+          <IconPlus /> {t("categoriesAction1")}
         </button>
         <button onClick={removeLastInput} type="button">
-          <IconX /> Delete last
+          <IconX /> {t("categoriesAction2")}
         </button>
       </div>
     </div>

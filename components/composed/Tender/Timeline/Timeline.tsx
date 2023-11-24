@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Timeline.module.scss";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface TimelineProps {
     total: number;
@@ -11,11 +12,12 @@ interface TimelineProps {
 }
 
 export const Timeline = ({ total, current, status, stageText, txid }: TimelineProps)=>{
+    const t = useTranslations("Profile")
     const allTexts: string[] = [
-        "Tender created",
-        "Bid Submission",
-        "Opening/Reveal",
-        "Results"
+        t("timeline1"),
+        t("timeline2"),
+        t("timeline3"),
+        t("timeline4"),
     ]
     const getItemClassName = (item: number): string => {
         let res: string = styles.timeline_item;

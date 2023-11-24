@@ -1,6 +1,6 @@
 "use client";
 import styles from "./page.module.scss";
-import { logo, marketplace, mouse, envelope } from "@/assets";
+import { logo, marketplace, envelope } from "@/assets";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import SubscribeForm from "@/components/SubscribeForm/SubscribeForm";
@@ -8,19 +8,22 @@ import { Button } from "@/components/Button/Button";
 import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
-import { DetectLanguage } from "@/components/Lang/DetectLanguage";
+import { useTranslations } from "next-intl";
+import LangButton from "@/components/LangButton/LangButton";
 
 export default function Home() {
   const pattern = " • VeriTrust";
   const repetitions = 42;
+  const t = useTranslations("Index");
 
   return (
     <>
       <main className={styles.main}>
         <Loading />
-        <DetectLanguage />
-        <header className={styles.logo}>
+        {/*<DetectLanguage /> */}
+        <header className={styles.header}>
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
+          <LangButton />
         </header>
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
@@ -32,7 +35,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              Procure with confidence, VeriTrust backs you up
+              {t("title")}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0 }}
@@ -43,8 +46,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              We transformed the tender system, providing greater security,
-              transparency and confidence in the contracting process.
+              {t("description")}
             </motion.p>
           </div>
           <motion.div
@@ -57,7 +59,7 @@ export default function Home() {
             }}
           >
             <Button className={styles.button} redirectTo="/marketplace">
-              Enter the App
+              {t("button")}
             </Button>
           </motion.div>
           <SeeMore />
@@ -68,7 +70,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
           >
-            Features
+            {t("heading2")}
           </motion.h2>
           <div className={styles.second_section_body}>
             <motion.div
@@ -81,11 +83,8 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              <h3>Marketplace</h3>
-              <p>
-                Facilitates the search and promotion of opportunities, ensuring
-                a transparent and competitive environment for all parties.
-              </p>
+              <h3>{t("marketplace_title")}</h3>
+              <p>{t("marketplace_description")}</p>
               <div className={styles.marketplace_img}>
                 <Image
                   sizes="100vw"
@@ -106,10 +105,8 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <h3>Proposal privacy</h3>
-                  <p>
-                  During the bidding phase, only one hash is sent with the bid. Then there is a reveal phase where the hash is compared with the real information, and it is verified that it is the correct information.
-                  </p>
+                  <h3>{t("characteristics_title")}</h3>
+                  <p>{t("characteristics_description")}</p>
                 </div>
               </motion.div>
               <motion.div
@@ -122,11 +119,8 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <h3>Reveal on Blockchain</h3>
-                  <p>
-                    Through blockchain technology the reveal is made public,
-                    transparent and immutable.
-                  </p>
+                  <h3>{t("characteristics_title2")}</h3>
+                  <p> {t("characteristics_description2")}</p>
                 </div>
               </motion.div>
               <motion.div
@@ -139,14 +133,21 @@ export default function Home() {
                 }}
               >
                 <div>
-                  <h3>Arbitration</h3>
-                  <p>
-                    In cases of disputes or claims. We integrate Kleros, where
-                    experts make impartial decisions.
-                  </p>
+                  <h3>{t("characteristics_title3")}</h3>
+                  <p>{t("characteristics_description3")}</p>
                 </div>
               </motion.div>
             </div>
+          </div>
+          <div className={styles.characteristicsLast}>
+            <h2>{t("characteristics_title4")}</h2>
+            <p>
+              {t("characteristics_description4")} <br /> <br />
+              {t("characteristics_description4End")}{" "}
+              <a href="mailto:team@veritrust.tdm.ar" target="_blank">
+                team@veritrust.tdm.ar
+              </a>
+            </p>
           </div>
         </section>
         <div className={styles.repeat_pattern}>
@@ -162,13 +163,14 @@ export default function Home() {
             {Array(repetitions).fill(pattern).join("")}
           </motion.p>
         </div>
+
         <section className={styles.third_section}>
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
           >
-            Key Benefits
+            {t("benefits_title")}
           </motion.h2>
           <div className={styles.card_container}>
             <motion.div
@@ -180,7 +182,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              <h3>Increased Security and Transparency</h3>
+              <h3>{t("benefits_item")}</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -191,7 +193,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              <h3>Proposal Privacy</h3>
+              <h3>{t("benefits_item2")}</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -202,7 +204,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              <h3>Verifiability and Auditability</h3>
+              <h3>{t("benefits_item3")}</h3>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -213,7 +215,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              <h3>Efficiency and Cost Savings</h3>
+              <h3>{t("benefits_item4")}</h3>
             </motion.div>
           </div>
         </section>
@@ -239,7 +241,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              Get the latest news!
+              {t("newsletter")}
             </motion.h3>
             <motion.p
               initial={{ opacity: 0 }}
@@ -250,8 +252,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              We will only send content from time to time, making sure it adds
-              value.
+              {t("newsletter_description")}
             </motion.p>
           </div>
           <motion.span
