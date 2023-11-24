@@ -88,7 +88,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
           <section className={styles.details_head}>
             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
-            <p>{t("deadline")} {postData.dates.reveal} </p>
+            <p>{t("deadline")} {postData.dates?.reveal} </p>
           </section>
           <section className={styles.details_body}>
             <h3 className={styles.details_bodyLabel}>{t("supplier")}</h3>

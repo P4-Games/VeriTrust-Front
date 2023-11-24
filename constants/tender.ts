@@ -39,6 +39,7 @@ export type Tender = {
     revealDeadline: string;
     contractStart: string; // It should be "A partir del documento contractual"
     contractDuration: string; // E.g. "3 months"
+    reveal?: string;
   };
 };
 
