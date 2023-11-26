@@ -165,8 +165,8 @@ export const TenderBody = ({ tender }: TenderBodyProps) => {
         </section>
       </section>
       <section className={styles.details_bodyItem}>
-        <p>{t("i26")}</p>
-        <SmallCard>{tender.dates.reveal || t("NotProvided")}</SmallCard>
+        <p>{t("reveal")}</p>
+        <SmallCard>{tender.dates.revealDeadline || t("NotProvided")}</SmallCard>
       </section>
       <section className={styles.details_bodyRow}>
         <section className={styles.details_bodyItem}>
