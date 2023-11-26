@@ -41,10 +41,10 @@ export default function Home() {
           <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome} />
           <div className={styles.header_links}>
             <Link href={"/services"}>
-              {mobile ? "Contacto" : "Tengo una organización"}
+              {mobile ? t("nav_contact") : t("nav_org")}
             </Link>
             <Link href={"/team"}>
-              Nosotros
+              {t("nav_team")}
             </Link>
             <LangButton />
           </div>

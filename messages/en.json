@@ -28,7 +28,10 @@
     "characteristics_title4": "We adapt to your organization!",
     "characteristics_description4": "We offer custom app services for companies, NGOs, governmental entities or an individual. Our protocol is fully open source.",
     "characteristics_description4End": "Send us an email to: ",
-    "newsletter_lang": "en"
+    "newsletter_lang": "en",
+    "nav_contact": "Contact",
+    "nav_org": "I have an organization",
+    "nav_team": "Team"
   },
   "Footer": {
     "lang": "Language",

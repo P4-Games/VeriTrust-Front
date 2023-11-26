@@ -28,7 +28,10 @@
     "characteristics_title4": "Adaptamo-nos à sua organização!",
     "characteristics_description4": "Oferecemos serviços de aplicações personalizadas para empresas, ONG, entidades governamentais ou um indivíduo. O nosso protocolo é totalmente open source.",
     "characteristics_description4End": "Envie-nos um e-mail para: ",
-    "newsletter_lang": "pt"
+    "newsletter_lang": "pt",
+    "nav_contact": "Contato",
+    "nav_org": "Tenho uma organização",
+    "nav_team": "Nossa equipe"
   },
   "Footer": {
     "lang": "Idioma",

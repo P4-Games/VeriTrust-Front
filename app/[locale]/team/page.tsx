@@ -18,6 +18,7 @@ export default function Home() {
     const pattern = " • VeriTrust";
     const repetitions = 42;
     const t = useTranslations("Team");
+    const i = useTranslations("Index");
     const router = useRouter();
 
     const handleOpenHome = ()=>router.push("/");
@@ -30,10 +31,10 @@ export default function Home() {
                     <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome}/>
                     <div className={styles.header_links}>
                         <Link href={"/services"}>
-                            Tengo una organización
+                            {i("nav_org")}
                         </Link>
-                        <Link href={"/team"} className="hide_mobile">
-                            <b>Nosotros</b>
+                        <Link href={"/team"}>
+                            {i("nav_team")}
                         </Link>
                         <LangButton />
                     </div>
