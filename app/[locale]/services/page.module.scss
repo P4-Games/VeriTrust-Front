@@ -1,0 +1,109 @@
+@import "../../../styles/variables.scss";
+
+.image {
+    position: absolute;
+    right: 0px;
+    z-index: -1;
+    bottom: 0;
+    opacity: 0.6;
+    overflow: hidden;
+    & > svg{
+        height: 500px;
+        margin-right: -60px;
+    }
+}
+
+.first_section {
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 60px;
+    overflow: hidden;
+    max-width: 100%;
+
+    @media only screen and (max-width: 768px) {
+        margin: 0 2rem;
+    }
+
+    .intro_text {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+        h2{
+            text-align: left;
+            max-width: 600px;
+        }
+        p {
+            max-width: 600px;
+            text-align: left;
+            font-size: 1.2rem;
+            margin-top: $spacing0_5;
+        }
+    }
+
+    .button {
+        letter-spacing: 0.5px;
+        margin: 2rem 0 1rem 0;
+        background-color: $primary;
+        border-radius: 8px;
+        border-style: none;
+        box-sizing: border-box;
+        color: $background;
+        cursor: pointer;
+        width: 100%;
+        max-width: 420px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: inline-block;
+        outline: none;
+        padding: 1rem 2rem;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            color: $background;
+            background-color: darken($primary, 10%);
+            transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
+        }
+    }
+
+    .scroll_text {
+        margin-top: $spacing2;
+        color: var(--color-placeholder);
+
+        p {
+            font-size: 0.9rem;
+        }
+
+        img {
+            padding: 0.5rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .image{
+        display: none;
+    }
+    .first_section {
+        margin: 0 2rem;
+        align-items: center;
+
+        .intro_text {
+            align-items: center;
+            text-align: center;
+            margin: 0 2rem;
+            h2, p{
+                text-align: center;
+                max-width: 80vw;
+            }
+        }
+
+    }
+}

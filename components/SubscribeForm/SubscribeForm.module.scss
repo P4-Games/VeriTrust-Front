@@ -9,7 +9,7 @@
   @media only screen and (max-width: 768px) {
     max-width: 520px;
     flex-direction: column;
-    button {
+    .form__button {
       width: 100%;
     }
   }
@@ -24,12 +24,13 @@
     font-size: 1rem;
     color: $background-dark;
     letter-spacing: 0.5px;
+    width: 100%;
     &::placeholder {
       color: $background-dark;
       opacity: 0.8;
     }
   }
-  button {
+  &__button {
     z-index: 5;
     flex: 1;
     letter-spacing: 0.5px;
@@ -41,5 +42,20 @@
     font-size: 1.25rem;
     border-radius: 12px;
     cursor: pointer;
+    max-width: 300px;
+
+    &Loading{
+      @extend .form__button;
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 1);
+    }
+  }
+  &__error{
+    margin-top: 1rem;
+    p{
+      font-size: 1rem;
+    }
   }
 }

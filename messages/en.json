@@ -22,9 +22,13 @@
     "newsletter_description": "We will only send content from time to time, making sure it adds value.",
     "newsletter_placeholder": "example@domain.com",
     "newsletter_button": "Subscribe",
+    "newsletter_sending": "Sending...",
+    "newsletter_success": "¡Thanks for suscribing!",
+    "newsletter_error": "The email entered is not valid or is already subscribed.",
     "characteristics_title4": "We adapt to your organization!",
     "characteristics_description4": "We offer custom app services for companies, NGOs, governmental entities or an individual. Our protocol is fully open source.",
-    "characteristics_description4End": "Send us an email to: "
+    "characteristics_description4End": "Send us an email to: ",
+    "newsletter_lang": "en"
   },
   "Footer": {
     "lang": "Language",
@@ -191,5 +195,32 @@
     "categories": "Categories: ",
     "categories_placeholder": "Type a category, e.g. Paints",
     "categoriesAction1": "Create profile"
+  },
+  "Services": {
+    "title": "Bring your organization to VeriTrust!",
+    "description": "We offer custom app services for companies, NGOs, governmental entities or an individual. Our protocol is fully open source.",
+    "button": "More information",
+    "heading2": "Benefits",
+    "marketplace_title": "Save time and money",
+    "marketplace_description": "We develop a custom app with your branding and exclusive use for your organization.",
+    "characteristics_title": "Greater transparency",
+    "characteristics_description": "Carry out bidding processes that are 100% auditable and transparent",
+    "characteristics_title2": "Reach more countries",
+    "characteristics_description2": "If your company does not have a headquarters in a country where you want to operate, you can launch purchasing processes with local suppliers.",
+    "characteristics_title3": "Integration with existing systems",
+    "characteristics_description3": "If you have an already defined purchasing process, our protocol can be easily adapted!",
+    "characteristics_title4": "Flexible prices",
+    "characteristics_description4": "We offer flexible prices, depending on the number of annual tenders.",
+    "characteristics_description4End": "",
+    "contact": "Contact us",
+    "contact_name": "Name",
+    "contact_email": "Email",
+    "contact_phone": "Phone",
+    "contact_message": "Message",
+    "contact_button": "Send",
+    "contact_success": "Thanks for contacting us, we will get back to you soon!"
+  },
+  "Team": {
+    "title": "Team"
   }
 }

@@ -27,6 +27,50 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1024px;
+
+    &_links{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+
+      a{
+        color: $text;
+        font-family: $font;
+        text-decoration: none;
+        margin-top: 3px;
+        transition: all .3s cubic-bezier(0.6, 0.6, 0, 1);
+
+        &::after{
+          content: "";
+          display: block;
+          width: 0;
+          height: 2px;
+          margin-top: 3px;
+          background: $text;
+          transition: width .3s cubic-bezier(0.6, 0.6, 0, 1);
+        }
+
+        &:hover::after{
+          width: 100%;
+          transition: width .3s cubic-bezier(0.6, 0.6, 0, 1);
+        }
+        
+        &:hover{
+          font-weight: 700;
+          transition: all .3s cubic-bezier(0.6, 0.6, 0, 1);
+        }
+      }
+      
+      & > section{
+        margin-left: 1rem;
+        transition: all .3s cubic-bezier(0.6, 0.6, 0, 1);
+        &:hover{
+          transform: scale(1.05);
+          transition: all .3s cubic-bezier(0.6, 0.6, 0, 1);
+        }
+      }
+    }
     @media only screen and (max-width: 768px) {
       margin: 0 2rem;
     }
@@ -41,11 +85,7 @@
     @media only screen and (max-width: 768px) {
       margin: 0 2rem;
     }
-    // h2 {
-    //   @include title;
-    // }
     .intro_text {
-      // font-size: 1.2rem;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -207,7 +247,7 @@
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     position: relative;
     display: flex;
     flex-direction: column;

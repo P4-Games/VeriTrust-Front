@@ -39,7 +39,7 @@ export default function Page ({ params }: { params: { id: string } }) {
                         />
                         <section className={styles.details_head}>
                             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
-                            <p>{t("subheading")} {postData.dates.reveal} </p>
+                            <p>{t("subheading")} {postData.dates?.reveal} </p>
                             <Button
                                 redirectTo={'/tender/' + params?.id + "/quote"}
                                 type='main'

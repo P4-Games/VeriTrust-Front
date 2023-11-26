@@ -10,11 +10,27 @@ import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
 import { useTranslations } from "next-intl";
 import LangButton from "@/components/LangButton/LangButton";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { isMobile } from "react-device-detect";
 
 export default function Home() {
   const pattern = " • VeriTrust";
   const repetitions = 42;
+  const [newsletterStatus, setNewsletterStatus] = useState<boolean>(false);
   const t = useTranslations("Index");
+  const router = useRouter();
+  const [mobile, setMobile] = useState<boolean>(false);
+
+  const handleOpenHome = ()=>router.push("/");
+
+  useEffect(()=>{
+    if(isMobile){
+      setMobile(true);
+    }
+  }, []);
+
 
   return (
     <>
@@ -22,8 +38,16 @@ export default function Home() {
         <Loading />
         {/*<DetectLanguage /> */}
         <header className={styles.header}>
-          <Image width={60} height={60} src={logo} alt="VeriTrust logo" />
-          <LangButton />
+          <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome} />
+          <div className={styles.header_links}>
+            <Link href={"/services"}>
+              {mobile ? "Contacto" : "Tengo una organización"}
+            </Link>
+            <Link href={"/team"}>
+              Nosotros
+            </Link>
+            <LangButton />
+          </div>
         </header>
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
@@ -241,7 +265,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              {t("newsletter")}
+              {newsletterStatus ? t("newsletter_success") : t("newsletter")}
             </motion.h3>
             <motion.p
               initial={{ opacity: 0 }}
@@ -252,7 +276,7 @@ export default function Home() {
                 ease: cubicBezier(0.6, 0.6, 0, 0.1),
               }}
             >
-              {t("newsletter_description")}
+              {newsletterStatus ? "" : t("newsletter_description")}
             </motion.p>
           </div>
           <motion.span
@@ -264,7 +288,9 @@ export default function Home() {
               ease: cubicBezier(0.6, 0.6, 0, 0.1),
             }}
           >
-            <SubscribeForm />
+            {
+              newsletterStatus ? null : <SubscribeForm setNewsletterStatus={setNewsletterStatus}/>
+            }
           </motion.span>
         </section>
       </main>
