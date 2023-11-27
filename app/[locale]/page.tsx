@@ -9,11 +9,10 @@ import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
 import { useTranslations } from "next-intl";
-import LangButton from "@/components/LangButton/LangButton";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { isMobile } from "react-device-detect";
+import LandingHeader from "@/components/LandingHeader/LandingHeader";
 
 export default function Home() {
   const pattern = " • VeriTrust";
@@ -23,32 +22,20 @@ export default function Home() {
   const router = useRouter();
   const [mobile, setMobile] = useState<boolean>(false);
 
-  const handleOpenHome = ()=>router.push("/");
+  const handleOpenHome = () => router.push("/");
 
-  useEffect(()=>{
-    if(isMobile){
+  useEffect(() => {
+    if (isMobile) {
       setMobile(true);
     }
   }, []);
-
 
   return (
     <>
       <main className={styles.main}>
         <Loading />
         {/*<DetectLanguage /> */}
-        <header className={styles.header}>
-          <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome} />
-          <div className={styles.header_links}>
-            <Link href={"/services"}>
-              {mobile ? t("nav_contact") : t("nav_org")}
-            </Link>
-            <Link href={"/team"}>
-              {t("nav_team")}
-            </Link>
-            <LangButton />
-          </div>
-        </header>
+        <LandingHeader />
         <section className={styles.first_section}>
           <div className={styles.intro_text}>
             <motion.h2
@@ -288,9 +275,9 @@ export default function Home() {
               ease: cubicBezier(0.6, 0.6, 0, 0.1),
             }}
           >
-            {
-              newsletterStatus ? null : <SubscribeForm setNewsletterStatus={setNewsletterStatus}/>
-            }
+            {newsletterStatus ? null : (
+              <SubscribeForm setNewsletterStatus={setNewsletterStatus} />
+            )}
           </motion.span>
         </section>
       </main>
