@@ -9,9 +9,7 @@ import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { isMobile } from "react-device-detect";
+import { useState } from "react";
 import LandingHeader from "@/components/LandingHeader/LandingHeader";
 
 export default function Home() {
@@ -19,16 +17,6 @@ export default function Home() {
   const repetitions = 42;
   const [newsletterStatus, setNewsletterStatus] = useState<boolean>(false);
   const t = useTranslations("Index");
-  const router = useRouter();
-  const [mobile, setMobile] = useState<boolean>(false);
-
-  const handleOpenHome = () => router.push("/");
-
-  useEffect(() => {
-    if (isMobile) {
-      setMobile(true);
-    }
-  }, []);
 
   return (
     <>
