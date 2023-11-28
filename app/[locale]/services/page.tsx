@@ -15,15 +15,23 @@ import Link from "next/link";
 import { Building } from "@/components/Services/Image";
 import { ContactForm } from "@/components/Services/ContactForm";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 export default function Home() {
     const pattern = " • VeriTrust";
     const repetitions = 42;
     const t = useTranslations("Services");
-    const i = useTranslations("Index");
     const router = useRouter();
-
+    const [mobile, setMobile] = useState<boolean>(false);
     const handleOpenHome = ()=>router.push("/");
+    
+    useEffect(()=>{
+        if(isMobile){   
+            setMobile(true);
+        }
+    }, []);
+
     return (
         <>
             <main className={styles.main}>
@@ -32,12 +40,12 @@ export default function Home() {
                 <header className={styles.header}>
                     <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome}/>
                     <div className={styles.header_links}>
-                        <Link href={"/services"}>
-                            {i("nav_org")}
-                        </Link>
-                        <Link href={"/team"}>
-                            {i("nav_team")}
-                        </Link>
+                    <Link href={"/services"}>
+                        {mobile ? t("nav_contact") : t("nav_org")}
+                    </Link>
+                    <Link href={"/team"}>
+                        {t("nav_team")}
+                    </Link>
                         <LangButton />
                     </div>
                 </header>
