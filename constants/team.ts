@@ -20,7 +20,7 @@ export const TEAM = [
     {
         name: "Luciano Scaminaci",
         role: "Frontend developer",
-        desc: "Full Stack Developer, UX/UI, Accessibility",
+        desc: "Frontend Developer, UX/UI",
         linkedin: "https://www.linkedin.com/in/luciano-scaminaci/",
     },
     {

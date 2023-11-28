@@ -13,62 +13,54 @@ import { ContactForm } from "@/components/Services/ContactForm";
 import { useRouter } from "next/navigation";
 import { TEAM } from "@/constants/team";
 import { IconBrandLinkedin } from "@tabler/icons-react";
+import LandingHeader from "@/components/LandingHeader/LandingHeader";
 
 export default function Home() {
-    const pattern = " • VeriTrust";
-    const repetitions = 42;
-    const t = useTranslations("Team");
-    const i = useTranslations("Index");
-    const router = useRouter();
+  const pattern = " • VeriTrust";
+  const repetitions = 42;
+  const t = useTranslations("Team");
+  const i = useTranslations("Index");
+  const router = useRouter();
 
-    const handleOpenHome = ()=>router.push("/");
-    return (
-        <>
-            <main className={styles.main}>
-                <Loading />
-                {/*<DetectLanguage /> */}
-                <header className={styles.header}>
-                    <Image width={60} height={60} src={logo} alt="VeriTrust logo" onClick={handleOpenHome}/>
-                    <div className={styles.header_links}>
-                        <Link href={"/services"}>
-                            {i("nav_org")}
-                        </Link>
-                        <Link href={"/team"}>
-                            {i("nav_team")}
-                        </Link>
-                        <LangButton />
-                    </div>
-                </header>
-                <section className={extendedStyles.first_section}>
-                    <div className={extendedStyles.intro_text}>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.1,
-                                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-                            }}
-                        >
-                            {t("title")}
-                        </motion.h2>
-                    </div>
-                </section>
-                <section className={extendedStyles.team_section}>
-                    {
-                        TEAM.map(item =>{
-                            return (
-                                <div className={extendedStyles.teamcard} key={item.name}>
-                                    <h4 className={extendedStyles.teamcard__title}>{item.name}</h4>
-                                    <p className={extendedStyles.teamcard__role}><b>{item.role}</b></p>
-                                    <p className={extendedStyles.teamcard__desc}>{item.desc}</p>
-                                    <IconBrandLinkedin onClick={()=> item.linkedin && router.push(item.linkedin)} />
-                                </div>
-                            )
-                        })
-                    }
-                </section>
-            </main>
-            <Footer />
-        </>
-    );
+  const handleOpenHome = () => router.push("/");
+  return (
+    <>
+      <main className={styles.main}>
+        <Loading />
+        {/*<DetectLanguage /> */}
+        <LandingHeader />
+        <section className={extendedStyles.first_section}>
+          <div className={extendedStyles.intro_text}>
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.1,
+                ease: cubicBezier(0.6, 0.6, 0, 0.1),
+              }}
+            >
+              {t("title")}
+            </motion.h2>
+          </div>
+        </section>
+        <section className={extendedStyles.team_section}>
+          {TEAM.map((item) => {
+            return (
+              <div className={extendedStyles.teamcard} key={item.name}>
+                <h4 className={extendedStyles.teamcard__title}>{item.name}</h4>
+                <p className={extendedStyles.teamcard__role}>
+                  <b>{item.role}</b>
+                </p>
+                <p className={extendedStyles.teamcard__desc}>{item.desc}</p>
+                <IconBrandLinkedin
+                  onClick={() => item.linkedin && router.push(item.linkedin)}
+                />
+              </div>
+            );
+          })}
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
 }

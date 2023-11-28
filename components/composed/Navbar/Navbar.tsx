@@ -10,6 +10,7 @@ import { Web3Button } from "@web3modal/react";
 import useDocumentScroll from "@/hooks/useDocumentScroll";
 import { AnimatePresence, cubicBezier, motion } from "framer-motion";
 import LangButton from "@/components/LangButton/LangButton";
+import Link from "next/link";
 
 export const Navbar = (): JSX.Element => {
   const [openMenu, setOpenMenu] = React.useState<boolean>(false);
@@ -26,21 +27,25 @@ export const Navbar = (): JSX.Element => {
   }, [currentScrollTop, previousScrollTop]);
 
   return (
-    <nav className={`${styles.navbar} ${show && styles.show}`}>
+    <nav
+      className={`${styles.navbar} ${show && styles.show} ${
+        openMenu && styles.openMenu
+      }`}
+    >
       <Logo />
       <IconMenu2 className={styles.navbar_menuIcon} onClick={toggleMenu} />
       <AnimatePresence>
         {openMenu ? (
           <motion.section
-            className={styles.navbar_links}
+            className={styles.navbar_linksMobile}
             initial={{ height: "auto" }}
             animate={{ height: "100vh" }}
             exit={{ height: "auto" }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
           >
-            {NAV_LINKS.map((link, index) => (
-              <Button key={index} type="link" redirectTo={link[1]}>
-                {link[0]}
+            {NAV_LINKS.map((elem, index) => (
+              <Button key={index} type="link" redirectTo={elem.link}>
+                {elem.name}
               </Button>
             ))}
             <Web3Button />
@@ -56,12 +61,13 @@ export const Navbar = (): JSX.Element => {
         ) : null}
       </AnimatePresence>
       <section className={styles.navbar_linksDesktop}>
-        {NAV_LINKS.map((link, index) => (
-          <Button key={index} type="link" redirectTo={link[1]}>
-            {link[0]}
-          </Button>
-        ))}
-        {/*<Connect />*/}
+        <div className={styles.navbar_linksDesktop_links}>
+          {NAV_LINKS.map((elem, index) => (
+            <Link key={index} href={elem.link}>
+              {elem.name}
+            </Link>
+          ))}
+        </div>
         <Web3Button />
         <LangButton />
       </section>

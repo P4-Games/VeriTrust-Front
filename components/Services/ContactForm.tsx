@@ -19,7 +19,6 @@ export const ContactForm = ()=>{
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = () => {
-        console.log("Pasé")
         setLoading(true)
         new Promise((resolve, reject) => {
             fetch("https://tdm.ar/api/veritrust_form", {

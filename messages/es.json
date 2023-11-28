@@ -31,7 +31,7 @@
     "newsletter_lang": "es",
     "nav_contact": "Contacto",
     "nav_org": "Tengo una organización",
-    "nav_team": "Nosotros"
+    "nav_team": "Nuestro equipo"
   },
   "Footer": {
     "lang": "Idioma",
@@ -200,7 +200,7 @@
     "categoriesAction1": "Crear perfil"
   },
   "Services":{
-    "title": "Lleve VeriTrust a tu organización!",
+    "title": "Lleve VeriTrust a su organización!",
     "description": "Ofrecemos servicios de app a medida, para empresas, ONGs, entidades gubernamentales o un particular. Nuestro protocolo es totalmente open source.",
     "button": "Mas información",
     "heading2": "Beneficios",

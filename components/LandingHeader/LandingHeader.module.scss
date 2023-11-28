@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+
+.header {
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  gap: 1rem;
+  img {
+    cursor: pointer;
+  }
+
+  &_links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      color: $text;
+      font-family: $font;
+      text-decoration: none;
+      margin-top: 3px;
+      transition: all 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        margin-top: 3px;
+        background: $text;
+        transition: width 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      }
+
+      &:hover::after {
+        width: 100%;
+        transition: width 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      }
+
+      &:hover {
+        font-weight: 700;
+        transition: all 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      }
+    }
+
+    & > section {
+      margin-left: 1rem;
+      transition: all 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      &:hover {
+        // transform: scale(1.05);
+        transition: all 0.3s cubic-bezier(0.6, 0.6, 0, 1);
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0 2rem;
+  }
+}

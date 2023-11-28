@@ -1,4 +1,4 @@
-export const NAV_LINKS: [string, string][] = [
-    ["Marketplace", "/marketplace"],
-    ["Profile", "/profile"]
-]
+export const NAV_LINKS = [
+  { name: "Marketplace", link: "/marketplace" },
+  { name: "Profile", link: "/profile" },
+];
