@@ -11,14 +11,14 @@ export default function CreateTender() {
   return (
     <>
       <Navbar />
-      <section className={styles.breadcrumbs}>
+      {/* <section className={styles.breadcrumbs}>
         <Breadcrumb
           values={[
             [t("pageTitle"), "/marketplace"],
             // ["Tender details", "/tender/"],
           ]}
         />
-      </section>
+      </section> */}
       <main className={styles.main}>
         <div className={styles.title}>
           <h3>{t("title")}</h3>

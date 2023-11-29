@@ -1,6 +1,7 @@
 "use client";
-import styles from "./page.module.scss";
-import { logo, marketplace, envelope } from "@/assets";
+import styles from "../page.module.scss";
+import extendedStyles from "./page.module.scss";
+import { marketplace, envelope } from "@/assets";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import SubscribeForm from "@/components/SubscribeForm/SubscribeForm";
@@ -9,14 +10,14 @@ import { cubicBezier, motion } from "framer-motion";
 import { SeeMore } from "@/components/Scroll/SeeMore";
 import { Loading } from "@/components/Loading/Loading";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { Building } from "@/components/Services/Image";
+import { ContactForm } from "@/components/Services/ContactForm";
 import LandingHeader from "@/components/LandingHeader/LandingHeader";
 
 export default function Home() {
   const pattern = " • VeriTrust";
   const repetitions = 42;
-  const [newsletterStatus, setNewsletterStatus] = useState<boolean>(false);
-  const t = useTranslations("Index");
+  const t = useTranslations("Services");
 
   return (
     <>
@@ -24,8 +25,8 @@ export default function Home() {
         <Loading />
         {/*<DetectLanguage /> */}
         <LandingHeader />
-        <section className={styles.first_section}>
-          <div className={styles.intro_text}>
+        <section className={extendedStyles.first_section}>
+          <div className={extendedStyles.intro_text}>
             <motion.h2
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -48,6 +49,9 @@ export default function Home() {
               {t("description")}
             </motion.p>
           </div>
+          <div className={extendedStyles.image}>
+            <Building />
+          </div>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -57,11 +61,13 @@ export default function Home() {
               ease: cubicBezier(0.6, 0.6, 0, 0.1),
             }}
           >
-            <Button className={styles.button} redirectTo="/marketplace">
+            <Button className={extendedStyles.button} redirectTo="#contact">
               {t("button")}
             </Button>
           </motion.div>
-          <SeeMore />
+          <div className={extendedStyles.scroll_text}>
+            <SeeMore showMouse={false} />
+          </div>
         </section>
         <section className={styles.second_section}>
           <motion.h2
@@ -140,13 +146,7 @@ export default function Home() {
           </div>
           <div className={styles.characteristicsLast}>
             <h2>{t("characteristics_title4")}</h2>
-            <p>
-              {t("characteristics_description4")} <br /> <br />
-              {t("characteristics_description4End")}{" "}
-              <a href="mailto:team@veritrust.tdm.ar" target="_blank">
-                team@veritrust.tdm.ar
-              </a>
-            </p>
+            <p>{t("characteristics_description4")}</p>
           </div>
         </section>
         <div className={styles.repeat_pattern}>
@@ -163,110 +163,15 @@ export default function Home() {
           </motion.p>
         </div>
 
-        <section className={styles.third_section}>
+        <section className={styles.third_section} id="contact">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, ease: cubicBezier(0.6, 0.6, 0, 0.1) }}
           >
-            {t("benefits_title")}
+            {t("contact")}
           </motion.h2>
-          <div className={styles.card_container}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 0.1,
-                delay: 0.1,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              <h3>{t("benefits_item")}</h3>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 0.1,
-                delay: 0.2,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              <h3>{t("benefits_item2")}</h3>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 0.1,
-                delay: 0.3,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              <h3>{t("benefits_item3")}</h3>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 0.1,
-                delay: 0.4,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              <h3>{t("benefits_item4")}</h3>
-            </motion.div>
-          </div>
-        </section>
-        <section className={styles.newsletter}>
-          <motion.div
-            className={styles.envelope_img}
-            initial={{ opacity: 0, x: 250 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.1,
-              delay: 0.5,
-              ease: cubicBezier(0.6, 0.6, 0, 0.1),
-            }}
-          >
-            <Image src={envelope} alt="envelop image" />
-          </motion.div>
-          <div>
-            <motion.h3
-              initial={{ opacity: 0, x: -250 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.1,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              {newsletterStatus ? t("newsletter_success") : t("newsletter")}
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{
-                duration: 0.1,
-                delay: 0.2,
-                ease: cubicBezier(0.6, 0.6, 0, 0.1),
-              }}
-            >
-              {newsletterStatus ? "" : t("newsletter_description")}
-            </motion.p>
-          </div>
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{
-              duration: 0.1,
-              delay: 0.3,
-              ease: cubicBezier(0.6, 0.6, 0, 0.1),
-            }}
-          >
-            {newsletterStatus ? null : (
-              <SubscribeForm setNewsletterStatus={setNewsletterStatus} />
-            )}
-          </motion.span>
+          <ContactForm />
         </section>
       </main>
       <Footer />

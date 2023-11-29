@@ -22,9 +22,16 @@
     "newsletter_description": "Enviaremos conteúdo apenas de vez em quando, garantindo que agregue valor.",
     "newsletter_placeholder": "exemplo@dominio.com",
     "newsletter_button": "Inscreva-se",
+    "newsletter_sending": "Enviando...",
+    "newsletter_success": "Obrigado por se inscrever!",
+    "newsletter_error": "O e-mail inserido não é válido ou já está inscrito.",
     "characteristics_title4": "Adaptamo-nos à sua organização!",
     "characteristics_description4": "Oferecemos serviços de aplicações personalizadas para empresas, ONG, entidades governamentais ou um indivíduo. O nosso protocolo é totalmente open source.",
-    "characteristics_description4End": "Envie-nos um e-mail para: "
+    "characteristics_description4End": "Envie-nos um e-mail para: ",
+    "newsletter_lang": "pt",
+    "nav_contact": "Contato",
+    "nav_org": "Tenho uma organização",
+    "nav_team": "Nossa equipe"
   },
   "Footer": {
     "lang": "Idioma",
@@ -191,5 +198,32 @@
     "categories": "Categorias: ",
     "categories_placeholder": "Digite uma categoria, por exemplo, Pinturas",
     "categoriesAction1": "Criar perfil"
+  },
+  "Services": {
+    "title": "Traga sua organização para a VeriTrust!",
+    "description": "Oferecemos serviços de aplicativos personalizados para empresas, ONG, entidades governamentais ou um indivíduo. Nosso protocolo é totalmente open source.",
+    "button": "Mais informações",
+    "heading2": "Benefícios",
+    "marketplace_title": "Economize tempo e dinheiro",
+    "marketplace_description": "Desenvolvemos um aplicativo personalizado com sua marca e exclusividade de uso para sua organização.",
+    "characteristics_title": "Maior transparência",
+    "characteristics_description": "Realize processos licitatórios 100% auditáveis e transparentes",
+    "characteristics_title2": "Chegue a mais países",
+    "characteristics_description2": "Se sua empresa não tem sede em um país onde você deseja operar, você pode lançar processos de compra com fornecedores locais.",
+    "characteristics_title3": "Integração com sistemas existentes",
+    "characteristics_description3": "Se você tiver um processo de compra já definido, nosso protocolo pode ser facilmente adaptado!",
+    "characteristics_title4": "Preços flexíveis",
+    "characteristics_description4": "Oferecemos preços flexíveis, dependendo da quantidade de licitações anuais.",
+    "characteristics_description4End": "",
+    "contact": "Contate-nos",
+    "contact_name": "Nome",
+    "contact_email": "Email",
+    "contact_phone": "Telefone",
+    "contact_message": "Mensagem",
+    "contact_button": "Enviar",
+    "contact_success": "Obrigado por entrar em contato, entraremos em contato em breve!"
+  },
+  "Team": {
+    "title": "Nossa equipe"
   }
 }

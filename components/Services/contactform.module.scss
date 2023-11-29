@@ -1,0 +1,81 @@
+@import "../../styles/variables.scss";
+
+.form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    input, textarea, button{
+        width: 100%;
+        max-width: 420px;
+        margin-bottom: 1rem;
+    }
+
+    h4{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    &__input {
+        flex: 2;
+        box-sizing: border-box;
+        border: none;
+        padding: 1rem 2rem;
+        background-color: #eee;
+        border-radius: 12px;
+        outline: none;
+        font-size: 1rem;
+        color: $background-dark;
+        letter-spacing: 0.5px;
+        width: 100%;
+        &::placeholder {
+            color: $background-dark;
+            opacity: 0.8;
+        }
+    }
+    &__textarea{
+        @extend .form__input;
+        height: calc(100% - 3.2rem);
+        resize: none;
+        min-height: calc(100% - 3.2rem);
+        max-height: calc(100% - 3.2rem);
+        max-width: 100%;
+        font-family: $font;
+    }
+    &__button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        flex: 1;
+        letter-spacing: 0.5px;
+        padding: 1rem 2rem;
+        border: none;
+        background-color: $primary;
+        color: $background;
+        font-weight: bold;
+        font-size: 1.25rem;
+        border-radius: 12px;
+        cursor: pointer;
+        max-width: 350px;
+        gap: 1rem;
+        margin-top: 2rem;
+        &Loading{
+            @extend .form__button;
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 1);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .form{
+        grid-template-columns: 1fr;
+    }
+}

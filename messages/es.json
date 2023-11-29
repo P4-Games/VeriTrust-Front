@@ -3,7 +3,7 @@
     "title": "Licite con confianza, VeriTrust lo respalda",
     "description": "Transformamos el sistema de licitaciones, brindando mayor seguridad, transparencia y confianza en el proceso de contratación.",
     "button": "Ingresar a la aplicación",
-    "scroll": "Desplácese para ver más",
+    "scroll": "Desplace para ver más",
     "heading2": "Características",
     "marketplace_title": "Mercado",
     "marketplace_description": "Facilita la búsqueda y promoción de oportunidades, asegurando un entorno transparente y competitivo para todas las partes.",
@@ -22,9 +22,16 @@
     "newsletter_description": "Solo enviaremos contenido de vez en cuando, asegurándonos de que agregue valor.",
     "newsletter_placeholder": "ejemplo@dominio.com",
     "newsletter_button": "Suscribirse",
+    "newsletter_sending": "Enviando...",
+    "newsletter_success": "¡Gracias por suscribirte!",
+    "newsletter_error": "El correo introducido no es válido o ya está suscrito.",
     "characteristics_title4": "Nos adaptamos a tu organización!",
     "characteristics_description4": "Ofrecemos servicios de app a medida, para empresas, ONGs, entidades gubernamentales o un particular. Nuestro protocolo es totalmente open source.",
-    "characteristics_description4End": "Envianos un correo a: "
+    "characteristics_description4End": "Envianos un correo a: ",
+    "newsletter_lang": "es",
+    "nav_contact": "Contacto",
+    "nav_org": "Tengo una organización",
+    "nav_team": "Nuestro equipo"
   },
   "Footer": {
     "lang": "Idioma",
@@ -191,5 +198,32 @@
     "categories": "Categorías: ",
     "categories_placeholder": "Escriba una categoría, por ejemplo, Pinturas",
     "categoriesAction1": "Crear perfil"
+  },
+  "Services":{
+    "title": "Lleve VeriTrust a su organización!",
+    "description": "Ofrecemos servicios de app a medida, para empresas, ONGs, entidades gubernamentales o un particular. Nuestro protocolo es totalmente open source.",
+    "button": "Mas información",
+    "heading2": "Beneficios",
+    "marketplace_title": "Ahorre tiempo y dinero",
+    "marketplace_description": "Desarrollamos una app a medida con su branding y exclusividad de uso para su organización.",
+    "characteristics_title": "Mayor transparencia",
+    "characteristics_description": "Realice procesos licitatorios 100% auditables y transparentes",
+    "characteristics_title2": "Llegue a mas paises",
+    "characteristics_description2": "Si su empresa no tiene sede en un pais donde quieres operar, puedes lanzar procesos de compra con proveedores locales.",
+    "characteristics_title3": "Integración con sistemas existentes",
+    "characteristics_description3": "Si tienen un proceso de compra ya definido, nuestro protocolo se puede adaptar facilmente!",
+    "characteristics_title4": "Precios flexibles",
+    "characteristics_description4": "Ofrecemos precios flexibles, dependiendo de la cantidad de las licitaciones anuales.",
+    "characteristics_description4End": "",
+    "contact": "Contactanos",
+    "contact_name": "Nombre",
+    "contact_email": "Email",
+    "contact_phone": "Teléfono",
+    "contact_message": "Mensaje",
+    "contact_button": "Enviar",
+    "contact_success": "Gracias por contactarnos, nos vamos a comunicar con ustedes pronto!"
+  },
+  "Team": {
+    "title": "Equipo"
   }
 }
