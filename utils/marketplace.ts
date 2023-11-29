@@ -63,7 +63,13 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
                 if (data) {
                     const input = web3.utils.hexToAscii(data).replace(/\u0000/g, "").slice(24);
                     const ipfsHash = input.slice(-46);
-                    const title = input.slice(0, -47);
+                    let title = "";
+                    const ipfsData = await fetch(
+                        "https://ipfs.io/ipfs/" + ipfsHash
+                    );
+                    const ipfsDataJSON = await ipfsData.json();
+                    console.log(ipfsDataJSON);
+                    title = ipfsDataJSON?.name ?? "";
 
                     const transactionDetails = {
                         hash: element.hash,

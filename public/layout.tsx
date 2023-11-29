@@ -27,7 +27,6 @@ export const metadata = {
   title: "VeriTrust - Licita con confianza",
   description:
     "Seguridad, transparencia y confianza en los procesos de contratación.",
-  
 };
 
 export function generateStaticParams() {
