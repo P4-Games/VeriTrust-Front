@@ -74,7 +74,7 @@ export const CreateTenderForm = () => {
   const { data: deployFeeData } = useContractRead({
     address: veritrustFactoryAddressGoerli,
     abi: contractABIGoerli,
-    functionName: "deployFee",
+    functionName: "getDeployCost",
   });
 
   useEffect(() => {

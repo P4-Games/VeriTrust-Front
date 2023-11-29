@@ -3,7 +3,7 @@ export type TenderItem = {
   object: string; //E.g. 2.2.2
   code: string; //E.g. 2.2.2-1629.210
   description: string; //E.g. "Cableado para equipo de rayos X"
-  quantity: number; //E.g. 1
+  quantity: number | string; //E.g. 1
   deliveryPlace?: string; //E.g. "Constitucion 1234, CABA"
   deliveryDeadline?: string; //E.g. "3 months"
   additionalInfo?: string; // Free text
