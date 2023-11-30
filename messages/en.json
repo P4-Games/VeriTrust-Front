@@ -155,7 +155,7 @@
     "i6": "Quantity"
   },
   "Profile": {
-    "defaultTitle": "My Profile - Example Corp",
+    "defaultTitle": "My Profile",
     "defaultTaxID": "30-12345678-5",
     "action1": "Create Tender",
     "action2": "Create Profile",

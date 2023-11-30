@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../app/[locale]/profile/Profile.module.scss";
 import { Button } from "@/components/Button/Button";
-import { IconPlus, IconUser } from "@tabler/icons-react";
+import { IconExternalLink, IconPlus, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { MY_QUOTES, QuoteState } from "@/constants/profile";
 import { formatAddress } from "@/utils/format";
@@ -37,33 +37,27 @@ export const ProfileBody = ()=>{
         <>
             <section className={styles.profile_header}>
                 <h1>{t("defaultTitle")}</h1>
-                <p>{t("defaultTaxID")} • <span>{description}</span></p>
+                <p className={styles.profile_header_address}><span>{description}</span> <IconExternalLink onClick={()=> window.open("https://goerli.etherscan.io/address/"+address)} /></p>
             </section>
             <div className={styles.profile_actions}>
+                <section 
+                    className={styles.profile_slider}
+                    onClick={toggleSection}
+                >
+                        <div className={sectionType == "offers" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
+                            {t("action3")}
+                        </div>
+                        <div className={sectionType == "tenders" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
+                            {t("action4")}
+                        </div>
+                </section>
                 <Button
                     type="main"
                     onClick={() => router.push("/create-tender")}
                 >
                     <IconPlus/> {t("action1")}
                 </Button>
-                <Button
-                    type="alt"
-                    onClick={() => router.push("/create-profile")}
-                >
-                    <IconUser /> {t("action2")}
-                </Button>
             </div>
-            <section 
-                className={styles.profile_slider}
-                onClick={toggleSection}
-            >
-                    <div className={sectionType == "offers" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        {t("action3")}
-                    </div>
-                    <div className={sectionType == "tenders" ? styles.profile_sliderSelected : styles.profile_sliderDefault}>
-                        {t("action4")}
-                    </div>
-            </section>
             {
                 sectionType == "offers" ? (
                     <QuotesTable quotes={quotes} />
