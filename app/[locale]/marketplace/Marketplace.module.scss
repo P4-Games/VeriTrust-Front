@@ -1,187 +1,189 @@
 @import "../../../styles/variables.scss";
 
-.marketplace{
-    @include pageBasics;
+.marketplace {
+  @include pageBasics;
 
-    &_header{
+  &_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    h1 {
+      @include title;
+    }
+    p {
+      @include text;
+      margin-top: 40px;
+      max-width: 700px;
+    }
+  }
+
+  &_filters {
+  }
+
+  &_list {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - #{$spacing2});
+    gap: $spacing0_5;
+    &Header {
+      display: grid;
+      grid-template-columns: 15% 35% 15% 15% 15%;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 $spacing;
+
+      h3 {
+        font-weight: 400;
+        font-family: $font;
+        opacity: 0.5;
+        font-size: 1.2rem;
+      }
+    }
+    &Item {
+      display: grid;
+      grid-template-columns: 15% 35% 15% 15% 15%;
+      width: 100%;
+      padding: $spacing;
+      background-color: $background2;
+      border-radius: $radiusOuter;
+      justify-content: space-between;
+      &Skeleton {
+        @extend .marketplace_listItem;
+        height: 105px;
+        padding: 0 $spacing;
+        align-items: center;
+      }
+      &TX {
+        text-decoration: underline;
+        color: $text;
+        font-family: $font;
+        font-size: 1rem;
+        padding: 0;
+        width: fit-content;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        opacity: 0.5;
+        cursor: pointer;
+      }
+
+      p {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
- 
-        h1{
-            @include title;
-        }
-        p{
-            @include text;
-            margin-top: 40px;
-            max-width: 700px;
-        }
-    }
+        justify-content: flex-start;
+        color: $text;
+        font-family: $font;
+        font-size: 1rem;
+      }
 
-    &_filters{}
-
-    &_list{
+      &Button {
+        margin-left: auto;
+        background-color: $background3;
+        color: $text;
+        text-decoration: none;
+        border-radius: $radius;
+        padding: 10px $spacing0_5;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: 700;
+        gap: 10px;
         display: flex;
-        flex-direction: column;
-        width: calc(100% - #{$spacing2});
-        gap: $spacing0_5;
-        &Header{
-            display: grid;
-            grid-template-columns: 15% 35% 15% 15% 15%;
-            width: 100%;
-            justify-content: space-between;
-            padding: 0 $spacing;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
 
-            h3{
-                font-weight: 400;
-                font-family: $font;
-                opacity: 0.5;
-                font-size: 1.2rem;
-            }
+        &:hover {
+          background-color: lighten($background3, 10%);
+          color: $text;
+          border: none;
+          transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
         }
-        &Item{
-            display: grid;
-            grid-template-columns: 15% 35% 15% 15% 15%;
-            width: 100%;
-            padding: $spacing;
-            background-color: $background2;
-            border-radius: $radiusOuter;
-            justify-content: space-between;
-            &Skeleton{
-                @extend .marketplace_listItem;
-                height: 105px;
-                padding: 0 $spacing;
-                align-items: center;
-            }
-            &TX{
-                text-decoration: underline;
-                color: $text;
-                font-family: $font;
-                font-size: 1rem;
-                padding: 0;
-                width: fit-content;
-                border: none;
-                background-color: transparent;
-                outline: none;
-                opacity: 0.5;
-                cursor: pointer;
-            }
-
-            p{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: flex-start;
-                color: $text;
-                font-family: $font;
-                font-size: 1rem;
-            }
-
-            &Button{ 
-                margin-left: auto;
-                background-color: $background3; 
-                color: $text;
-                text-decoration: none;
-                border-radius: $radius; 
-                padding: 10px $spacing0_5; 
-                font-family: $font; 
-                font-size: 1rem;  
-                font-weight: 700; 
-                gap: 10px; 
-                display: flex; 
-                align-items: center; 
-                justify-content: center;
-                border: none;
-                transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
-
-                &:hover{
-                    background-color: lighten($background3, 10%);
-                    color: $text;
-                    border: none;
-                    transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 @media (max-width: 768px) {
-    .marketplace{
-        padding: 0 $spacing0_5;
-        &_header{
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: $spacing0_5;
-            h1{
-                font-size: 1.5rem;
-            }
-            p{
-                font-size: 1rem;
-                width: 100%;
-            }
-        }
-        &_list{
-            &Header{
-                display: none;
-            }
-            &Item{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                gap: $spacing0_5;
-                padding: $spacing0_5 $spacing0_5;
-                background-color: $background2;
-                border-radius: $radiusOuter;
-                width: 100%;
-                &TX{
-                    text-decoration: underline;
-                    color: $text;
-                    opacity: 0.5;
-                }
-                p{
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: flex-start;
-                    color: $text;
-                    font-family: $font;
-                    font-size: 1rem;
-
-                    &.marketplace_listItemTitle{
-                        font-weight: 700;
-                        font-size: 1.3rem;
-                        font-family: $font;
-                    }
-                }
-                &Button{ 
-                    margin-left: auto;
-                    background-color: $background3; 
-                    color: $text;
-                    text-decoration: none;
-                    border-radius: $radius; 
-                    padding: 10px $spacing0_5; 
-                    font-family: $font; 
-                    font-size: 1rem;  
-                    font-weight: 700; 
-                    gap: 10px; 
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: center;
-                    border: none;
-                    transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
-
-                    &:hover{
-                        background-color: lighten($background3, 10%);
-                        color: $text;
-                        border: none;
-                        transition: all 0.2s cubic-bezier(0.6,0.6,0,0.1);
-                    }
-                }
-            }
-        }
+  .marketplace {
+    padding: 0 $spacing0_5;
+    &_header {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: $spacing0_5;
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+        width: 100%;
+      }
     }
+    &_list {
+      &Header {
+        display: none;
+      }
+      &Item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: $spacing0_5;
+        padding: $spacing0_5 $spacing0_5;
+        background-color: $background2;
+        border-radius: $radiusOuter;
+        width: 100%;
+        &TX {
+          text-decoration: underline;
+          color: $text;
+          opacity: 0.5;
+        }
+        p {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          color: $text;
+          font-family: $font;
+          font-size: 1rem;
+
+          &.marketplace_listItemTitle {
+            font-weight: 700;
+            font-size: 1.3rem;
+            font-family: $font;
+          }
+        }
+        &Button {
+          margin-left: auto;
+          background-color: $background3;
+          color: $text;
+          text-decoration: none;
+          border-radius: $radius;
+          padding: 10px $spacing0_5;
+          font-family: $font;
+          font-size: 1rem;
+          font-weight: 700;
+          gap: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
+
+          &:hover {
+            background-color: lighten($background3, 10%);
+            color: $text;
+            border: none;
+            transition: all 0.2s cubic-bezier(0.6, 0.6, 0, 0.1);
+          }
+        }
+      }
+    }
+  }
 }
