@@ -1,7 +1,7 @@
 import contractABI from "@/constants/contractABI.json";
 
 export const veritrustFactoryAddressGoerli =
-"0xfCAc7c9c5326CF0BCE7a5fE05856ff543B9Fba9c";
+"0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422";
 
 
 export const contractABIGoerli = contractABI;

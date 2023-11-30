@@ -22,7 +22,7 @@ export default function CostsDetails({
   let functionToCall = "";
   functionToCall == "bid"
     ? (functionToCall = "bidFee")
-    : (functionToCall = "deployFee");
+    : (functionToCall = "getDeployCost");
 
   const {
     data: feeData,
@@ -33,7 +33,12 @@ export default function CostsDetails({
     abi: contractABIGoerli,
     functionName: functionToCall,
   });
-  
+
+  const formatFees = (fee: string | undefined): number =>{
+    const value = parseFloat(fee + "");
+    return Math.ceil(value * 1e7) / 1e7;
+  }
+
   useEffect(() => {
     if (!isSuccess) return;
     let feeInt: number = 0;
@@ -63,8 +68,8 @@ export default function CostsDetails({
         <h4>{t("finalDetailsConcept")}</h4>
         <p>
           {feeTypeToShow === "contract"
-            ? `${t("finalDetailsConcept1")} ${fee} ETH `
-            : `${t("finalDetailsConcept2")} ${fee} ETH `}
+            ? `${t("finalDetailsConcept1")} ${formatFees(fee)} ETH `
+            : `${t("finalDetailsConcept2")} ${formatFees(fee)} ETH `}
         </p>
         {/* <p>Network fees: 0.0008 ??? ETH</p> */}
       </div>

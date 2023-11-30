@@ -4,7 +4,7 @@ import Web3 from 'web3';
 
 export const ALCHEMY_API_KEY = "ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER";
 export const ALCHEMY_API_URL = "https://eth-goerli.g.alchemy.com/v2/ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER";
-export const CONTRACT_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+export const CONTRACT_ADDRESS = "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422";
 export const PINATA_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
 export const EXPLORER_URL = "https://goerli.etherscan.io/tx/";
 
@@ -43,7 +43,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
 
     const getTransfers = await alchemy.core.getAssetTransfers({
         fromBlock: "0x0",
-        toAddress: "0xfCAc7c9c5326CF0BCE7a5fE05856ff543B9Fba9c",
+        toAddress: "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422",
         toBlock: "latest",
         excludeZeroValue: true,
         withMetadata: true,
@@ -53,8 +53,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
     if(getTransfers?.transfers){
         // As input data is not provided, loop through the transfers
         // If txs exist in Local Storage then use that data in order to be faster
-        for (let i = 0; i < getTransfers.transfers.length; i++) {
-            const element = getTransfers.transfers[i];
+        for (const element of getTransfers.transfers) {
             const transactionDetails = getTXFromLS(element.hash);
             if (transactionDetails) {
                 transactionsWithData.push(transactionDetails);
@@ -64,7 +63,13 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
                 if (data) {
                     const input = web3.utils.hexToAscii(data).replace(/\u0000/g, "").slice(24);
                     const ipfsHash = input.slice(-46);
-                    const title = input.slice(0, -47);
+                    let title = "";
+                    const ipfsData = await fetch(
+                        "https://ipfs.io/ipfs/" + ipfsHash
+                    );
+                    const ipfsDataJSON = await ipfsData.json();
+                    console.log(ipfsDataJSON);
+                    title = ipfsDataJSON?.name ?? "";
 
                     const transactionDetails = {
                         hash: element.hash,
