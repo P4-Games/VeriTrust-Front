@@ -23,6 +23,9 @@ import { getEthereumPrice } from "@/utils/price";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
+import { useContractWrite, useContractRead } from "wagmi";
+import { contractVeritrustABIGoerli } from "@/constants/contracts/index";
+import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
 
 export default function Page({ params }: { params: { id: string } }) {
   const t = useTranslations("Bid");
@@ -33,24 +36,18 @@ export default function Page({ params }: { params: { id: string } }) {
   const [domicilio, setDomicilio] = useState<string>("");
   const [ethPrice, setEthPrice] = useState<number>(0);
   const [router, setRouter] = useState<any>(null);
-
   const [allQuotes, setAllQuotes] = useState<number[]>([]); // allQuotes[id] = price per unit
+  const [bidCost, setBidCost] = useState<bigint>();
 
-  const getFormattedPrice = (): string => {
-    let totalPrice: number = postData.items.reduce((total, item) => {
-      return total + item.quantity * allQuotes[item.id];
-    }, 0);
+  const { data: contractBidCost } = useContractRead({
+    // address: veritrustAddressGoerli,
+    abi: contractVeritrustABIGoerli,
+    functionName: "getBidCost",
+  });
 
-    totalPrice = Math.round(totalPrice * 1e2) / 1e2;
-    return totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
-  const estimateCosts = () => {
-    let totalCosts: number = 0;
-    totalCosts += 0.0006 * ethPrice; // fees de red
-    totalCosts += 50; // ethPrice; // timbrados
-    return totalCosts;
-  };
+  useEffect(() => {
+    setBidCost(contractBidCost as bigint);
+  }, [bidCost, contractBidCost]);
 
   useEffect(() => {
     getTender(params.id).then((data) => {
@@ -70,6 +67,36 @@ export default function Page({ params }: { params: { id: string } }) {
     });
   }, []);
 
+  const {
+    isLoading,
+    write: deployContract,
+    isError,
+  } = useContractWrite({
+    // address: veritrustAddressGoerli,
+    abi: contractVeritrustABIGoerli,
+    functionName: "setBid",
+    value: bidCost,
+  });
+
+  const handleBid = async () => {
+    // const { isOk, data: ipfsHash } = await ipfsUploadJson(formState);
+
+    // ipfshash needs to be encrypted before sending it to the contract
+    // if (isOk) {
+    //   deployContract({
+    //     args: [
+    //       bidderName // business name
+    //       ipfsHash, // bytes32 url encrypted hash of the ipfs hash
+    //     ],
+    //   });
+    // }
+
+    // const ipfsRes = await ipfsGet(data as string);
+    // console.log(ipfsRes.data)
+
+    console.log();
+  };
+
   return (
     <>
       <Navbar />
@@ -88,7 +115,9 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
           <section className={styles.details_head}>
             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
-            <p>{t("deadline")} {postData.dates?.reveal} </p>
+            <p>
+              {t("deadline")} {postData.dates?.reveal}{" "}
+            </p>
           </section>
           <section className={styles.details_body}>
             <h3 className={styles.details_bodyLabel}>{t("supplier")}</h3>
@@ -133,23 +162,13 @@ export default function Page({ params }: { params: { id: string } }) {
               setAllQuotes={setAllQuotes}
             />
             <section className={styles.details_warranties}>
-              <h3 className={styles.details_warrantiesTitle}>{t("warranties")}</h3>
+              <h3 className={styles.details_warrantiesTitle}>
+                {t("warranties")}
+              </h3>
               <p>{t("warrantiesDefault")}</p>
             </section>
-            {/* <section className={styles.details_finalDetails}>
-              <h3>Details</h3>
-              <p>
-                Total bid price: $ {getFormattedPrice()} {postData.currency}
-              </p>
-              <h3>Additional costs:</h3>
-              <p>
-                Stamping: $50 USD <br />
-                Network fees: 0.0006 ETH
-              </p>
-              <h3>Estimated total: $ {estimateCosts()} USDC</h3>
-            </section> */}
             <CostsDetails feeTypeToShow="bid" />
-            <Button type="main" onClick={() => {}}>
+            <Button type="main" onClick={handleBid}>
               {t("action")} <IconFileUpload />
             </Button>
           </section>

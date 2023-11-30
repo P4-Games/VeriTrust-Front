@@ -11,9 +11,9 @@ import Overlay from "@/components/Overlay/Overlay";
 import { Tender, TenderItem } from "@/constants/tender";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  contractABIGoerli,
+  contractFactoryABIGoerli,
   veritrustFactoryAddressGoerli,
-} from "@/constants/factory";
+} from "@/constants/contracts/index";
 import { useContractWrite, useContractRead } from "wagmi";
 import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { ipfsGet, ipfsUploadJson } from "@/utils/ipfsServices";
@@ -73,7 +73,7 @@ export const CreateTenderForm = () => {
 
   const { data: deployFeeData } = useContractRead({
     address: veritrustFactoryAddressGoerli,
-    abi: contractABIGoerli,
+    abi: contractFactoryABIGoerli,
     functionName: "getDeployCost",
   });
 
@@ -158,7 +158,7 @@ export const CreateTenderForm = () => {
     isError,
   } = useContractWrite({
     address: veritrustFactoryAddressGoerli,
-    abi: contractABIGoerli,
+    abi: contractFactoryABIGoerli,
     functionName: "deployVeritrust",
     value: warrantyAmount,
   });

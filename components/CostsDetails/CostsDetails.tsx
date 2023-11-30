@@ -3,9 +3,9 @@ import styles from "./CostsDetails.module.scss";
 import { getEthereumPrice } from "@/utils/price";
 import { useContractRead } from "wagmi";
 import {
-  contractABIGoerli,
+  contractFactoryABIGoerli,
   veritrustFactoryAddressGoerli,
-} from "@/constants/factory";
+} from "@/constants/contracts/index";
 import { ethers } from "ethers";
 import { useTranslations } from "next-intl";
 
@@ -30,14 +30,14 @@ export default function CostsDetails({
     isError,
   } = useContractRead({
     address: veritrustFactoryAddressGoerli,
-    abi: contractABIGoerli,
+    abi: contractFactoryABIGoerli,
     functionName: functionToCall,
   });
 
-  const formatFees = (fee: string | undefined): number =>{
+  const formatFees = (fee: string | undefined): number => {
     const value = parseFloat(fee + "");
     return Math.ceil(value * 1e7) / 1e7;
-  }
+  };
 
   useEffect(() => {
     if (!isSuccess) return;
@@ -73,7 +73,9 @@ export default function CostsDetails({
         </p>
         {/* <p>Network fees: 0.0008 ??? ETH</p> */}
       </div>
-      <h4>{t("finalDetailsTotal")} {totalCosts} USD</h4>
+      <h4>
+        {t("finalDetailsTotal")} {totalCosts} USD
+      </h4>
     </section>
   );
 }
