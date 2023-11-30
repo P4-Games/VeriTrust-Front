@@ -75,13 +75,13 @@ export default function Page({ params }: { params: { id: string } }) {
       <Navbar />
       {postData?.name?.length > 1 ? (
         <section className={styles.details}>
-          <Breadcrumb
+          {/* <Breadcrumb
             values={[
               [t("route1"), "/marketplace"],
               [t("route2"), "/tender/" + params?.id],
               [t("route3"), "/tender/" + params?.id + "/quote"],
             ]}
-          />
+          /> */}
           <div className={styles.details_back} onClick={() => router.back()}>
             <IconArrowLeft className={styles.details_backIcon} />
             <h4>{t("return")}</h4>

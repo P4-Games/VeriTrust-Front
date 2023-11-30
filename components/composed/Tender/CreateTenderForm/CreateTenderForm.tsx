@@ -152,7 +152,11 @@ export const CreateTenderForm = () => {
     }
   };
 
-  const { isLoading, write: deployContract } = useContractWrite({
+  const {
+    isLoading,
+    write: deployContract,
+    isError,
+  } = useContractWrite({
     address: veritrustFactoryAddressGoerli,
     abi: contractABIGoerli,
     functionName: "deployVeritrust",

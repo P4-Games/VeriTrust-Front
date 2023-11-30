@@ -31,12 +31,12 @@ export default function Page ({ params }: { params: { id: string } }) {
             {
                 postData?.name?.length > 1 ? (
                     <section className={styles.details}>
-                        <Breadcrumb 
+                        {/* <Breadcrumb 
                             values={[
                                 ["Tenders", "/marketplace"],
                                 ["Tender details", "/tender/" + params?.id],
                             ]}
-                        />
+                        /> */}
                         <section className={styles.details_head}>
                             <h1 className={styles.details_headTitle}>{postData?.name}</h1>
                             <p>{t("subheading")} {postData.dates.revealDeadline} </p>
