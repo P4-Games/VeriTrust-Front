@@ -1,15 +1,12 @@
-'use client';
 import { Navbar } from "@/components/composed/Navbar/Navbar";
-
 import styles from "./Marketplace.module.scss";
 import { Button } from "@/components/Button/Button";
 import { IconPlus } from "@tabler/icons-react";
-import { TenderList } from "@/components/TenderList/TenderList";
+import TenderList from "@/components/TenderList/TenderList";
 import { useTranslations } from "next-intl";
 
 export default function Marketplace() {
-  const t = useTranslations('Marketplace');
-
+  const t = useTranslations("Marketplace");
   return (
     <div>
       <Navbar />
@@ -17,9 +14,7 @@ export default function Marketplace() {
         <section className={styles.marketplace_header}>
           <div>
             <h1>{t("title")}</h1>
-            <p>
-              {t("subheading")}
-            </p>
+            <p>{t("subheading")}</p>
           </div>
           <Button type="main" redirectTo="/create-tender">
             <IconPlus /> {t("button")}

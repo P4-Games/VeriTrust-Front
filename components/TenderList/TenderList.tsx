@@ -76,28 +76,36 @@ export default function TenderList() {
         <h3>{t("tableheading3")}</h3>
         <h3>{t("tableheading4")}</h3>
       </div>
-      {tenders?.map((tender, index) => (
-        <div className={styles.marketplace_listItem} key={index}>
-          <button
-            className={styles.marketplace_listItemTX}
-            onClick={() => handleTXClick(tender.txid)}
-          >
-            {formatTX(tender.txid)}
-          </button>
-          <p className={styles.marketplace_listItemTitle}>{tender.name}</p>
-          <p>
-            {tender.type}
-            {/* {t("tableitem1")} */}
-          </p>
-          <p>{formatDateString(tender.dates.commitDeadline)}</p>
-          <Button
-            redirectTo={`/tender/${tender.hash}`}
-            className={styles.marketplace_listItemButton}
-          >
-            {t("tableButton")} <IconExternalLink />
-          </Button>
-        </div>
-      ))}
+      {tenders.map((tender, index) => {
+        if (tender?.name === undefined)
+          return (
+            <div className={styles.marketplace_noTenders}>
+              <p>There are no Tenders to show</p>
+            </div>
+          );
+        return (
+          <div className={styles.marketplace_listItem} key={index}>
+            <button
+              className={styles.marketplace_listItemTX}
+              onClick={() => handleTXClick(tender.txid)}
+            >
+              {formatTX(tender.txid)}
+            </button>
+            <p className={styles.marketplace_listItemTitle}>{tender.name}</p>
+            <p>
+              {tender.type}
+              {/* {t("tableitem1")} */}
+            </p>
+            <p>{formatDateString(tender.dates.commitDeadline)}</p>
+            <Button
+              redirectTo={`/tender/${tender.hash}`}
+              className={styles.marketplace_listItemButton}
+            >
+              {t("tableButton")} <IconExternalLink />
+            </Button>
+          </div>
+        );
+      })}
       {loading ? (
         <>
           {Array(5)
