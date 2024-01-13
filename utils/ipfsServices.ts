@@ -86,7 +86,7 @@ export const ipfsGet = async (hash: string): Promise<IPFSResponse> => {
     const data = await response.json();
     return {
       isOk: true,
-      data: data.response,
+      data: data.result,
       error: null,
     };
   } catch (err) {
