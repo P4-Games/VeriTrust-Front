@@ -109,10 +109,63 @@ export const ProfileBody = () => {
         }
     }, [address, client]);
 
+    const fetchBids = useCallback(async () => {
+        if (!address || address.length === 0) return;
+
+        try {
+            setDescription(ensName ?? formatAddress(address));
+
+            const queryBidsByUser = `query {
+                bids(first: 1000, where: {bidder: "${address}"}) {
+                    veritrustAddress
+                    bidder
+                    bidStatus
+                    blockTimestamp
+                    transactionHash
+                }
+            }`;
+
+            const { data } = await client.query({
+                query: gql(queryBidsByUser),
+            });
+
+            console.log(data)
+
+            const tenders = data.bids.map((tender: any) => {
+                const blockTimestamp = tender.blockTimestamp;
+                const date = new Date(blockTimestamp * 1000);
+
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+
+                return {
+                    txid: tender.transactionHash,
+                    name: tender.ipfsUrl,
+                    type: "Public tender",
+                    status: "Pending",
+                    stage: 1,
+                    stageText: [
+                        [`${day}/${month}/${date.getFullYear()} - ${hours}:${minutes}`, "https://goerli.etherscan.io/address/" + tender.veritrustAddress],
+                        ["", ""],
+                        ["", ""],
+                        ["", ""],
+                    ],
+                };
+            });
+
+            setQuotes(tenders);
+        } catch (error) {
+            console.log('Error fetching data:', error);
+        }
+    }, [address, client]);
+
     useEffect(() => {
         if (isConnected) {
-            setQuotes(MY_QUOTES);
+            //setQuotes(MY_QUOTES);
             fetchTenders();
+            fetchBids();
         }
     }, [isConnected, fetchTenders]); // fetchTenders is now a dependency
 

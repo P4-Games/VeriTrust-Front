@@ -24,7 +24,7 @@ import CostsDetails from "@/components/CostsDetails/CostsDetails";
 import { useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
 
-export default function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: Readonly<{ params: { id: string } }>) {
   const t = useTranslations("Bid");
   const [postData, setPostData] = useState<Tender>({} as Tender);
   const [option, setOption] = useState<string>("Corporation");
