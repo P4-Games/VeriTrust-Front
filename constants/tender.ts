@@ -46,7 +46,7 @@ export type Tender = {
 //Create a default object based on the Tender types
 export const DEFAULT_TENDER: Tender = {
   txid: "0x6957f607c4b9780a34ece29e98a17beb63933553daa8e2e4e57599147b485ab8",
-  name: "",
+  name: "Example tender",
   type: "Public tender",
   opening_date: "31/12/2023",
   currency: "ARS",
@@ -91,10 +91,10 @@ export const DEFAULT_TENDER: Tender = {
   penalties: ["ACCORDING TO ARTICLES 102 TO 105 OF DECREE 1030/2016"],
   annexes: [["Name/Type/Description of the annex", "aaa212"]],
   dates: {
-    inquiriesStart: "20/11/2023 - 15:00",
-    inquiriesEnd: "20/11/2023 - 15:00",
-    commitDeadline: "20/11/2023 - 15:00",
-    revealDeadline: "25/11/2023 - 15:00",
+    inquiriesStart: "2023-12-20T00:00",
+    inquiriesEnd: "2024-01-01T00:00",
+    commitDeadline: "2024-01-15T00:00",
+    revealDeadline: "2024-01-20T00:00",
     contractStart: "From the contractual document",
     contractDuration: "3 months",
   },

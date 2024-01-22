@@ -43,11 +43,7 @@ export const getTender = async (id: string): Promise<Tender> => {
       res = ipfsDataJSON;
       res.txid = id;
 
-      if (res.currency && res.currency.includes(", ")) {
-        res.currency = res.currency.split(", ")[0];
-      } else {
-        res.currency = "ARS";
-      }
+      res.currency = res.currency?.split(", ")[0] || "ARS";
     } catch (error) {
       console.log(error);
     }

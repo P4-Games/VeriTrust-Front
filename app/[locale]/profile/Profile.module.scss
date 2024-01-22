@@ -211,6 +211,9 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        background-color: transparent;
+        border: none;
+        
 
         & > div{
             font-family: $font;

@@ -10,6 +10,7 @@
     "translations:extract": "lingui extract --clean "
   },
   "dependencies": {
+    "@apollo/client": "^3.8.8",
     "@lingui/core": "^4.5.0",
     "@lingui/react": "^4.5.0",
     "@pinata/sdk": "^2.1.0",
@@ -25,6 +26,7 @@
     "eslint-config-next": "13.4.12",
     "ethers": "^6.7.1",
     "framer-motion": "^10.15.1",
+    "graphql": "^16.8.1",
     "lodash": "^4.17.21",
     "lokijs": "^1.5.12",
     "next": "13.4.12",

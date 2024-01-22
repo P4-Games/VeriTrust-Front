@@ -8,7 +8,7 @@ import SwitchForm from "@/components/SwitchForm/SwitchForm";
 import DynamicInputForm from "@/components/composed/DynamicInputForm/DynamicInputForm";
 import DynamicFormModal from "@/components/composed/DynamicFormModal/DynamicFormModal";
 import Overlay from "@/components/Overlay/Overlay";
-import { Tender, TenderItem } from "@/constants/tender";
+import { DEFAULT_TENDER, Tender, TenderItem } from "@/constants/tender";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   contractABIGoerli,
@@ -26,7 +26,7 @@ export const CreateTenderForm = () => {
   const tDetails = useTranslations("Details");
   const t = useTranslations("CreateTender");
 
-  const [formState, setFormState] = useState<Tender>({
+  const [formState, setFormState] = useState<Tender>(DEFAULT_TENDER ?? {
     txid: "",
     name: "",
     type: "Public tender",

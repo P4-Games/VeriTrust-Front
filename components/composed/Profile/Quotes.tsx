@@ -37,7 +37,7 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
   };
 
   const getIndividualAccordion = (txid: string) => {
-    return openAccordion.get(txid) || false;
+    return openAccordion.get(txid) ?? false;
   };
 
   const setIndividualUrl = (txid: string, url: string) => {
@@ -93,7 +93,7 @@ export const QuotesTable = ({ quotes }: QuotesTableProps) => {
                               setValue={(url: string) =>
                                 setIndividualUrl(item.txid, url)
                               }
-                              value={urls.get(item.txid) || ""}
+                              value={urls.get(item.txid) ?? ""}
                               placeholder="URL"
                             />
                           </div>
