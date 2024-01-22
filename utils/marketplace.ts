@@ -4,7 +4,7 @@ import Web3 from 'web3';
 
 export const ALCHEMY_API_KEY = "ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER";
 export const ALCHEMY_API_URL = "https://eth-goerli.g.alchemy.com/v2/ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER";
-export const CONTRACT_ADDRESS = "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422";
+export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_TEST_CONTRACT ?? "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422";
 export const PINATA_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
 export const EXPLORER_URL = "https://goerli.etherscan.io/tx/";
 
@@ -43,7 +43,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
 
     const getTransfers = await alchemy.core.getAssetTransfers({
         fromBlock: "0x0",
-        toAddress: "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422",
+        toAddress: process.env.NEXT_PUBLIC_TEST_CONTRACT ?? "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422",
         toBlock: "latest",
         excludeZeroValue: true,
         withMetadata: true,

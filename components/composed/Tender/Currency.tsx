@@ -10,7 +10,7 @@ export const TenderCurrency = ({currency}: { currency: string }) => {
     return (
         <SmallCard className={styles.flagContainer}>
             <Flag code={WORLD_CURRENCIES.filter(
-                (item) => item.currencyCode === currency)[0].countryCode.toLowerCase()
+                (item) => item.currencyCode === currency)?.[0]?.countryCode?.toLowerCase() ?? "AR"
             } className={
                 styles.flag
             } />
