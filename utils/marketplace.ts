@@ -1,9 +1,9 @@
 import { Network, Alchemy, AssetTransfersCategory } from 'alchemy-sdk';
+import { NEXT_BUILTIN_DOCUMENT } from 'next/dist/shared/lib/constants';
 import React from 'react';
 import Web3 from 'web3';
-
-export const ALCHEMY_API_KEY = process.env.ALCHEMY_GOERLI_API_KEY;
-export const ALCHEMY_API_URL = "https://eth-goerli.g.alchemy.com/v2/ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER";
+export const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_API_KEY;
+export const ALCHEMY_API_URL = `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
 export const CONTRACT_ADDRESS = "0x0a73BaeAB54C40e403D34fF2631C0D0361bA3422";
 export const PINATA_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
 export const EXPLORER_URL = "https://goerli.etherscan.io/tx/";
@@ -33,7 +33,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
     if(setLoading) setLoading(true);
     const web3 = new Web3(ALCHEMY_API_URL);
     const settings = {
-        apiKey: process.env.ALCHEMI_GOERLI_API_KEY,
+        apiKey: "ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER",
         network: Network.ETH_GOERLI,
     };
 
