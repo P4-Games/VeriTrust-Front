@@ -1,4 +1,5 @@
 "use client";
+import 'dotenv/config';
 import styles from "./page.module.scss";
 import { logo, marketplace, envelope } from "@/assets";
 import Image from "next/image";

@@ -20,6 +20,7 @@
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
     "alchemy-sdk": "^2.10.0",
+    "dotenv": "^16.4.5",
     "encoding": "^0.1.13",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
