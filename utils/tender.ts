@@ -10,7 +10,7 @@ export const getTender = async (id: string): Promise<Tender> => {
 
   const web3 = new Web3(ALCHEMY_API_URL);
   const settings = {
-    apiKey: "ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER",
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_API_KEY,
     network: Network.ETH_GOERLI,
   };
 

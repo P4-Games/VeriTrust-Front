@@ -86,6 +86,7 @@ export const CreateTenderForm = () => {
     inputValue: string,
     index?: number
   ) => {
+    console.log('change')
     if (index !== undefined) {
       let auxArray = [...formState[name]];
       auxArray[index] = inputValue;
