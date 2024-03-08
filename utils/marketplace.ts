@@ -33,7 +33,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
     if(setLoading) setLoading(true);
     const web3 = new Web3(ALCHEMY_API_URL);
     const settings = {
-        apiKey: "ybGQr_yqjMQV4RHXO_Z2BR8K5TuUwbER",
+        apiKey: ALCHEMY_API_KEY,
         network: Network.ETH_GOERLI,
     };
 
