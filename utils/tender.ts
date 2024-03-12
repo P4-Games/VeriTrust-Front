@@ -1,7 +1,8 @@
 import { DEFAULT_TENDER, Tender } from "@/constants/tender";
-import { ALCHEMY_API_URL } from "./marketplace";
 import Web3 from "web3";
 import { Alchemy, Network } from "alchemy-sdk";
+
+const ALCHEMY_API_URL = process.env.NEXT_PUBLIC_ALCHEMY_GOERLI_API_URL;
 
 export const getTender = async (id: string): Promise<Tender> => {
   let res: Tender = DEFAULT_TENDER;

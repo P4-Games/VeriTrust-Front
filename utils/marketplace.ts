@@ -51,6 +51,7 @@ export const listTransactions = async (setLoading: React.Dispatch<React.SetState
     });
 
     if(getTransfers?.transfers){
+        console.log(getTransfers?.transfers)
         // As input data is not provided, loop through the transfers
         // If txs exist in Local Storage then use that data in order to be faster
         for (const element of getTransfers.transfers) {

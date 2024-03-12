@@ -1,7 +1,7 @@
 import { Tender } from "@/constants/tender";
 import { toast } from "react-toastify";
 
-const url = "/api/ipfs-service";
+const url = process.env.NEXT_PUBLIC_PINATA_GATEWAY_URL;
 
 type IPFSSuccess = {
   isOk: true;
@@ -45,10 +45,11 @@ export const ipfsUploadJson = async (
 };
 
 export const ipfsUploadFile = async (file: any): Promise<IPFSResponse> => {
+  console.log("calling ipfsUploadFile...")
   const formData = new FormData();
   formData.set("file", file);
   try {
-    const response = await fetch(`${url}`, {
+    const response = await fetch(`/api/files`, {
       method: "POST",
       body: formData,
     });
@@ -59,10 +60,13 @@ export const ipfsUploadFile = async (file: any): Promise<IPFSResponse> => {
     //   success: "All done, thank you for reaching out!",
     //   error: "Ups, something went wrong try again later!",
     // });
+    console.log({ data })
+    console.log({ response })
 
     return {
       isOk: true,
-      data: data.response.IpfsHash,
+      // data: data.response.IpfsHash,
+      data: data.response,
       error: null,
     };
   } catch (err) {
